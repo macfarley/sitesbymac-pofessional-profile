@@ -1,20 +1,22 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-geist-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: ui-monospace, "SF Mono", Consolas, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #000000;
+  --foreground: #ededed;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
+  :root:not(.light) {
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -22,5 +24,60 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
+}
+
+/* Print styles for PDF generation */
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black !important;
+  }
+  
+  .print-hidden {
+    display: none !important;
+  }
+  
+  .print-block {
+    display: block !important;
+  }
+  
+  .print-text-black {
+    color: black !important;
+  }
+  
+  .print-bg-white {
+    background-color: white !important;
+  }
+  
+  .print-py-8 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .print-px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  .print-text-3xl {
+    font-size: 1.875rem !important;
+  }
+  
+  .print-text-lg {
+    font-size: 1.125rem !important;
+  }
+  
+  .print-no-underline {
+    text-decoration: none !important;
+  }
+  
+  .print-text-gray-600 {
+    color: #4b5563 !important;
+  }
+  
+  .print-page-break-inside-avoid {
+    page-break-inside: avoid !important;
+  }
 }
