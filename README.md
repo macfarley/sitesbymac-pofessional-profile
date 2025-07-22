@@ -18,6 +18,7 @@ This portfolio was created to:
 - 🚀 **Performance Optimized**: Next.js Image optimization and efficient loading
 - 🔗 **Project Demos**: Integrated live project demonstrations via proxy rewrites
 - 📱 **Mobile Navigation**: Hamburger menu for seamless mobile experience
+- 🎮 **Retro Visitor Counter**: Nostalgic web counter with unique visitor tracking (localStorage-based, privacy-friendly)
 
 ## Tech Stack
 
@@ -79,6 +80,21 @@ src/
 - Include `focus:ring-2` classes for keyboard navigation
 - Provide descriptive alt text for all images
 
+### 5. Nostalgic Features
+The portfolio includes a retro visitor counter for that classic web nostalgia:
+- **Privacy-friendly**: Uses localStorage, no external tracking
+- **Unique visitors only**: Doesn't count refreshes or repeat visits
+- **Three styles**: Retro (terminal green), Modern (gradient), Minimal (clean)
+- **Animated counting**: Satisfying count-up effect to final number
+- **Cross-platform**: Tracks visits from any source (social, search, direct)
+
+```tsx
+// Usage examples:
+<VisitorCounter style="retro" />     // Classic green terminal style
+<VisitorCounter style="modern" />    // Gradient background
+<VisitorCounter style="minimal" />   // Clean and subtle
+```
+
 ## Project Recovery & Setup
 
 To set up this project on a new device:
@@ -126,6 +142,7 @@ npm run build
 - **ThemeToggle**: Dark/light mode switching
 - **ProjectCard**: Reusable project display component
 - **PDFDownloadButton**: Dynamic resume PDF generation
+- **VisitorCounter**: Nostalgic web counter with three visual styles (retro, modern, minimal)
 
 ## Learn More
 
