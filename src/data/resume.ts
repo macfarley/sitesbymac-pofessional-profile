@@ -11,6 +11,7 @@ export const personalInfo = {
   email: 'mac@sitesbymac.dev',
   linkedin: 'https://www.linkedin.com/in/travis-mccoy-630775b9/',
   github: 'https://github.com/macfarley',
+  summary: 'Full-stack developer with hands-on experience building responsive web apps and RESTful APIs using React, Next.js, Node.js and modern JavaScript/TypeScript toolchains. Led end-to-end development of DreamWeaver, a sleep-tracking application, in a remote Agile cohort. Seven years as a Corrections Officer cultivated leadership, crisis management, and process-driven documentation skills. Combines technical rigor with operational discipline to deliver thoughtful, user-centered solutions.'
 };
 
 export const education: Education[] = [
