@@ -1,141 +1,163 @@
-import { PersonalInfo, Education, WorkExperience, Certification, Skill } from '../types/resume';
+import { Education, WorkExperience, Certification, Skill } from '../types/resume';
 
-// 📝 PROFESSIONAL RESUME DATA - Travis M. McCoy
+// 📝 PROFESSIONAL RESUME DATA - Travis McCoy
 // This is your single source of truth for resume information
 
-export const personalInfo: PersonalInfo = {
+export const personalInfo = {
   name: 'Travis M. McCoy',
-  title: 'Full-Stack Web Developer',
-  email: 'travis@sitesbymac.dev',
-  phone: '(818) 422-7663',
-  location: 'Dayton, OH',
-  linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
-  github: 'https://github.com/macfarley?tab=repositories',
-  website: 'https://sitesbymac.dev',
-  summary: `Passionate Full-Stack Web Developer with expertise in modern web technologies and a strong foundation in both frontend and backend development. Recently completed an intensive coding bootcamp where I mastered JavaScript, React, Node.js, and PostgreSQL. Proven ability to build responsive, user-friendly applications with clean, maintainable code. Strong background in customer service and sales has developed excellent communication skills and attention to detail. Eager to contribute technical skills and collaborative approach to a dynamic development team.`
+  title: 'Full Stack Developer',
+  location: 'Dayton, OH 45342',
+  phone: '(937) 467-9312',
+  email: 'mac@sitesbymac.dev',
+  linkedin: 'https://www.linkedin.com/in/travis-mccoy-630775b9/',
+  github: 'https://github.com/macfarley',
 };
 
 export const education: Education[] = [
   {
-    id: 'bootcamp-2024',
-    institution: 'UC Berkeley Extension',
-    degree: 'Full-Stack Web Development Bootcamp Certificate',
-    graduationDate: '2024-12-01',
+    id: 'general-assembly-2025',
+    institution: 'General Assembly',
+    degree: 'Software Engineering Immersive',
+    graduationDate: '2025-08-01',
     relevantCoursework: [
-      'JavaScript & ES6+',
-      'React & Redux',
-      'Node.js & Express',
-      'Database Design & PostgreSQL',
-      'RESTful APIs',
-      'Git & Version Control',
-      'Agile Development Methodology',
       'HTML5 & CSS3',
-      'Responsive Web Design',
-      'Authentication & Authorization',
-      'Testing & Debugging',
-      'Deployment Strategies'
+      'JavaScript (ES6+) & TypeScript',
+      'React & Next.js',
+      'Node.js & Express',
+      'MongoDB & PostgreSQL', 
+      'RESTful API Design',
+      'Git & GitHub',
+      'Agile/Scrum Workflows',
+      'JWT Authentication',
+      'Deployment (Vercel, Netlify, Heroku)',
+      'Python & Flask',
+      'Modular Code Architecture',
+      'Secure Web App Fundamentals'
     ]
   },
   {
-    id: 'college-2009',
-    institution: 'California State University, Northridge',
-    degree: 'Bachelor of Arts',
-    field: 'Liberal Studies',
-    graduationDate: '2009-05-01'
+    id: 'ohio-university',
+    institution: 'Ohio University',
+    degree: 'International Relations (Pre-Law)',
+    field: 'International Relations',
+    graduationDate: '2010-12-01'
+  },
+  {
+    id: 'wright-state',
+    institution: 'Wright State University',
+    degree: 'Political Science (Dual Enrollment)',
+    field: 'Political Science',
+    graduationDate: '2009-12-01',
+    gpa: '3.75'
+  },
+  {
+    id: 'celina-high',
+    institution: 'Celina High School',
+    degree: 'Honors Diploma',
+    graduationDate: '2009-06-01'
   }
 ];
 
 export const workExperience: WorkExperience[] = [
   {
-    id: 'dev-2024',
-    title: 'Full-Stack Web Developer',
-    company: 'Freelance & Personal Projects',
-    location: 'Los Angeles, CA',
-    startDate: '2024-01-01',
-    current: true,
-    description: 'Developing modern web applications using JavaScript, React, Node.js, and PostgreSQL',
+    id: 'correctional-officer',
+    title: 'Correctional Officer V',
+    company: 'Texas Department of Criminal Justice - Holliday Transfer Facility',
+    location: 'TX',
+    startDate: '2017-09-01',
+    endDate: '2024-10-01',
+    description: 'High-security supervision and crisis management in correctional facility environment',
     achievements: [
-      'Built and deployed 5+ full-stack applications including e-commerce platforms, task management systems, and portfolio websites',
-      'Implemented responsive design principles achieving 100% mobile compatibility across all projects',
-      'Utilized modern deployment platforms (Heroku, Vercel, GitHub Pages) for seamless production deployments',
-      'Collaborated effectively using Git version control and Agile development methodologies',
-      'Integrated third-party APIs and authentication systems for enhanced functionality',
-      'Optimized application performance resulting in improved load times and user experience'
+      'Supervised high-security housing units and conducted wellness checks',
+      'Led suicide-watch interventions and emergency escort teams; CPR/AED certified',
+      'Trained staff in communication, de-escalation, and safety drills',
+      'Learned operational Spanish for daily communications with inmates of diverse backgrounds',
+      'Was instrumental in maintaining American Correctional Association Accreditation through meticulous report generation',
+      'Managed a team of 30 inmates to produce 2200 meals while maintaining inventory control (ingredients) and materiel control of sensitive tools (knives, anything that could be made a weapon) and maintained strict cleanliness and food safety standards during white-glove inspections of the kitchen'
     ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Express', 'HTML/CSS', 'JavaScript', 'MongoDB', 'REST APIs']
+    technologies: ['Crisis Management', 'Team Leadership', 'Safety Protocols', 'Documentation Systems']
   },
   {
-    id: 'sales-2018-2024',
-    title: 'Sales Representative',
-    company: 'Various Retail & Service Companies',
-    location: 'Los Angeles, CA',
-    startDate: '2018-01-01',
-    endDate: '2024-01-01',
-    description: 'Customer-focused sales professional with proven track record in relationship building and problem-solving',
+    id: 'kitchenaid-factory',
+    title: 'Assembly, Testing & Inventory Auditor',
+    company: 'KitchenAid Factory Distribution Center',
+    location: 'Greenville, OH',
+    startDate: '2015-09-01',
+    endDate: '2017-08-01',
+    description: 'Manufacturing operations including assembly, quality testing, and inventory management',
     achievements: [
-      'Consistently exceeded sales targets by 15-20% through effective customer relationship management',
-      'Developed strong communication and interpersonal skills working with diverse customer base',
-      'Demonstrated problem-solving abilities by resolving complex customer issues efficiently',
-      'Collaborated with team members to improve overall store performance and customer satisfaction',
-      'Trained new employees on sales techniques and customer service best practices'
+      'Operated robotic-assisted metal machining and electronic assembly lines under high-volume targets',
+      'Conducted QA testing and logged defect data for cross-team review',
+      'Led inventory audits that strengthened supply chain reliability and reduced discrepancies',
+      'Maintained production quality standards in high-volume manufacturing environment'
     ],
-    technologies: ['CRM Systems', 'Point of Sale Systems', 'Customer Service Tools', 'Inventory Management']
+    technologies: ['Manufacturing Systems', 'Quality Control', 'Inventory Management', 'Data Logging']
   },
   {
-    id: 'customer-service-2010-2018',
-    title: 'Customer Service Representative',
-    company: 'Various Service Industries',
-    location: 'Los Angeles, CA',
-    startDate: '2010-01-01',
-    endDate: '2018-01-01',
-    description: 'Customer service professional focused on delivering exceptional service and building lasting relationships',
+    id: 'gti-greenville',
+    title: 'Quality Inspector / Machine Operator',
+    company: 'GTI Greenville Technology Inc. (Moriroku Network)',
+    location: 'Greenville, OH',
+    startDate: '2012-06-01',
+    endDate: '2015-08-01',
+    description: 'Quality inspection and machine operation for automotive component manufacturing',
     achievements: [
-      'Maintained high customer satisfaction ratings through attentive service and problem resolution',
-      'Processed customer inquiries, complaints, and requests with accuracy and professionalism',
-      'Developed strong multitasking abilities managing multiple customer interactions simultaneously',
-      'Contributed to team goals and participated in continuous improvement initiatives',
-      'Built reputation for reliability, attention to detail, and positive attitude'
+      'In 3 years never caused a lost-time quality problem by sending inferior parts, saving Moriroku $10k per minute (the supplier got charged for work stoppage on the auto assembly line)',
+      'Operated injection-molding machinery and Dukane sonic welders',
+      'Applied 5S and Kanban systems for workflow optimization',
+      'Managed forklift logistics and completed OSHA-style safety training',
+      'Maintained strict quality standards for automotive industry requirements'
     ],
-    technologies: ['Customer Management Systems', 'Help Desk Software', 'Communication Tools', 'Data Entry Systems']
+    technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols']
   }
 ];
 
 export const certifications: Certification[] = [
   {
-    id: 'berkeley-bootcamp',
-    name: 'Full-Stack Web Development Bootcamp Certificate',
-    issuer: 'UC Berkeley Extension',
-    issueDate: '2024-12-01'
+    id: 'general-assembly',
+    name: 'Software Engineering Immersive',
+    issuer: 'General Assembly',
+    issueDate: '2025-08-01'
+  },
+  {
+    id: 'cpr-aed',
+    name: 'CPR/AED Certified',
+    issuer: 'American Red Cross',
+    issueDate: '2024-01-01'
   }
 ];
 
 export const skills: Skill[] = [
   {
-    category: 'Frontend Technologies',
-    skills: ['React', 'JavaScript (ES6+)', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'Responsive Design', 'jQuery', 'Redux', 'Next.js', 'Material-UI']
+    category: 'Languages & Frameworks',
+    skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'React', 'Next.js', 'Node.js', 'Express', 'Flask']
   },
   {
-    category: 'Backend Technologies', 
-    skills: ['Node.js', 'Express.js', 'RESTful APIs', 'PostgreSQL', 'MongoDB', 'Database Design', 'Authentication & Authorization', 'JWT', 'bcrypt', 'Sequelize ORM', 'Mongoose ODM']
+    category: 'Markup & Styling',
+    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Markdown', 'MDX', 'Responsive Design']
   },
   {
-    category: 'Development Tools & Platforms',
-    skills: ['Git & GitHub', 'VS Code', 'Command Line/Terminal', 'Postman', 'Chrome DevTools', 'npm/yarn', 'Webpack', 'Babel', 'ESLint', 'Prettier', 'Jest', 'React Testing Library']
+    category: 'Databases & APIs',
+    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'SQL joins and aggregations', 'RESTful API design', 'JWT authentication']
   },
   {
-    category: 'Deployment & DevOps',
-    skills: ['Heroku', 'Vercel', 'GitHub Pages', 'Netlify', 'CI/CD', 'Environment Configuration', 'Domain Management', 'SSL Certificates', 'Docker (Basic)', 'AWS (Basic)']
+    category: 'Tooling & Deployment',
+    skills: ['Git/GitHub', 'VS Code', 'Postman', 'Vercel', 'Netlify', 'Heroku', 'Domain Management', 'SSL Certificates']
   },
   {
-    category: 'Databases & Data Management',
-    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Database Design', 'Data Modeling', 'SQL Queries', 'NoSQL', 'Database Optimization', 'Data Validation', 'Schema Design']
+    category: 'Quality & Testing',
+    skills: ['ESLint', 'Prettier', 'Jest (basic)', 'WCAG accessibility principles', 'Environment variables security']
   },
   {
-    category: 'Soft Skills & Methodologies',
-    skills: ['Problem Solving', 'Team Collaboration', 'Communication', 'Customer Service', 'Attention to Detail', 'Continuous Learning', 'Agile Development', 'Scrum', 'Project Management', 'Time Management']
+    category: 'Workflow & Collaboration',
+    skills: ['Agile/Scrum', 'Jira', 'Trello (Kanban)', 'Zoom', 'Microsoft Teams', 'Draw.io diagrams', 'Technical documentation']
   },
   {
-    category: 'Additional Technical Skills',
-    skills: ['API Integration', 'Third-Party Services', 'Payment Processing (Stripe)', 'Email Services', 'File Upload/Management', 'Image Processing', 'Performance Optimization', 'SEO Basics', 'Accessibility (a11y)', 'Progressive Web Apps (PWA)']
+    category: 'Leadership & Soft Skills',
+    skills: ['Crisis de-escalation', 'Team leadership & training', 'Conflict resolution', 'Process documentation', 'Public speaking']
+  },
+  {
+    category: 'Additional Experience',
+    skills: ['Manufacturing operations', 'Quality control', 'Inventory management', 'Safety protocols', 'OSHA compliance']
   }
 ];
