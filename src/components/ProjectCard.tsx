@@ -17,6 +17,8 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
             alt={`${project.title} preview`}
             fill
             className="object-cover"
+            loading="lazy" // Lazy load project images
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive sizing
           />
         </div>
       )}

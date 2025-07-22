@@ -12,9 +12,40 @@
  * in a new tab for quick developer reference while browsing the portfolio.
  */
 
-import ProjectsGrid from '../components/ProjectsGrid';
 import VisitorCounter from '../components/VisitorCounter';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+// Lazy load ProjectsGrid for better initial page performance
+const LazyProjectsGrid = dynamic(() => import('../components/ProjectsGrid'), {
+  loading: () => (
+    <section className="py-16 px-4 bg-stone-100 dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-amber-900 dark:text-gray-100 mb-12">
+          Featured Projects
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="bg-stone-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden animate-pulse"
+            >
+              <div className="h-48 bg-gray-300 dark:bg-gray-600"></div>
+              <div className="p-6">
+                <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                <div className="flex gap-2 mb-4">
+                  <div className="h-6 w-16 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                  <div className="h-6 w-20 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ),
+});
 
 export default function Home() {
   return (
@@ -34,6 +65,8 @@ export default function Home() {
                 alt="McAxl - SitesByMac.dev mascot"
                 fill
                 className="object-contain drop-shadow-2xl" // Enhanced shadow for prominence
+                priority // Load immediately - above the fold
+                sizes="(max-width: 768px) 128px, 160px" // Responsive sizing optimization
               />
             </div>
           </div>
@@ -105,6 +138,8 @@ export default function Home() {
                       alt={`${tech.name} technology logo`} 
                       fill 
                       className="object-contain" // Maintains aspect ratio and fills container
+                      loading="lazy" // Lazy load for better performance
+                      sizes="64px" // Optimize for actual display size
                     />
                   </div>
                   <span className="text-center text-sm" aria-hidden="true">{tech.name}</span>
@@ -143,6 +178,8 @@ export default function Home() {
                       alt={`${tool.name} platform logo`} 
                       fill 
                       className="object-contain" // Maintains aspect ratio and fills container
+                      loading="lazy" // Lazy load for better performance
+                      sizes="56px" // Optimize for actual display size
                     />
                   </div>
                   <span className="text-center text-sm" aria-hidden="true">{tool.name}</span>
@@ -155,7 +192,7 @@ export default function Home() {
 
       {/* Projects Section - Portfolio showcase */}
       <div id="projects"> {/* Anchor for "View My Work" button */}
-        <ProjectsGrid /> {/* External component handling project display */}
+        <LazyProjectsGrid /> {/* Lazy-loaded component for better performance */}
       </div>
 
       {/* Nostalgic Footer with Visitor Counter */}
