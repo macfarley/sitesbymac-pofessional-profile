@@ -53,14 +53,16 @@ export default function Home() {
             {/* Primary CTA - View portfolio projects */}
             <a
               href="#projects"
-              className="px-6 py-3 bg-amber-700 dark:bg-cyan-500 text-stone-100 dark:text-gray-900 rounded-lg hover:bg-amber-800 dark:hover:bg-cyan-400 transition-colors font-medium shadow-lg"
+              className="min-h-[44px] min-w-[44px] px-6 py-3 bg-amber-700 dark:bg-cyan-500 text-stone-100 dark:text-gray-900 rounded-lg hover:bg-amber-800 dark:hover:bg-cyan-400 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none transition-colors font-medium shadow-lg"
+              aria-label="Navigate to portfolio projects section"
             >
               View My Work
             </a>
             {/* Secondary CTA - Contact via email */}
             <a
               href="mailto:travis@sitesbymac.dev"
-              className="px-6 py-3 border-2 border-amber-700 dark:border-pink-500 text-amber-700 dark:text-pink-400 rounded-lg hover:bg-amber-700/10 dark:hover:bg-pink-500/20 transition-colors font-medium"
+              className="min-h-[44px] min-w-[44px] px-6 py-3 border-2 border-amber-700 dark:border-pink-500 text-amber-700 dark:text-pink-400 rounded-lg hover:bg-amber-700/10 dark:hover:bg-pink-500/20 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none transition-colors font-medium"
+              aria-label="Send email to travis@sitesbymac.dev"
             >
               Get In Touch
             </a>
@@ -83,7 +85,7 @@ export default function Home() {
                 // Each tech object contains name, icon path, and documentation URL
                 { name: 'MERN Stack', icon: '/MERN.png', url: 'https://react.dev' },
                 { name: 'Python', icon: '/python-logo.png', url: 'https://docs.python.org/3/' },
-                { name: 'PostgreSQL', icon: '/Postgresql Logo Png,.png', url: 'https://www.postgresql.org/docs/' },
+                { name: 'PostgreSQL', icon: '/postgresqlLogo.png', url: 'https://www.postgresql.org/docs/' },
                 { name: 'Django', icon: '/Django_logo.svg', url: 'https://docs.djangoproject.com/' }
               ].map((tech) => (
                 // Each technology is a clickable link to its documentation
@@ -92,19 +94,19 @@ export default function Home() {
                   href={tech.url}
                   target="_blank" // Opens in new tab
                   rel="noopener noreferrer" // Security best practice
-                  className="p-6 bg-stone-50 dark:bg-gray-700 border-2 border-amber-600/30 dark:border-green-400/50 rounded-lg text-amber-900 dark:text-gray-100 font-medium hover:border-amber-600/60 dark:hover:border-green-400/70 hover:bg-amber-50 dark:hover:bg-green-900/20 transition-colors shadow-sm flex flex-col items-center group cursor-pointer hover:scale-105 transform transition-transform duration-200"
+                  className="min-h-[88px] min-w-[88px] p-6 bg-stone-50 dark:bg-gray-700 border-2 border-amber-600/30 dark:border-green-400/50 rounded-lg text-amber-900 dark:text-gray-100 font-medium hover:border-amber-600/60 dark:hover:border-green-400/70 hover:bg-amber-50 dark:hover:bg-green-900/20 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none transition-colors shadow-sm flex flex-col items-center group cursor-pointer hover:scale-105 transform transition-transform duration-200"
+                  aria-label={`Open ${tech.name} documentation in new tab`}
                 >
-                  {/* Icon container with fixed dimensions */}
-                  <div className="w-12 h-12 mb-3 flex items-center justify-center relative">
+                  {/* Icon container with larger dimensions for 44px minimum */}
+                  <div className="w-16 h-16 mb-3 flex items-center justify-center relative">
                     <Image 
                       src={tech.icon} 
-                      alt={tech.name}
-                      fill
-                      className="object-contain" // Maintains aspect ratio
+                      alt={`${tech.name} technology logo`} 
+                      fill 
+                      className="object-contain" // Maintains aspect ratio and fills container
                     />
                   </div>
-                  {/* Technology name label */}
-                  <span className="text-center">{tech.name}</span>
+                  <span className="text-center text-sm" aria-hidden="true">{tech.name}</span>
                 </a>
               ))}
             </div>
@@ -120,9 +122,9 @@ export default function Home() {
               {[
                 // Each tool object contains name, icon path, and documentation URL
                 { name: 'Postman', icon: '/postman.png', url: 'https://learning.postman.com/docs/' },
-                { name: 'Trello', icon: '/Trello Logo.png', url: 'https://help.atlassian.com/trello/' },
+                { name: 'Trello', icon: '/trelloLogo.webp', url: 'https://help.atlassian.com/trello/' },
                 { name: 'Heroku', icon: '/heroku.png', url: 'https://devcenter.heroku.com/' },
-                { name: 'Vercel', icon: '/vercel.svg', url: 'https://vercel.com/docs' }
+                { name: 'Vercel', icon: '/vercelLogo.png', url: 'https://vercel.com/docs' }
               ].map((tool) => (
                 // Each tool is a clickable link to its documentation
                 <a
@@ -130,19 +132,19 @@ export default function Home() {
                   href={tool.url}
                   target="_blank" // Opens in new tab
                   rel="noopener noreferrer" // Security best practice
-                  className="p-4 bg-stone-50 dark:bg-gray-700 border-2 border-amber-600/30 dark:border-green-400/50 rounded-lg text-amber-900 dark:text-gray-100 font-medium hover:border-amber-600/60 dark:hover:border-green-400/70 hover:bg-amber-50 dark:hover:bg-green-900/20 transition-colors shadow-sm flex flex-col items-center group cursor-pointer hover:scale-105 transform transition-transform duration-200"
+                  className="min-h-[88px] min-w-[88px] p-4 bg-stone-50 dark:bg-gray-700 border-2 border-amber-600/30 dark:border-green-400/50 rounded-lg text-amber-900 dark:text-gray-100 font-medium hover:border-amber-600/60 dark:hover:border-green-400/70 hover:bg-amber-50 dark:hover:bg-green-900/20 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none transition-colors shadow-sm flex flex-col items-center group cursor-pointer hover:scale-105 transform transition-transform duration-200"
+                  aria-label={`Open ${tool.name} documentation in new tab`}
                 >
-                  {/* Icon container with fixed dimensions */}
-                  <div className="w-10 h-10 mb-3 flex items-center justify-center relative">
+                  {/* Icon container with larger dimensions for 44px minimum */}
+                  <div className="w-14 h-14 mb-3 flex items-center justify-center relative">
                     <Image 
                       src={tool.icon} 
-                      alt={tool.name}
-                      fill
-                      className="object-contain" // Maintains aspect ratio
+                      alt={`${tool.name} platform logo`} 
+                      fill 
+                      className="object-contain" // Maintains aspect ratio and fills container
                     />
                   </div>
-                  {/* Tool name label */}
-                  <span className="text-center text-sm">{tool.name}</span>
+                  <span className="text-center text-sm" aria-hidden="true">{tool.name}</span>
                 </a>
               ))}
             </div>

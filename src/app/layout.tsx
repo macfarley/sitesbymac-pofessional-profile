@@ -62,21 +62,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"> {/* Document language for accessibility */}
+    <html lang="en">
       <head>
-        {/* Explicit favicon links for maximum browser compatibility */}
         <link rel="icon" type="image/png" href="/axlotl.png" />
         <link rel="shortcut icon" href="/axlotl.png" />
       </head>
-      <body
-        // Apply font variables and baseline styles
-        // Font variables are used in Tailwind config for font-sans and font-mono
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* Global Navigation - Appears on all pages */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navigation />
-        
-        {/* Page Content - Dynamic content for each route */}
         {children}
       </body>
     </html>

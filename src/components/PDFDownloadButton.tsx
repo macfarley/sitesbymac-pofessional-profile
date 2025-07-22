@@ -1,65 +1,179 @@
 'use client';
 
-import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, communityOutreach, references } from '../data/resume';
 
 interface PDFDownloadButtonProps {
-  targetId: string;
+  targetId?: string;
   filename?: string;
   className?: string;
 }
 
 export default function PDFDownloadButton({ 
-  targetId, 
   filename = 'Travis_McCoy_Resume.pdf',
   className = '' 
 }: PDFDownloadButtonProps) {
   const generatePDF = async () => {
-    const element = document.getElementById(targetId);
-    if (!element) {
-      console.error('Target element not found');
-      return;
-    }
-
     try {
-      // Create canvas from the element
-      const canvas = await html2canvas(element, {
-        useCORS: true,
-        allowTaint: true,
-        background: '#ffffff',
-        width: element.scrollWidth,
-        height: element.scrollHeight
-      });
-
-      const imgData = canvas.toDataURL('image/png');
-      
-      // Create PDF
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
         format: 'a4'
       });
 
-      // Calculate dimensions to fit A4
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = pageWidth - 20; // 10mm margin on each side
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const margin = 15;
+      const contentWidth = pageWidth - (margin * 2);
+      let currentY = margin;
 
-      let heightLeft = imgHeight;
-      let position = 10; // 10mm top margin
+      // Helper function to add text with automatic page breaks
+      const addText = (text: string, fontSize: number = 10, isBold: boolean = false, indent: number = 0) => {
+        if (currentY > pageHeight - margin) {
+          pdf.addPage();
+          currentY = margin;
+        }
 
-      // Add first page
-      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-      heightLeft -= (pageHeight - 20); // Subtract margins
+        pdf.setFontSize(fontSize);
+        pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
+        
+        const lines = pdf.splitTextToSize(text, contentWidth - indent);
+        lines.forEach((line: string) => {
+          if (currentY > pageHeight - margin) {
+            pdf.addPage();
+            currentY = margin;
+          }
+          pdf.text(line, margin + indent, currentY);
+          currentY += fontSize * 0.4; // Reduced line spacing
+        });
+        currentY += 1.5; // Reduced spacing after blocks
+      };
 
-      // Add additional pages if needed
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight + 10;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-        heightLeft -= (pageHeight - 20);
+      const addSection = (title: string) => {
+        currentY += 2; // Reduced section spacing
+        addText(title, 13, true); // Slightly smaller headers
+        currentY += 1; // Reduced spacing after headers
+      };
+
+      // Header
+      addText(personalInfo.name, 18, true);
+      addText(`${personalInfo.title} | ${personalInfo.location}`, 12);
+      addText(`${personalInfo.phone} | ${personalInfo.email}`, 10);
+      addText(`LinkedIn: ${personalInfo.linkedin}`, 10);
+      addText(`GitHub: ${personalInfo.github}`, 10);
+      
+      // Professional Summary
+      addSection('PROFESSIONAL SUMMARY');
+      addText(personalInfo.summary, 10);
+
+      // Technical Skills - 2 column layout
+      addSection('TECHNICAL SKILLS');
+      const halfContentWidth = (contentWidth - 10) / 2; // Account for column gap
+      
+      // Split skills into two columns
+      const leftColumnSkills = skills.slice(0, Math.ceil(skills.length / 2));
+      const rightColumnSkills = skills.slice(Math.ceil(skills.length / 2));
+      
+      const startY = currentY;
+      let leftY = startY;
+      let rightY = startY;
+      
+      // Left column
+      leftColumnSkills.forEach(skillCategory => {
+        if (leftY > pageHeight - margin - 20) return; // Stop if near page end
+        
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(`${skillCategory.category}:`, margin, leftY);
+        leftY += 3.5;
+        
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
+        skillLines.forEach((line: string) => {
+          pdf.text(line, margin, leftY);
+          leftY += 3;
+        });
+        leftY += 2;
+      });
+      
+      // Right column
+      rightColumnSkills.forEach(skillCategory => {
+        if (rightY > pageHeight - margin - 20) return; // Stop if near page end
+        
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 5, rightY);
+        rightY += 3.5;
+        
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
+        skillLines.forEach((line: string) => {
+          pdf.text(line, margin + halfContentWidth + 5, rightY);
+          rightY += 3;
+        });
+        rightY += 2;
+      });
+      
+      currentY = Math.max(leftY, rightY) + 3;
+
+      // Work Experience
+      addSection('PROFESSIONAL EXPERIENCE');
+      workExperience.forEach(job => {
+        addText(`${job.title} | ${job.company}, ${job.location}`, 10, true);
+        addText(`${job.startDate} - ${job.current ? 'Present' : job.endDate}`, 9);
+        // Skip job description to save space, go straight to achievements
+        job.achievements.forEach(achievement => {
+          addText(`• ${achievement}`, 9, false, 3);
+        });
+        currentY += 1; // Minimal spacing between jobs
+      });
+
+      // Force page break before Education section
+      pdf.addPage();
+      currentY = margin;
+
+      // Education
+      addSection('EDUCATION & TRAINING');
+      education.forEach(edu => {
+        addText(`${edu.degree} | ${edu.institution}`, 10, true);
+        addText(`Completed: ${new Date(edu.graduationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`, 9);
+        if (edu.relevantCoursework) {
+          addText('Key Coursework:', 9, true);
+          addText(edu.relevantCoursework.join(', '), 8, false, 3);
+        }
+        currentY += 1; // Minimal spacing between education entries
+      });
+
+      // Certifications
+      if (certifications.length > 0) {
+        addSection('CERTIFICATIONS');
+        certifications.forEach(cert => {
+          addText(`${cert.name} | ${cert.issuer} | ${cert.issueDate}`, 9);
+        });
       }
+
+      // Professional Associations - Condensed
+      addSection('PROFESSIONAL ASSOCIATIONS');
+      professionalAssociations.forEach(assoc => {
+        addText(`${assoc.name} - ${assoc.status}`, 9, true);
+        // Skip description to save space
+      });
+
+      // Community Outreach - Condensed  
+      addSection('COMMUNITY OUTREACH');
+      communityOutreach.forEach(community => {
+        addText(`${community.name} - ${community.status}`, 9, true);
+        // Skip description to save space
+      });
+
+      // References
+      addSection('REFERENCES');
+      references.forEach(ref => {
+        addText(`${ref.name} | ${ref.title} at ${ref.company}`, 9, true);
+        addText(`Email: ${ref.email}`, 9);
+      });
 
       // Download the PDF
       pdf.save(filename);
