@@ -31,8 +31,10 @@ export interface Education {
   degree: string;                // Degree type (Bachelor of Science, Certificate, etc.)
   field?: string;                // Field of study (Computer Science, Web Development, etc.)
   graduationDate: string;        // ISO date string or year (YYYY or YYYY-MM-DD)
+  inProgress?: boolean;          // Whether the education is currently in progress
   gpa?: string;                  // Grade point average, if relevant and strong
   honors?: string[];             // Academic honors (Dean's List, Magna Cum Laude, etc.)
+  leadership?: string[];         // Leadership roles and activities during education
   relevantCoursework?: string[]; // Key courses relevant to target position
 }
 

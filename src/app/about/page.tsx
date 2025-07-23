@@ -284,7 +284,7 @@ export default function AboutPage() {
                 {edu.institution}
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 print:text-black print:text-xs print:mb-2">
-                Completed: {new Date(edu.graduationDate).toLocaleDateString('en-US', {
+                {edu.inProgress ? 'Expected Completion: ' : 'Completed: '}{new Date(edu.graduationDate).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long'
                 })}
@@ -305,6 +305,24 @@ export default function AboutPage() {
                       </span>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {edu.leadership && (
+                <div className="mt-3 print:mt-1">
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-2 print:text-black print:text-sm print:mb-1">
+                    Leadership:
+                  </h4>
+                  <ul className="space-y-1 print:space-y-0">
+                    {edu.leadership.map((role, index) => (
+                      <li
+                        key={index}
+                        className="text-amber-700 dark:text-amber-400 text-sm print:text-xs print:text-black"
+                      >
+                        • {role}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>

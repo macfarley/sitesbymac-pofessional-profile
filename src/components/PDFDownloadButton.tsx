@@ -321,6 +321,10 @@ export default function PDFDownloadButton({
           const courseworkLines = pdf.splitTextToSize(edu.relevantCoursework.join(', '), contentWidth - 3);
           eduHeight += courseworkLines.length * 3.2;
         }
+        if (edu.leadership) {
+          eduHeight += 4; // Header for leadership section
+          eduHeight += edu.leadership.length * 3.6; // Each leadership role
+        }
         eduHeight += 2; // Spacing
         
         // Check if we have enough space for the complete education entry
@@ -330,10 +334,16 @@ export default function PDFDownloadButton({
         }
         
         addText(`${edu.degree} | ${edu.institution}`, 10, true);
-        addText(`Completed: ${new Date(edu.graduationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`, 9);
+        addText(`${edu.inProgress ? 'Expected Completion: ' : 'Completed: '}${new Date(edu.graduationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`, 9);
         if (edu.relevantCoursework) {
           addText('Key Coursework:', 9, true);
           addText(edu.relevantCoursework.join(', '), 8, false, 3);
+        }
+        if (edu.leadership) {
+          addText('Leadership:', 9, true);
+          edu.leadership.forEach(role => {
+            addText(`• ${role}`, 9, false, 3);
+          });
         }
         currentY += 1;
       });
@@ -350,7 +360,8 @@ export default function PDFDownloadButton({
       addSection('REFERENCES');
       references.forEach(ref => {
         addText(`${ref.name} | ${ref.title} at ${ref.company}`, 9, true);
-        addText(`Email: ${ref.email}`, 9);
+        const contactInfo = ref.phone ? `Email: ${ref.email} | Phone: ${ref.phone}` : `Email: ${ref.email}`;
+        addText(contactInfo, 9);
       });
 
       /**

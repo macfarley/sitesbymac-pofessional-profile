@@ -20,7 +20,8 @@ export const education: Education[] = [
     id: 'general-assembly-2025',
     institution: 'General Assembly',
     degree: 'Software Engineering Immersive',
-    graduationDate: '2025-08-01',
+    graduationDate: '2025-08-27',
+    inProgress: true,
     relevantCoursework: [
       'HTML5 & CSS3',
       'JavaScript (ES6+) & TypeScript',
@@ -42,7 +43,10 @@ export const education: Education[] = [
     institution: 'Ohio University',
     degree: 'International Relations (Pre-Law)',
     field: 'International Relations',
-    graduationDate: '2010-12-01'
+    graduationDate: '2010-12-01',
+    leadership: [
+      'Vice President, Athens Wargamers - Tabletop Role Playing and Collaborative Story Telling'
+    ]
   },
   {
     id: 'wright-state',
@@ -50,13 +54,19 @@ export const education: Education[] = [
     degree: 'Political Science (Dual Enrollment)',
     field: 'Political Science',
     graduationDate: '2009-12-01',
-    gpa: '3.75'
+    gpa: '3.75',
+    leadership: [
+      'Secretary of Psychology Society - Organized Excursions for the Discussion and Study Group'
+    ]
   },
   {
     id: 'celina-high',
     institution: 'Celina High School',
     degree: 'Honors Diploma',
-    graduationDate: '2009-06-01'
+    graduationDate: '2009-06-01',
+    leadership: [
+      'Captain of Scholastic Quiz Bowl Team - Led a 4-Week Run on High Q (WHIO Television Channel 7)'
+    ]
   }
 ];
 
@@ -118,9 +128,9 @@ export const workExperience: WorkExperience[] = [
 export const certifications: Certification[] = [
   {
     id: 'general-assembly',
-    name: 'Software Engineering Immersive',
+    name: 'Software Engineering Immersive - Pending Final Project',
     issuer: 'General Assembly',
-    issueDate: '2025-08-01'
+    issueDate: '2025-08-27'
   },
   {
     id: 'cpr-aed',
@@ -218,6 +228,7 @@ export const references = [
     title: 'Senior Researcher',
     company: 'Lilly Pharmaceuticals',
     email: 'jbgrange13@gmail.com',
+    phone: '(419) 953-3100',
     relationship: 'Long-term friend and charity project collaborator'
   },
   {
@@ -234,6 +245,7 @@ export const references = [
     title: 'Sergeant',
     company: 'Texas Department of Criminal Justice',
     email: 'spiedralujan@gmail.com',
+    phone: '(254) 589-2610',
     relationship: 'Former coworker and recruiter'
   },
   {
