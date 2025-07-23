@@ -1,6 +1,7 @@
 import { Project } from '../types/project';
 import Image from 'next/image';
 import Link from 'next/link';
+import githubLogo from '../../public/gitHubLogo.webp';
 
 interface ProjectCardProps {
   project: Project;
@@ -13,8 +14,8 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
       {project.imageUrl && (
         <div className="relative h-48 w-full">
           <Image
-            src={project.imageUrl}
-            alt={`${project.title} preview`}
+            src={`/${project.id}Screenshot.png`} // Dynamically load the screenshot based on project ID
+            alt={`${project.id === 'slay-the-dagron' ? 'Dagron Screenshot' : project.id === 'phantastic-beasts' ? 'Beasts Screenshot' : project.id === 'dream-weaver' ? 'Dream Screenshot' : 'Project Screenshot'}`} // Properly labeled alt text
             fill
             className="object-cover"
             loading="lazy" // Lazy load project images
@@ -65,9 +66,10 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-amber-700 dark:border-gray-500 text-amber-800 dark:text-gray-300 rounded-lg hover:bg-amber-50 dark:hover:bg-gray-700 transition-colors font-medium"
+              className="px-4 py-2 border border-amber-700 dark:border-gray-500 text-amber-800 dark:text-gray-300 rounded-lg hover:bg-amber-50 dark:hover:bg-gray-700 transition-colors font-medium flex items-center gap-2"
             >
-              Code
+              <Image src={githubLogo} alt="GitHub Logo" width={20} height={20} />
+              GitHub Repository
             </a>
           )}
         </div>
