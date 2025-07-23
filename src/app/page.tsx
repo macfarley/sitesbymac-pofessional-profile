@@ -72,12 +72,12 @@ export default function Home() {
           </div>
 
           {/* Main heading with name highlighting */}
-          <h1 className="text-5xl font-bold text-amber-900 dark:text-gray-100 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-amber-900 dark:text-gray-100 mb-6">
             Hi, I&apos;m <span className="text-amber-700 dark:text-cyan-400">Mac McCoy</span>
           </h1>
           
           {/* Professional description paragraph */}
-          <p className="text-xl text-amber-800 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-amber-800 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
             Full-Stack Web Developer passionate about creating engaging, user-friendly applications 
             with modern technologies like React, TypeScript, and Node.js.
           </p>
@@ -87,7 +87,7 @@ export default function Home() {
             {/* Primary CTA - View portfolio projects */}
             <a
               href="#projects"
-              className="min-h-[44px] min-w-[44px] px-6 py-3 bg-amber-700 dark:bg-cyan-500 text-stone-100 dark:text-gray-900 rounded-lg hover:bg-amber-800 dark:hover:bg-cyan-400 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none transition-colors font-medium shadow-lg"
+              className="min-h-[44px] min-w-[44px] px-6 py-3 bg-amber-700 dark:bg-cyan-500 text-white dark:text-gray-900 rounded-lg hover:bg-amber-800 dark:hover:bg-cyan-400 focus:bg-amber-800 dark:focus:bg-cyan-400 focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-50 dark:focus:ring-offset-gray-900 focus:outline-none transition-all duration-200 font-medium shadow-md hover:shadow-lg active:scale-95"
               aria-label="Navigate to portfolio projects section"
             >
               View My Work
@@ -95,7 +95,7 @@ export default function Home() {
             {/* Secondary CTA - Contact via email */}
             <a
               href="mailto:travis@sitesbymac.dev"
-              className="min-h-[44px] min-w-[44px] px-6 py-3 border-2 border-amber-700 dark:border-pink-500 text-amber-700 dark:text-pink-400 rounded-lg hover:bg-amber-700/10 dark:hover:bg-pink-500/20 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none transition-colors font-medium"
+              className="min-h-[44px] min-w-[44px] px-6 py-3 border-2 border-amber-700 dark:border-cyan-500 text-amber-700 dark:text-cyan-400 bg-transparent rounded-lg hover:bg-amber-700/10 dark:hover:bg-cyan-500/20 hover:border-amber-800 dark:hover:border-cyan-400 hover:text-amber-800 dark:hover:text-cyan-300 focus:bg-amber-700/10 dark:focus:bg-cyan-500/20 focus:border-amber-800 dark:focus:border-cyan-400 focus:text-amber-800 dark:focus:text-cyan-300 focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-50 dark:focus:ring-offset-gray-900 focus:outline-none transition-all duration-200 font-medium active:scale-95"
               aria-label="Send email to travis@sitesbymac.dev"
             >
               Get In Touch

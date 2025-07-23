@@ -163,6 +163,45 @@ body {
 
 /* 
  * ==========================================
+ * ACCESSIBILITY & WCAG COMPLIANCE STYLES
+ * ==========================================
+ * 
+ * These styles ensure WCAG AA compliance with:
+ * - Minimum 44px touch targets
+ * - Proper focus indicators
+ * - Clear link identification
+ * - Adequate color contrast ratios
+ * - Responsive font scaling
+ */
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .nav-link,
+  a[class*="text-blue"],
+  a[class*="text-amber"],
+  a[class*="text-red"] {
+    border: 1px solid currentColor !important;
+    padding: 2px 4px !important;
+  }
+  
+  button {
+    border: 2px solid currentColor !important;
+  }
+}
+
+/* Reduced Motion Preference Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 
+ * ==========================================
  * REUSABLE COOL SETTINGS & PATTERNS
  * ==========================================
  * 

@@ -5,10 +5,11 @@ import { Education, WorkExperience, Certification, Skill } from '../types/resume
 
 export const personalInfo = {
   name: 'Travis M. McCoy',
-  title: 'Full Stack Developer',
+  title: 'Full-Stack Developer',
   location: 'Dayton, OH 45342',
   phone: '(937) 467-9312',
   email: 'mac@sitesbymac.dev',
+  website: 'https://sitesbymac.dev',
   linkedin: 'https://www.linkedin.com/in/travis-mccoy-630775b9/',
   github: 'https://github.com/macfarley',
   summary: 'Full-stack developer with hands-on experience building responsive web apps and RESTful APIs using React, Next.js, Node.js and modern JavaScript/TypeScript toolchains. Led end-to-end development of DreamWeaver, a sleep-tracking application, in a remote Agile cohort. Seven years as a Corrections Officer cultivated leadership, crisis management, and process-driven documentation skills. Combines technical rigor with operational discipline to deliver thoughtful, user-centered solutions.'
@@ -72,6 +73,7 @@ export const workExperience: WorkExperience[] = [
       'Supervised high-security housing units and conducted wellness checks.',
       'Led suicide-watch interventions and emergency escort teams; CPR/AED certified.',
       'Trained staff in communication, de-escalation, and safety drills.',
+      'Implemented physical security protocols and identified potential social engineering threats.',
       'Learned operational Spanish for daily communications with inmates of diverse backgrounds.',
       'Was instrumental in maintaining American Correctional Association Accreditation through meticulous report generation.',
       'Managed a team of 30 inmates to produce 2200 meals while maintaining inventory control (ingredients) and materiel control of sensitive tools (knives, anything that could be made a weapon) and maintained strict cleanliness and food safety standards during white-glove inspections of the kitchen.'
@@ -255,7 +257,7 @@ export const skills: Skill[] = [
   },
   {
     category: 'Databases & APIs',
-    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'SQL joins and aggregations', 'RESTful API design', 'JWT authentication']
+    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'SQL joins and aggregations', 'RESTful API Design', 'JWT Authentication']
   },
   {
     category: 'Tooling & Deployment',
@@ -267,18 +269,18 @@ export const skills: Skill[] = [
   },
   {
     category: 'Workflow & Collaboration',
-    skills: ['Agile/Scrum', 'Trello (Kanban)', 'Zoom', 'Microsoft Teams', 'Slack', 'Discord', 'Figma', 'Draw.io diagrams', 'Technical documentation']
+    skills: ['Agile/Scrum', 'Jira (project management)', 'Trello (Kanban)', 'Zoom', 'Microsoft Teams', 'Slack', 'Discord', 'Figma', 'Draw.io diagrams', 'Technical documentation']
   },
   {
     category: 'Leadership & Soft Skills',
     skills: ['Crisis de-escalation', 'Team leadership & training', 'Conflict resolution', 'Process documentation', 'Public speaking', 'Attention to detail', 'Policy enforcement']
   },
   {
-    category: 'Additional Experience',
-    skills: ['Manufacturing operations', 'Quality control', 'Inventory management', 'Safety protocols', 'OSHA compliance']
+    category: 'Security & Risk Management',
+    skills: ['Physical Security protocols', 'Social Engineering awareness', 'Risk assessment', 'Incident response', 'Security documentation', 'Threat identification']
   },
   {
-    category: 'Currently Learning',
-    skills: ['C#', 'Jira (project management)', '.NET Framework', 'Advanced PostgreSQL', 'Docker containers', 'DNS configuration & domain management']
+    category: 'Additional Experience',
+    skills: ['Manufacturing operations', 'Quality control', 'Inventory management', 'Safety protocols', 'OSHA compliance']
   }
 ];
