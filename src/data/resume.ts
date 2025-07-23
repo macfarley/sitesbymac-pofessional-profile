@@ -236,7 +236,7 @@ export const references = [
     name: 'Captain John Laningham (Retired)',
     title: 'Former Captain',
     company: 'Texas Department of Criminal Justice',
-    email: 'magicman23@gmail.com',
+    email: 'magicman300@gmail.com',
     relationship: 'Former supervisor'
   },
   {
