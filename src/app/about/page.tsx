@@ -97,6 +97,68 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Professional Associations & Community Outreach */}
+        <section className="mb-16 print:mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 print:text-xl print:mb-4 print:text-black">
+            Professional Associations & Community Outreach
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 print:grid-cols-2 print:gap-4">
+            {/* Professional Associations */}
+            <div>
+              <h3 className="text-xl font-semibold text-amber-900 dark:text-amber-400 mb-4 print:text-base print:mb-2 print:text-black">
+                Professional Associations
+              </h3>
+              <div className="space-y-3 print:space-y-1">
+                {professionalAssociations.map((association) => (
+                  <div 
+                    key={association.id}
+                    className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 print:bg-white print:p-2 print:border print:border-gray-300"
+                  >
+                    <h4 className="font-semibold text-gray-900 dark:text-white print:text-sm print:text-black">
+                      {association.name}
+                    </h4>
+                    <p className="text-amber-700 dark:text-amber-400 text-sm print:text-xs print:text-black">
+                      {association.status}
+                    </p>
+                    {association.description && (
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 print:text-xs print:text-black">
+                        {association.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Community Outreach */}
+            <div>
+              <h3 className="text-xl font-semibold text-amber-900 dark:text-amber-400 mb-4 print:text-base print:mb-2 print:text-black">
+                Community Outreach
+              </h3>
+              <div className="space-y-3 print:space-y-1">
+                {communityOutreach.map((community) => (
+                  <div 
+                    key={community.id}
+                    className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 print:bg-white print:p-2 print:border print:border-gray-300"
+                  >
+                    <h4 className="font-semibold text-gray-900 dark:text-white print:text-sm print:text-black">
+                      {community.name}
+                    </h4>
+                    <p className="text-amber-700 dark:text-amber-400 text-sm print:text-xs print:text-black">
+                      {community.status}
+                    </p>
+                    {community.description && (
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 print:text-xs print:text-black">
+                        {community.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Experience */}
         <section className="mb-16 print:mb-6">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 print:text-xl print:mb-4 print:text-black">

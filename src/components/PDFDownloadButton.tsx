@@ -22,7 +22,7 @@
 'use client';
 
 import jsPDF from 'jspdf';
-import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, communityOutreach, references } from '../data/resume';
+import { personalInfo, workExperience, education, skills, certifications, references } from '../data/resume';
 import { WorkExperience } from '../types/resume';
 
 /**
@@ -219,18 +219,18 @@ export default function PDFDownloadButton({
         if (leftY > pageHeight - margin - 20) return; // Stop if near page end
         
         // Category name in bold
-        pdf.setFontSize(9);
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'bold');
         pdf.text(`${skillCategory.category}:`, margin, leftY);
-        leftY += 3.5;
+        leftY += 4;
         
         // Skills list in normal weight
-        pdf.setFontSize(8);
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
           pdf.text(line, margin, leftY);
-          leftY += 3;
+          leftY += 3.5;
         });
         leftY += 2;
       });
@@ -239,17 +239,17 @@ export default function PDFDownloadButton({
       rightColumnSkills.forEach(skillCategory => {
         if (rightY > pageHeight - margin - 20) return;
         
-        pdf.setFontSize(9);
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'bold');
         pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 5, rightY);
-        rightY += 3.5;
+        rightY += 4;
         
-        pdf.setFontSize(8);
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
           pdf.text(line, margin + halfContentWidth + 5, rightY);
-          rightY += 3;
+          rightY += 3.5;
         });
         rightY += 2;
       });
@@ -345,19 +345,6 @@ export default function PDFDownloadButton({
           addText(`${cert.name} | ${cert.issuer} | ${cert.issueDate}`, 9);
         });
       }
-
-      // === PROFESSIONAL ASSOCIATIONS SECTION ===
-      // Condensed format to save space while showing involvement
-      addSection('PROFESSIONAL ASSOCIATIONS');
-      professionalAssociations.forEach(assoc => {
-        addText(`${assoc.name} - ${assoc.status}`, 9, true);
-      });
-
-      // === COMMUNITY OUTREACH SECTION ===
-      addSection('COMMUNITY OUTREACH');
-      communityOutreach.forEach(community => {
-        addText(`${community.name} - ${community.status}`, 9, true);
-      });
 
       // === REFERENCES SECTION ===
       addSection('REFERENCES');
