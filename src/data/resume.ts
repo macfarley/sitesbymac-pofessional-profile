@@ -12,7 +12,7 @@ export const personalInfo = {
   website: 'https://sitesbymac.dev',
   linkedin: 'https://www.linkedin.com/in/travis-mccoy-630775b9/',
   github: 'https://github.com/macfarley',
-  summary: 'Full-stack developer with hands-on experience building responsive web apps and RESTful APIs using React, Next.js, Node.js and modern JavaScript/TypeScript toolchains. Led end-to-end development of DreamWeaver, a sleep-tracking application, in a remote Agile cohort. Seven years as a Corrections Officer cultivated leadership, crisis management, and process-driven documentation skills. Combines technical rigor with operational discipline to deliver thoughtful, user-centered solutions.'
+  summary: 'At 34, I\'m building the career I always envisioned—one that combines my analytical mind with creative problem-solving. After facing educational challenges in my early twenties, I spent over a decade in manufacturing and corrections, developing an unshakeable work ethic, crisis management skills, and the ability to stay calm under pressure. From quality control on automotive assembly lines to supervising high-security housing units, I learned that attention to detail and process-driven thinking aren\'t just valuable—they\'re essential. Now, as a full-stack developer, I\'m channeling that same discipline into crafting responsive web applications with React, Next.js, and modern JavaScript. My solo project DreamWeaver, a comprehensive sleep-tracking application, represents more than just code—it\'s proof that with determination and the right mindset, you can refactor not just websites, but your entire life. I bring the leadership experience of training teams, the precision mindset of someone who\'s worked where mistakes have serious consequences, and the hunger of someone who knows that this pivot to tech isn\'t just a career change—it\'s the foundation for building a future I\'m truly proud of.'
 };
 
 export const education: Education[] = [
@@ -249,38 +249,38 @@ export const references = [
 export const skills: Skill[] = [
   {
     category: 'Languages & Frameworks',
-    skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'React', 'Next.js', 'Node.js', 'Express', 'Flask']
+    skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'React', 'Next.js', 'Node.js', 'Express']
   },
   {
-    category: 'Markup & Styling',
-    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Markdown', 'MDX', 'Responsive Design']
+    category: 'Frontend & Styling',
+    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility']
   },
   {
-    category: 'Databases & APIs',
-    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'SQL joins and aggregations', 'RESTful API Design', 'JWT Authentication']
+    category: 'Backend & Databases',
+    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'RESTful API Design', 'JWT Authentication', 'Flask']
   },
   {
-    category: 'Tooling & Deployment',
-    skills: ['Git/GitHub', 'VS Code', 'Postman', 'Vercel', 'Netlify', 'Heroku', 'Domain Management', 'SSL Certificates']
+    category: 'Development Tools',
+    skills: ['Git/GitHub', 'VS Code', 'Postman', 'ESLint', 'Prettier', 'Jest', 'Environment Variables']
   },
   {
-    category: 'Quality & Testing',
-    skills: ['ESLint', 'Prettier', 'Jest (basic)', 'WCAG accessibility principles', 'Environment variables security']
+    category: 'Deployment & Hosting',
+    skills: ['Vercel', 'Netlify', 'Heroku', 'Domain Management', 'SSL Certificates', 'Static Generation']
   },
   {
-    category: 'Workflow & Collaboration',
-    skills: ['Agile/Scrum', 'Jira (project management)', 'Trello (Kanban)', 'Zoom', 'Microsoft Teams', 'Slack', 'Discord', 'Figma', 'Draw.io diagrams', 'Technical documentation']
+    category: 'Project Management',
+    skills: ['Agile/Scrum', 'Jira', 'Trello (Kanban)', 'Figma', 'Draw.io Diagrams', 'Process Documentation']
   },
   {
-    category: 'Leadership & Soft Skills',
-    skills: ['Crisis de-escalation', 'Team leadership & training', 'Conflict resolution', 'Process documentation', 'Public speaking', 'Attention to detail', 'Policy enforcement']
+    category: 'Leadership & Communication',
+    skills: ['Crisis De-escalation', 'Team Leadership', 'Conflict Resolution', 'Public Speaking', 'Policy Enforcement', 'Attention To Detail']
   },
   {
     category: 'Security & Risk Management',
-    skills: ['Physical Security protocols', 'Social Engineering awareness', 'Risk assessment', 'Incident response', 'Security documentation', 'Threat identification']
+    skills: ['Physical Security Protocols', 'Social Engineering Awareness', 'Risk Assessment', 'Incident Response', 'Security Documentation', 'Threat Identification']
   },
   {
-    category: 'Additional Experience',
-    skills: ['Manufacturing operations', 'Quality control', 'Inventory management', 'Safety protocols', 'OSHA compliance']
+    category: 'Operations & Quality',
+    skills: ['Manufacturing Operations', 'Quality Control', 'Inventory Management', 'Safety Protocols', 'OSHA Compliance', 'Documentation Standards']
   }
 ];
