@@ -23,6 +23,7 @@
 
 import jsPDF from 'jspdf';
 import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, communityOutreach, references } from '../data/resume';
+import { WorkExperience } from '../types/resume';
 
 /**
  * Component Props Interface
@@ -256,9 +257,51 @@ export default function PDFDownloadButton({
       // Continue layout from the bottom of both columns
       currentY = Math.max(leftY, rightY) + 3;
 
+      /**
+       * Calculate Space Needed for Job Entry
+       * 
+       * This helper function estimates how much vertical space a complete job entry will need
+       * to prevent splitting job entries across pages. It accounts for text wrapping.
+       * 
+       * @param job - The work experience job object
+       * @returns estimated height in mm
+       */
+      const calculateJobHeight = (job: WorkExperience) => {
+        let height = 0;
+        
+        // Title line (with text wrapping consideration)
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'bold');
+        const titleLines = pdf.splitTextToSize(`${job.title} | ${job.company}, ${job.location}`, contentWidth);
+        height += titleLines.length * 4;
+        
+        // Date line
+        height += 3.5;
+        
+        // Achievement lines (with text wrapping)
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        job.achievements.forEach(achievement => {
+          const achievementLines = pdf.splitTextToSize(`• ${achievement}`, contentWidth - 3);
+          height += achievementLines.length * 3.6;
+        });
+        
+        height += 3; // Spacing after job
+        return height;
+      };
+
       // === WORK EXPERIENCE SECTION ===
       addSection('PROFESSIONAL EXPERIENCE');
       workExperience.forEach(job => {
+        // Calculate space needed for this entire job entry
+        const jobHeight = calculateJobHeight(job);
+        
+        // Check if we have enough space for the complete job entry
+        if (currentY + jobHeight > pageHeight - margin - 10) {
+          pdf.addPage();
+          currentY = margin;
+        }
+        
         addText(`${job.title} | ${job.company}, ${job.location}`, 10, true);
         addText(`${job.startDate} - ${job.current ? 'Present' : job.endDate}`, 9);
         // Focus on achievements rather than job descriptions for impact
@@ -271,6 +314,21 @@ export default function PDFDownloadButton({
       // === EDUCATION SECTION ===
       addSection('EDUCATION & TRAINING');
       education.forEach(edu => {
+        // Calculate space needed for this education entry
+        let eduHeight = 8; // Base height for degree + date lines
+        if (edu.relevantCoursework) {
+          eduHeight += 6; // Additional height for coursework section
+          const courseworkLines = pdf.splitTextToSize(edu.relevantCoursework.join(', '), contentWidth - 3);
+          eduHeight += courseworkLines.length * 3.2;
+        }
+        eduHeight += 2; // Spacing
+        
+        // Check if we have enough space for the complete education entry
+        if (currentY + eduHeight > pageHeight - margin - 10) {
+          pdf.addPage();
+          currentY = margin;
+        }
+        
         addText(`${edu.degree} | ${edu.institution}`, 10, true);
         addText(`Completed: ${new Date(edu.graduationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`, 9);
         if (edu.relevantCoursework) {
