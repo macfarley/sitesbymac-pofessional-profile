@@ -97,17 +97,23 @@ export default function PDFDownloadButton({
        * - Page break detection and handling
        * - Font size and weight management
        * - Consistent spacing
+       * - Section break protection
        * 
        * @param text - The text content to add
        * @param fontSize - Size in points (10pt = standard body text)
        * @param isBold - Whether to use bold font weight
        * @param indent - Left indentation in mm (for bullet points)
+       * @param isSection - Whether this is a section header (prevents orphaning)
        * 
        * Cool Technical Detail: Uses splitTextToSize for automatic wrapping
        */
-      const addText = (text: string, fontSize: number = 10, isBold: boolean = false, indent: number = 0) => {
-        // Page break detection - if near bottom, start new page
-        if (currentY > pageHeight - margin) {
+      const addText = (text: string, fontSize: number = 10, isBold: boolean = false, indent: number = 0, isSection: boolean = false) => {
+        // For section headers, ensure we have enough space (at least 20mm) or start new page
+        if (isSection && currentY > pageHeight - margin - 20) {
+          pdf.addPage();
+          currentY = margin;
+        } else if (!isSection && currentY > pageHeight - margin - 10) {
+          // For regular text, page break if less than 10mm space
           pdf.addPage();
           currentY = margin;
         }
@@ -119,28 +125,29 @@ export default function PDFDownloadButton({
         // Text wrapping and positioning
         const lines = pdf.splitTextToSize(text, contentWidth - indent);
         lines.forEach((line: string) => {
-          if (currentY > pageHeight - margin) {
+          if (currentY > pageHeight - margin - 5) {
             pdf.addPage();
             currentY = margin;
           }
           pdf.text(line, margin + indent, currentY);
           currentY += fontSize * 0.4; // Line height calculation
         });
-        currentY += 1.5; // Paragraph spacing
+        currentY += isSection ? 2 : 1.5; // Different spacing for sections
       };
 
       /**
        * Section Header Helper Function
        * 
        * Creates consistent section headers throughout the document
+       * with protection against orphaning
        * 
        * @param title - The section title (e.g., "PROFESSIONAL EXPERIENCE")
        * 
        * Cool Pattern: All-caps titles with larger font size for hierarchy
        */
       const addSection = (title: string) => {
-        currentY += 2; // Section spacing
-        addText(title, 13, true); // 13pt bold for section headers
+        currentY += 3; // Section spacing
+        addText(title, 13, true, 0, true); // 13pt bold for section headers, marked as section
         currentY += 1; // Space after header
       };
 
@@ -163,6 +170,7 @@ export default function PDFDownloadButton({
       // Uses larger fonts for name and title for visual hierarchy
       addText(personalInfo.name, 18, true);  // 18pt for name - largest font
       addText(`${personalInfo.title} | ${personalInfo.location}`, 12);  // 12pt for title
+      addText(`Profile: ${personalInfo.website}`, 11, true);  // 11pt bold for profile website
       addText(`${personalInfo.phone} | ${personalInfo.email}`, 10);     // 10pt for contact
       addText(`LinkedIn: ${personalInfo.linkedin}`, 10);
       addText(`GitHub: ${personalInfo.github}`, 10);
@@ -183,9 +191,18 @@ export default function PDFDownloadButton({
        * - Splits skills array into two equal parts
        * - Tracks Y position for each column independently
        * - Uses the maximum Y position to continue layout
+       * - Ensures enough space or starts new page
        * 
        * This pattern can be reused for any two-column content
        */
+      
+      // Check if we have enough space for the skills section (at least 40mm)
+      if (currentY > pageHeight - margin - 40) {
+        pdf.addPage();
+        currentY = margin;
+        addSection('TECHNICAL SKILLS');
+      }
+      
       const halfContentWidth = (contentWidth - 10) / 2; // Account for column gap
       
       // Split skills into two equal columns
@@ -248,19 +265,8 @@ export default function PDFDownloadButton({
         job.achievements.forEach(achievement => {
           addText(`• ${achievement}`, 9, false, 3); // 3mm indent for bullets
         });
-        currentY += 1; // Minimal spacing between jobs
+        currentY += 2; // Space between jobs for readability
       });
-
-      /**
-       * Strategic Page Break
-       * 
-       * Cool Pattern: Force a page break before education to ensure
-       * proper layout and avoid orphaned content. This is especially
-       * important for resume formatting where sections should be
-       * visually separated.
-       */
-      pdf.addPage();
-      currentY = margin;
 
       // === EDUCATION SECTION ===
       addSection('EDUCATION & TRAINING');
