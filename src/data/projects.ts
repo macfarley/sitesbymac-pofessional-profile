@@ -10,7 +10,8 @@ export const projects: Project[] = [
     liveUrl: 'https://phantastic-beasts-d585c0bc1aa9.herokuapp.com/',
     githubUrl: 'https://github.com/macfarley/Phantastic-Beasts',
     featured: true,
-    completedDate: '2024-12-01'
+    completedDate: '2024-12-01',
+    imageUrl: '/beastsScreenshot.png'
   },
   {
     id: 'slay-the-dagron',
@@ -19,9 +20,10 @@ export const projects: Project[] = [
     longDescription: 'A fun, interactive game built with vanilla JavaScript and modern web APIs. Features game state management, responsive design, and engaging user interactions.',
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'GitHub Pages'],
     liveUrl: 'https://macfarley.github.io/slay-the-dagron/',
-    githubUrl: 'https://github.com/macfarley/slay-the-dagron', // Update this to your actual repo
+    githubUrl: 'https://github.com/macfarley/slay-the-dagron',
     featured: true,
-    completedDate: '2024-11-15'
+    completedDate: '2024-11-15',
+    imageUrl: '/dagronScreenshot.png'
   },
   {
     id: 'dream-weaver',
@@ -32,7 +34,8 @@ export const projects: Project[] = [
     liveUrl: 'https://dream-weaver-rho.vercel.app/',
     githubUrl: 'https://github.com/macfarley/dream-weaver',
     featured: true,
-    completedDate: '2024-10-20'
+    completedDate: '2024-10-20',
+    imageUrl: '/dreamScreenshot.png'
   }
 ];
 
