@@ -121,7 +121,7 @@ export default function PDFDownloadButton({
 
         // Font configuration
         pdf.setFontSize(fontSize);
-        pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
+        pdf.setFont('arial', isBold ? 'bold' : 'normal');
         
         // Text wrapping and positioning
         const lines = pdf.splitTextToSize(text, contentWidth - indent);
@@ -220,13 +220,13 @@ export default function PDFDownloadButton({
         
         // Category name in bold
         pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'bold');
+        pdf.setFont('arial', 'bold');
         pdf.text(`${skillCategory.category}:`, margin, leftY);
         leftY += 4;
         
         // Skills list in normal weight
         pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'normal');
+        pdf.setFont('arial', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
           pdf.text(line, margin, leftY);
@@ -240,12 +240,12 @@ export default function PDFDownloadButton({
         if (rightY > pageHeight - margin - 20) return;
         
         pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'bold');
+        pdf.setFont('arial', 'bold');
         pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 5, rightY);
         rightY += 4;
         
         pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'normal');
+        pdf.setFont('arial', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
           pdf.text(line, margin + halfContentWidth + 5, rightY);
@@ -271,7 +271,7 @@ export default function PDFDownloadButton({
         
         // Title line (with text wrapping consideration)
         pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'bold');
+        pdf.setFont('arial', 'bold');
         const titleLines = pdf.splitTextToSize(`${job.title} | ${job.company}, ${job.location}`, contentWidth);
         height += titleLines.length * 4;
         
@@ -280,7 +280,7 @@ export default function PDFDownloadButton({
         
         // Achievement lines (with text wrapping)
         pdf.setFontSize(9);
-        pdf.setFont('helvetica', 'normal');
+        pdf.setFont('arial', 'normal');
         job.achievements.forEach(achievement => {
           const achievementLines = pdf.splitTextToSize(`• ${achievement}`, contentWidth - 3);
           height += achievementLines.length * 3.6;
