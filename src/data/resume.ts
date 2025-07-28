@@ -10,7 +10,7 @@ export const personalInfo = {
   phone: '(937) 467-9312',
   email: 'mac@sitesbymac.dev',
   website: 'https://sitesbymac.dev',
-  linkedin: 'https://www.linkedin.com/in/travis-mccoy-630775b9/',
+  linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
   github: 'https://github.com/macfarley',
   summary: 'After a decade of honing discipline, crisis management and precision in manufacturing and corrections, I transitioned to software development with a focus on backend systems using Node.js and Python. My leadership and patience drive reliable API design and maintainable architectures. My DreamWeaver sleep tracking app demonstrates how resilience and a methodical mindset translate into clean code, efficient workflows and meaningful user experiences.'
 };

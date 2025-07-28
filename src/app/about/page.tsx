@@ -484,6 +484,22 @@ export default function AboutPage() {
                 GitHub
               </a>
             )}
+            <a
+              href="https://www.hackerrank.com/profile/mac34"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            >
+              HackerRank
+            </a>
+            <a
+              href="https://leetcode.com/u/macfarley/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            >
+              LeetCode
+            </a>
           </div>
         </section>
       </div>
