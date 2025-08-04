@@ -14,8 +14,8 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
       {project.imageUrl && (
         <div className="relative h-48 w-full">
           <Image
-            src={`/${project.id}Screenshot.png`} // Dynamically load the screenshot based on project ID
-            alt={`${project.id === 'slay-the-dagron' ? 'Dagron Screenshot' : project.id === 'phantastic-beasts' ? 'Beasts Screenshot' : project.id === 'dream-weaver' ? 'Dream Screenshot' : 'Project Screenshot'}`} // Properly labeled alt text
+            src={project.imageUrl} // Use the imageUrl property from project data
+            alt={`${project.title} screenshot`} // Use project title for alt text
             fill
             className="object-cover"
             loading="lazy" // Lazy load project images
