@@ -8,6 +8,13 @@ jest.mock('../components/ProjectsGrid', () => {
   }
 })
 
+// Mock VisitorCounter component
+jest.mock('../components/VisitorCounter', () => {
+  return function MockVisitorCounter() {
+    return <div data-testid="visitor-counter">Visitor Counter Mock</div>
+  }
+})
+
 describe('Home Page', () => {
   it('renders the main heading', () => {
     render(<Home />)
@@ -58,15 +65,16 @@ describe('Home Page', () => {
     render(<Home />)
     
     const viewWorkButton = screen.getByRole('link', { 
-      name: /view my work/i 
+      name: /navigate to portfolio projects section/i 
     })
     const contactButton = screen.getByRole('link', { 
-      name: /get in touch/i 
+      name: /send email to travis@sitesbymac.dev/i 
     })
     
     expect(viewWorkButton).toBeInTheDocument()
     expect(contactButton).toBeInTheDocument()
     expect(contactButton).toHaveAttribute('href', 'mailto:travis@sitesbymac.dev')
+    expect(viewWorkButton).toHaveAttribute('href', '#projects')
   })
 
   it('renders the projects section', () => {
@@ -74,5 +82,43 @@ describe('Home Page', () => {
     
     const projectsGrid = screen.getByTestId('projects-grid')
     expect(projectsGrid).toBeInTheDocument()
+  })
+
+  it('has technology links that open in new tabs', () => {
+    render(<Home />)
+    
+    // Check MERN Stack link
+    const mernLink = screen.getByRole('link', { 
+      name: /open mern stack documentation in new tab/i 
+    })
+    expect(mernLink).toBeInTheDocument()
+    expect(mernLink).toHaveAttribute('href', 'https://react.dev')
+    expect(mernLink).toHaveAttribute('target', '_blank')
+    expect(mernLink).toHaveAttribute('rel', 'noopener noreferrer')
+  })
+
+  it('has tools links that open in new tabs', () => {
+    render(<Home />)
+    
+    // Check Postman link
+    const postmanLink = screen.getByRole('link', { 
+      name: /open postman documentation in new tab/i 
+    })
+    expect(postmanLink).toBeInTheDocument()
+    expect(postmanLink).toHaveAttribute('href', 'https://learning.postman.com/docs/')
+    expect(postmanLink).toHaveAttribute('target', '_blank')
+  })
+
+  it('renders footer with visitor counter', () => {
+    render(<Home />)
+    
+    const footer = screen.getByRole('contentinfo')
+    expect(footer).toBeInTheDocument()
+    
+    const visitorCounter = screen.getByTestId('visitor-counter')
+    expect(visitorCounter).toBeInTheDocument()
+    
+    expect(screen.getByText(/© 2025 Mac McCoy/)).toBeInTheDocument()
+    expect(screen.getByText(/Powered by McAxl™/)).toBeInTheDocument()
   })
 })

@@ -12,7 +12,7 @@ export const personalInfo = {
   website: 'https://sitesbymac.dev',
   linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
   github: 'https://github.com/macfarley',
-  summary: 'After a decade of honing discipline, crisis management and precision in manufacturing and corrections, I transitioned to software development with a focus on backend systems using Node.js and Python. My leadership and patience drive reliable API design and maintainable architectures. My DreamWeaver sleep tracking app demonstrates how resilience and a methodical mindset translate into clean code, efficient workflows and meaningful user experiences.'
+  summary: 'After a decade of honing discipline, crisis management and precision in manufacturing and corrections, I transitioned to software development with a focus on backend systems using Node.js and Python. My leadership experience includes leading development teams on complex projects like StirCraft, a Django-based cocktail management platform with 6 database models and comprehensive testing. My patience and methodical approach drive reliable API design, maintainable architectures, and effective team collaboration. My DreamWeaver sleep tracking app and team-led StirCraft project demonstrate how resilience, leadership, and a systematic mindset translate into clean code, efficient workflows and meaningful user experiences.'
 };
 
 export const education: Education[] = [
@@ -28,6 +28,7 @@ export const education: Education[] = [
       'React & Next.js',
       'Node.js & Express',
       'MongoDB & PostgreSQL', 
+      'Django & Python Web Development',
       'RESTful API Design',
       'Git & GitHub',
       'Agile/Scrum Workflows',
@@ -35,7 +36,10 @@ export const education: Education[] = [
       'Deployment (Vercel, Netlify, Heroku)',
       'Python & Flask',
       'Modular Code Architecture',
-      'Secure Web App Fundamentals'
+      'Secure Web App Fundamentals',
+      'Team Leadership & Project Management',
+      'Test-Driven Development',
+      'Database Design & Optimization'
     ]
   },
   {
@@ -71,6 +75,26 @@ export const education: Education[] = [
 ];
 
 export const workExperience: WorkExperience[] = [
+  {
+    id: 'stircraft-team-lead',
+    title: 'Team Lead & Full-Stack Developer',
+    company: 'StirCraft Project - General Assembly',
+    location: 'Remote',
+    startDate: '2025-08-01',
+    endDate: '2025-08-27',
+    description: 'Led development team for sophisticated Django cocktail management platform with comprehensive social features',
+    achievements: [
+      'Led a team of developers in creating a production-ready Django web application with 6 core database models and advanced relationships.',
+      'Architected and implemented complex features including recipe forking with attribution tracking, ABV calculation algorithms, and social user interactions.',
+      'Designed and executed comprehensive testing strategy resulting in 57 tests with full critical path coverage.',
+      'Created sophisticated demo data generation system with 15+ themed users and realistic social interaction patterns.',
+      'Implemented professional deployment pipeline on Heroku with PostgreSQL database and static file management.',
+      'Developed advanced bulk operations, tag management system, and AJAX-powered user interface components.',
+      'Integrated TheCocktailDB API for professional recipe data import and established robust data seeding infrastructure.',
+      'Ensured WCAG AA accessibility compliance and responsive design across desktop, tablet, and mobile devices.'
+    ],
+    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Project Management']
+  },
   {
     id: 'correctional-officer',
     title: 'Correctional Officer V',
@@ -261,38 +285,42 @@ export const references = [
 export const skills: Skill[] = [
   {
     category: 'Languages & Frameworks',
-    skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'React', 'Next.js', 'Node.js', 'Express']
+    skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Django', 'React', 'Next.js', 'Node.js', 'Express', 'Flask']
   },
   {
     category: 'Frontend & Styling',
-    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility']
+    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility', 'AJAX', 'Modal Interfaces']
   },
   {
     category: 'Backend & Databases',
-    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'RESTful API Design', 'JWT Authentication', 'Flask']
+    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'Django ORM', 'RESTful API Design', 'JWT Authentication', 'Flask', 'Database Migrations', 'Advanced Relationships']
   },
   {
     category: 'Development Tools',
-    skills: ['Git/GitHub', 'VS Code', 'Postman', 'ESLint', 'Prettier', 'Jest', 'Environment Variables']
+    skills: ['Git/GitHub', 'VS Code', 'Postman', 'ESLint', 'Prettier', 'Jest', 'Environment Variables', 'Django Testing Framework', 'PIL/Pillow']
   },
   {
     category: 'Deployment & Hosting',
-    skills: ['Vercel', 'Netlify', 'Heroku', 'Domain Management', 'SSL Certificates', 'Static Generation']
+    skills: ['Vercel', 'Netlify', 'Heroku', 'Domain Management', 'SSL Certificates', 'Static Generation', 'PostgreSQL Production', 'WhiteNoise', 'Environment Configuration']
   },
   {
     category: 'Project Management',
-    skills: ['Agile/Scrum', 'Jira', 'Trello (Kanban)', 'Figma', 'Draw.io Diagrams', 'Process Documentation']
+    skills: ['Agile/Scrum', 'Jira', 'Trello (Kanban)', 'Figma', 'Draw.io Diagrams', 'Process Documentation', 'Team Leadership', 'Code Reviews', 'Sprint Planning']
+  },
+  {
+    category: 'Testing & Quality Assurance',
+    skills: ['Unit Testing', 'Integration Testing', 'Test-Driven Development', 'Code Coverage', 'Django Testing', 'JavaScript Testing', 'Quality Standards', 'Documentation']
   },
   {
     category: 'Leadership & Communication',
-    skills: ['Crisis De-escalation', 'Team Leadership', 'Conflict Resolution', 'Public Speaking', 'Policy Enforcement', 'Attention To Detail']
+    skills: ['Crisis De-escalation', 'Team Leadership', 'Conflict Resolution', 'Public Speaking', 'Policy Enforcement', 'Attention To Detail', 'Developer Mentoring', 'Technical Communication']
   },
   {
     category: 'Security & Risk Management',
-    skills: ['Physical Security Protocols', 'Social Engineering Awareness', 'Risk Assessment', 'Incident Response', 'Security Documentation', 'Threat Identification']
+    skills: ['Physical Security Protocols', 'Social Engineering Awareness', 'Risk Assessment', 'Incident Response', 'Security Documentation', 'Threat Identification', 'CSRF Protection', 'Input Validation']
   },
   {
     category: 'Operations & Quality',
-    skills: ['Manufacturing Operations', 'Quality Control', 'Inventory Management', 'Safety Protocols', 'OSHA Compliance', 'Documentation Standards']
+    skills: ['Manufacturing Operations', 'Quality Control', 'Inventory Management', 'Safety Protocols', 'OSHA Compliance', 'Documentation Standards', 'Database Seeding', 'API Integration']
   }
 ];

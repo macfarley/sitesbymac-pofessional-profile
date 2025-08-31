@@ -2,6 +2,18 @@ import { Project } from '../types/project';
 
 export const projects: Project[] = [
   {
+    id: 'stircraft',
+    title: 'StirCraft: Professional Cocktail Manager',
+    description: 'A sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals. Led team development with comprehensive recipe management, social features, and professional deployment.',
+    longDescription: 'StirCraft is a comprehensive cocktail recipe management platform that transforms how you discover, create, and share cocktail recipes. Built with Django and modern web technologies, it offers recipe creation with precise measurements, social features including user profiles and custom lists, ABV calculation, recipe forking with attribution tracking, advanced search and filtering, and professional-grade deployment on Heroku. Led a team of developers in creating this production-ready application with 57 comprehensive tests, 6 core database models with advanced relationships, and sophisticated demo data generation for presentations.',
+    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit'],
+    liveUrl: 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
+    githubUrl: 'https://github.com/macfarley/stir-craft',
+    featured: true,
+    completedDate: '2025-08-27',
+    imageUrl: '/stircraft-screenshot.png'
+  },
+  {
     id: 'phantastic-beasts',
     title: 'Phantastic Beasts',
     description: 'A full-stack web application showcasing fantasy creatures with interactive features.',

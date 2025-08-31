@@ -74,9 +74,10 @@ const customJestConfig = {
     '!src/**/*.d.ts',             // Exclude TypeScript declaration files
     '!src/app/layout.tsx',        // Exclude Next.js layout (hard to test meaningfully)
     '!src/app/globals.css',       // Exclude CSS files
-    // Add more exclusions as needed:
-    // '!src/types/**',           // Type definitions
-    // '!src/utils/constants.ts', // Configuration files
+    '!src/types/**',              // Type definitions
+    '!src/app/**/loading.tsx',    // Loading components
+    '!src/app/**/not-found.tsx',  // Error pages
+    '!src/app/mcaxl/page.tsx',    // Simple static page
   ],
   
   /**
@@ -116,14 +117,14 @@ const customJestConfig = {
   // ],
   
   // Coverage thresholds (enforce minimum coverage)
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 70,
-  //     functions: 70,
-  //     lines: 70,
-  //     statements: 70,
-  //   },
-  // },
+  coverageThreshold: {
+    global: {
+      branches: 75,
+      functions: 75,
+      lines: 75,
+      statements: 75,
+    },
+  },
   
   // Verbose output for debugging
   // verbose: true,
