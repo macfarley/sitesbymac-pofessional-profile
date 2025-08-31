@@ -16,9 +16,10 @@ This portfolio was created to:
 - ♿ **WCAG Compliant**: Accessibility-focused with 44px touch targets, proper ARIA labels, and keyboard navigation
 - 📄 **PDF Resume Generation**: Dynamic PDF creation using jsPDF
 - 🚀 **Performance Optimized**: Next.js Image optimization and efficient loading
-- 🔗 **Project Demos**: Integrated live project demonstrations via proxy rewrites
+- 🔗 **Smart Project Redirects**: User-friendly URLs that redirect to live project demos with analytics tracking
 - 📱 **Mobile Navigation**: Hamburger menu for seamless mobile experience
 - 🎮 **Retro Visitor Counter**: Nostalgic web counter with unique visitor tracking (localStorage-based, privacy-friendly)
+- 📊 **Redirect Management**: Built-in dashboard for testing and monitoring project URLs
 
 ## Tech Stack
 
@@ -26,6 +27,7 @@ This portfolio was created to:
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **PDF Generation**: jsPDF
+- **URL Redirects**: Next.js Middleware with analytics tracking
 - **Deployment**: Vercel
 - **Domain**: Porkbun DNS management
 
@@ -46,6 +48,59 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## Project URL Redirects
+
+This portfolio includes a sophisticated URL redirect system that creates user-friendly, shareable links for all projects. Instead of sharing long Heroku or Vercel URLs, you can use branded short links that redirect visitors while tracking analytics.
+
+### Available URL Patterns
+
+**Short Links** (Easy to remember and share):
+```
+https://sitesbymac.dev/go/stircraft        → StirCraft cocktail app
+https://sitesbymac.dev/app/dream-weaver    → Dream Weaver application  
+https://sitesbymac.dev/demo/slay-the-dagron → Slay The Dagron game
+https://sitesbymac.dev/live/phantastic-beasts → Phantastic Beasts site
+```
+
+**Project Links** (Consistent format):
+```
+https://sitesbymac.dev/projects/stircraft/live
+https://sitesbymac.dev/projects/dream-weaver/live
+https://sitesbymac.dev/projects/slay-the-dagron/live
+https://sitesbymac.dev/projects/phantastic-beasts/live
+```
+
+**Legacy Support** (For backwards compatibility):
+```
+https://sitesbymac.dev/stircraft    → StirCraft
+https://sitesbymac.dev/beasts       → Phantastic Beasts
+https://sitesbymac.dev/dagron       → Slay The Dagron
+https://sitesbymac.dev/dreams       → Dream Weaver
+```
+
+### Analytics Tracking
+
+All redirects automatically include UTM parameters for comprehensive analytics:
+- **utm_source**: Redirect type (go-link, project-live, app-link, etc.)
+- **utm_medium**: redirect
+- **utm_campaign**: portfolio-redirect
+- **utm_content**: Project ID
+- **utm_term**: Date stamp
+
+### Redirect Management
+
+- **Dashboard**: Visit `/redirects` to test and monitor all redirect URLs
+- **API**: `/api/redirects` provides JSON data of all available redirects
+- **Documentation**: `/api/redirects?format=html` shows user-friendly documentation
+
+### Technical Implementation
+
+The redirect system uses Next.js middleware for optimal performance:
+- **Zero latency**: Redirects happen at the edge
+- **Automatic updates**: Syncs with project data changes
+- **Security**: Rate limiting and proper headers
+- **Monitoring**: Built-in health checks and logging
 
 ## Building Your Own Portfolio
 
@@ -143,6 +198,8 @@ npm run build
 - **ProjectCard**: Reusable project display component
 - **PDFDownloadButton**: Dynamic resume PDF generation
 - **VisitorCounter**: Nostalgic web counter with three visual styles (retro, modern, minimal)
+- **Redirect Middleware**: Smart URL routing with analytics tracking
+- **Redirect Dashboard**: Management interface for testing and monitoring project URLs
 
 ## Learn More
 
