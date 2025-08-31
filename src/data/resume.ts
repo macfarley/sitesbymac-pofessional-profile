@@ -12,7 +12,7 @@ export const personalInfo = {
   website: 'https://sitesbymac.dev',
   linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
   github: 'https://github.com/macfarley',
-  summary: 'After a decade of honing discipline, crisis management and precision in manufacturing and corrections, I transitioned to software development with a focus on backend systems using Node.js and Python. My leadership experience includes leading development teams on complex projects like StirCraft, a Django-based cocktail management platform with 6 database models and comprehensive testing. My patience and methodical approach drive reliable API design, maintainable architectures, and effective team collaboration. My DreamWeaver sleep tracking app and team-led StirCraft project demonstrate how resilience, leadership, and a systematic mindset translate into clean code, efficient workflows and meaningful user experiences.'
+  summary: 'Full-stack developer with a decade of leadership experience in high-pressure environments, now specializing in Django, Python, and modern web technologies. As team lead for StirCraft, I architected a production-ready platform with 6 database models, 57 comprehensive tests, and advanced features like recipe forking and ABV calculation. My systematic approach and proven ability to manage teams of 30+ people drives reliable API design, maintainable architectures, and applications that combine technical excellence with meaningful user experiences.'
 };
 
 export const education: Education[] = [
@@ -20,8 +20,8 @@ export const education: Education[] = [
     id: 'general-assembly-2025',
     institution: 'General Assembly',
     degree: 'Software Engineering Immersive',
-    graduationDate: '2025-08-27',
-    inProgress: true,
+    graduationDate: '2025-08-31',
+    inProgress: false,
     relevantCoursework: [
       'HTML5 & CSS3',
       'JavaScript (ES6+) & TypeScript',
@@ -81,17 +81,17 @@ export const workExperience: WorkExperience[] = [
     company: 'StirCraft Project - General Assembly',
     location: 'Remote',
     startDate: '2025-08-01',
-    endDate: '2025-08-27',
+    endDate: '2025-08-31',
     description: 'Led development team for sophisticated Django cocktail management platform with comprehensive social features',
     achievements: [
-      'Led a team of developers in creating a production-ready Django web application with 6 core database models and advanced relationships.',
-      'Architected and implemented complex features including recipe forking with attribution tracking, ABV calculation algorithms, and social user interactions.',
-      'Designed and executed comprehensive testing strategy resulting in 57 tests with full critical path coverage.',
-      'Created sophisticated demo data generation system with 15+ themed users and realistic social interaction patterns.',
-      'Implemented professional deployment pipeline on Heroku with PostgreSQL database and static file management.',
-      'Developed advanced bulk operations, tag management system, and AJAX-powered user interface components.',
-      'Integrated TheCocktailDB API for professional recipe data import and established robust data seeding infrastructure.',
-      'Ensured WCAG AA accessibility compliance and responsive design across desktop, tablet, and mobile devices.'
+      'Led a team of developers in architecting and implementing a production-ready Django web application with 6 core database models, advanced relationships, and comprehensive social features.',
+      'Designed sophisticated business logic including automatic ABV calculation algorithms, recipe forking with attribution tracking, and intelligent tag management systems.',
+      'Implemented comprehensive testing strategy resulting in 57 tests with 100% critical path coverage, ensuring code reliability and maintainability.',
+      'Created advanced demo data generation system with 15+ themed users, 316 total favorites, and realistic social interaction patterns for professional presentations.',
+      'Architected and deployed production-ready application on Heroku with PostgreSQL database, static file management via WhiteNoise, and professional deployment pipeline.',
+      'Developed complex UI components including bulk operations, dynamic forms with real-time validation, AJAX-powered interfaces, and WCAG AA accessible design.',
+      'Integrated TheCocktailDB API for professional recipe data import and established robust data seeding infrastructure with 209 sample cocktails.',
+      'Led code reviews, sprint planning, and agile development practices while maintaining strict quality standards and comprehensive documentation.'
     ],
     technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Project Management']
   },
@@ -152,9 +152,10 @@ export const workExperience: WorkExperience[] = [
 export const certifications: Certification[] = [
   {
     id: 'general-assembly',
-    name: 'Software Engineering Immersive - Pending Final Project',
+    name: 'Software Engineering Immersive Certificate',
     issuer: 'General Assembly',
-    issueDate: '2025-08-27'
+    issueDate: '2025-08-31',
+    url: '/GA-Certificate.pdf'
   },
   {
     id: 'cpr-aed',
@@ -289,38 +290,26 @@ export const skills: Skill[] = [
   },
   {
     category: 'Frontend & Styling',
-    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility', 'AJAX', 'Modal Interfaces']
+    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility', 'AJAX']
   },
   {
     category: 'Backend & Databases',
-    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'Django ORM', 'RESTful API Design', 'JWT Authentication', 'Flask', 'Database Migrations', 'Advanced Relationships']
+    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'Django ORM', 'RESTful API Design', 'JWT Authentication', 'Database Migrations', 'API Integration']
   },
   {
     category: 'Development Tools',
-    skills: ['Git/GitHub', 'VS Code', 'Postman', 'ESLint', 'Prettier', 'Jest', 'Environment Variables', 'Django Testing Framework', 'PIL/Pillow']
+    skills: ['Git/GitHub', 'VS Code', 'Postman', 'Jest', 'Django Testing Framework', 'Environment Variables', 'PIL/Pillow', 'ESLint']
   },
   {
     category: 'Deployment & Hosting',
-    skills: ['Vercel', 'Netlify', 'Heroku', 'Domain Management', 'SSL Certificates', 'Static Generation', 'PostgreSQL Production', 'WhiteNoise', 'Environment Configuration']
+    skills: ['Vercel', 'Netlify', 'Heroku', 'PostgreSQL Production', 'Static Generation', 'SSL Certificates', 'WhiteNoise', 'Domain Management']
   },
   {
-    category: 'Project Management',
-    skills: ['Agile/Scrum', 'Jira', 'Trello (Kanban)', 'Figma', 'Draw.io Diagrams', 'Process Documentation', 'Team Leadership', 'Code Reviews', 'Sprint Planning']
-  },
-  {
-    category: 'Testing & Quality Assurance',
-    skills: ['Unit Testing', 'Integration Testing', 'Test-Driven Development', 'Code Coverage', 'Django Testing', 'JavaScript Testing', 'Quality Standards', 'Documentation']
+    category: 'Project Management & Testing',
+    skills: ['Agile/Scrum', 'Team Leadership', 'Code Reviews', 'Sprint Planning', 'Technical Documentation', 'Unit Testing', 'Integration Testing', 'TDD']
   },
   {
     category: 'Leadership & Communication',
-    skills: ['Crisis De-escalation', 'Team Leadership', 'Conflict Resolution', 'Public Speaking', 'Policy Enforcement', 'Attention To Detail', 'Developer Mentoring', 'Technical Communication']
-  },
-  {
-    category: 'Security & Risk Management',
-    skills: ['Physical Security Protocols', 'Social Engineering Awareness', 'Risk Assessment', 'Incident Response', 'Security Documentation', 'Threat Identification', 'CSRF Protection', 'Input Validation']
-  },
-  {
-    category: 'Operations & Quality',
-    skills: ['Manufacturing Operations', 'Quality Control', 'Inventory Management', 'Safety Protocols', 'OSHA Compliance', 'Documentation Standards', 'Database Seeding', 'API Integration']
+    skills: ['Crisis Management', 'Team Leadership', 'Developer Mentoring', 'Technical Communication', 'Conflict Resolution', 'Public Speaking']
   }
 ];

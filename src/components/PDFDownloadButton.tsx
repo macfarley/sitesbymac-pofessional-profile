@@ -22,7 +22,7 @@
 'use client';
 
 import jsPDF from 'jspdf';
-import { personalInfo, workExperience, education, skills, certifications, references } from '../data/resume';
+import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, activities } from '../data/resume';
 import { WorkExperience } from '../types/resume';
 
 /**
@@ -78,26 +78,29 @@ export default function PDFDownloadButton({
        * 
        * These values control the overall document layout:
        * - pageWidth/Height: Available space for content
-       * - margin: White space around edges (15mm = ~0.6 inches)
+       * - margin: White space around edges (12mm = ~0.47 inches for tighter margins)
        * - contentWidth: Actual usable width for text
        * - currentY: Tracks vertical position as we add content
+       * - maxPages: Strict 2-page limit
        * 
-       * Cool Pattern: Use consistent margins for professional appearance
+       * Cool Pattern: Use tighter margins for maximum content density
        */
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const margin = 15;
+      const margin = 12; // Reduced from 15mm for more space
       const contentWidth = pageWidth - (margin * 2);
+      const maxPages = 2; // Strict 2-page limit
       let currentY = margin;
+      let currentPage = 1;
 
       /**
        * Text Addition Helper Function
        * 
        * This function handles the complex task of adding text with:
        * - Automatic line wrapping
-       * - Page break detection and handling
+       * - Page break detection and handling (optimized for 2-page filling)
        * - Font size and weight management
-       * - Consistent spacing
+       * - Balanced spacing for full page utilization
        * - Section break protection
        * 
        * @param text - The text content to add
@@ -109,14 +112,24 @@ export default function PDFDownloadButton({
        * Cool Technical Detail: Uses splitTextToSize for automatic wrapping
        */
       const addText = (text: string, fontSize: number = 10, isBold: boolean = false, indent: number = 0, isSection: boolean = false) => {
-        // For section headers, ensure we have enough space (at least 20mm) or start new page
-        if (isSection && currentY > pageHeight - margin - 20) {
-          pdf.addPage();
-          currentY = margin;
-        } else if (!isSection && currentY > pageHeight - margin - 10) {
-          // For regular text, page break if less than 10mm space
-          pdf.addPage();
-          currentY = margin;
+        // More lenient page break logic - allow more content per page
+        if (isSection && currentY > pageHeight - margin - 12) {
+          if (currentPage < maxPages) {
+            pdf.addPage();
+            currentY = margin;
+            currentPage++;
+          } else if (currentPage === maxPages && currentY > pageHeight - margin - 8) {
+            return; // Only skip if really at the very bottom of page 2
+          }
+        } else if (!isSection && currentY > pageHeight - margin - 6) {
+          // For regular text, be more aggressive about filling pages
+          if (currentPage < maxPages) {
+            pdf.addPage();
+            currentY = margin;
+            currentPage++;
+          } else if (currentPage === maxPages && currentY > pageHeight - margin - 4) {
+            return; // Only skip if at very bottom of page 2
+          }
         }
 
         // Font configuration
@@ -126,30 +139,35 @@ export default function PDFDownloadButton({
         // Text wrapping and positioning
         const lines = pdf.splitTextToSize(text, contentWidth - indent);
         lines.forEach((line: string) => {
-          if (currentY > pageHeight - margin - 5) {
-            pdf.addPage();
-            currentY = margin;
+          if (currentY > pageHeight - margin - 4) {
+            if (currentPage < maxPages) {
+              pdf.addPage();
+              currentY = margin;
+              currentPage++;
+            } else {
+              return; // Skip only if we're truly at the bottom of page 2
+            }
           }
           pdf.text(line, margin + indent, currentY);
-          currentY += fontSize * 0.4; // Line height calculation
+          currentY += fontSize * 0.35; // Maintain tight line height
         });
-        currentY += isSection ? 2 : 1.5; // Different spacing for sections
+        currentY += isSection ? 1.5 : 1; // Maintain compact spacing
       };
 
       /**
        * Section Header Helper Function
        * 
        * Creates consistent section headers throughout the document
-       * with protection against orphaning
+       * with protection against orphaning and tighter spacing
        * 
        * @param title - The section title (e.g., "PROFESSIONAL EXPERIENCE")
        * 
        * Cool Pattern: All-caps titles with larger font size for hierarchy
        */
       const addSection = (title: string) => {
-        currentY += 3; // Section spacing
+        currentY += 2; // Reduced section spacing (from 3)
         addText(title, 13, true, 0, true); // 13pt bold for section headers, marked as section
-        currentY += 1; // Space after header
+        currentY += 0.5; // Reduced space after header (from 1)
       };
 
       /**
@@ -197,14 +215,17 @@ export default function PDFDownloadButton({
        * This pattern can be reused for any two-column content
        */
       
-      // Check if we have enough space for the skills section (at least 40mm)
-      if (currentY > pageHeight - margin - 40) {
-        pdf.addPage();
-        currentY = margin;
-        addSection('TECHNICAL SKILLS');
+      // Check if we have enough space for the skills section (at least 30mm)
+      if (currentY > pageHeight - margin - 30) {
+        if (currentPage < maxPages) {
+          pdf.addPage();
+          currentY = margin;
+          currentPage++;
+          addSection('TECHNICAL SKILLS');
+        }
       }
       
-      const halfContentWidth = (contentWidth - 10) / 2; // Account for column gap
+      const halfContentWidth = (contentWidth - 8) / 2; // Account for column gap (reduced from 10)
       
       // Split skills into two equal columns
       const leftColumnSkills = skills.slice(0, Math.ceil(skills.length / 2));
@@ -216,46 +237,46 @@ export default function PDFDownloadButton({
       
       // Left column rendering
       leftColumnSkills.forEach(skillCategory => {
-        if (leftY > pageHeight - margin - 20) return; // Stop if near page end
+        if (leftY > pageHeight - margin - 15 || currentPage >= maxPages) return; // Stop if near page end or page limit
         
         // Category name in bold
         pdf.setFontSize(10);
         pdf.setFont('arial', 'bold');
         pdf.text(`${skillCategory.category}:`, margin, leftY);
-        leftY += 4;
+        leftY += 3.5; // Tighter spacing (reduced from 4)
         
         // Skills list in normal weight
-        pdf.setFontSize(10);
+        pdf.setFontSize(9); // Slightly smaller font (reduced from 10)
         pdf.setFont('arial', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
           pdf.text(line, margin, leftY);
-          leftY += 3.5;
+          leftY += 3; // Tighter line spacing (reduced from 3.5)
         });
-        leftY += 2;
+        leftY += 1.5; // Reduced spacing between categories (from 2)
       });
       
       // Right column rendering (same pattern, different X position)
       rightColumnSkills.forEach(skillCategory => {
-        if (rightY > pageHeight - margin - 20) return;
+        if (rightY > pageHeight - margin - 15 || currentPage >= maxPages) return;
         
         pdf.setFontSize(10);
         pdf.setFont('arial', 'bold');
-        pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 5, rightY);
-        rightY += 4;
+        pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 4, rightY); // Reduced gap from 5 to 4
+        rightY += 3.5;
         
-        pdf.setFontSize(10);
+        pdf.setFontSize(9);
         pdf.setFont('arial', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
-          pdf.text(line, margin + halfContentWidth + 5, rightY);
-          rightY += 3.5;
+          pdf.text(line, margin + halfContentWidth + 4, rightY);
+          rightY += 3;
         });
-        rightY += 2;
+        rightY += 1.5;
       });
       
       // Continue layout from the bottom of both columns
-      currentY = Math.max(leftY, rightY) + 3;
+      currentY = Math.max(leftY, rightY) + 2; // Reduced spacing (from 3)
 
       /**
        * Calculate Space Needed for Job Entry
@@ -298,46 +319,55 @@ export default function PDFDownloadButton({
         
         // Check if we have enough space for the complete job entry
         if (currentY + jobHeight > pageHeight - margin - 10) {
-          pdf.addPage();
-          currentY = margin;
+          if (currentPage < maxPages) {
+            pdf.addPage();
+            currentY = margin;
+            currentPage++;
+          }
         }
         
         addText(`${job.title} | ${job.company}, ${job.location}`, 10, true);
         addText(`${job.startDate} - ${job.current ? 'Present' : job.endDate}`, 9);
-        // Focus on achievements rather than job descriptions for impact
-        job.achievements.forEach(achievement => {
+        // Show more achievements for the first job (StirCraft), fewer for others
+        const achievementsToShow = job.id === 'stircraft-team-lead' ? job.achievements.slice(0, 6) : job.achievements.slice(0, 3);
+        achievementsToShow.forEach(achievement => {
           addText(`• ${achievement}`, 9, false, 3); // 3mm indent for bullets
         });
-        currentY += 2; // Space between jobs for readability
+        currentY += 1.5; // Space between jobs
       });
 
       // === EDUCATION SECTION ===
       addSection('EDUCATION & TRAINING');
       education.forEach(edu => {
         // Calculate space needed for this education entry
-        let eduHeight = 8; // Base height for degree + date lines
+        let eduHeight = 6; // Base height for degree + date lines
         if (edu.relevantCoursework) {
-          eduHeight += 6; // Additional height for coursework section
+          eduHeight += 4; // Additional height for coursework section
           const courseworkLines = pdf.splitTextToSize(edu.relevantCoursework.join(', '), contentWidth - 3);
-          eduHeight += courseworkLines.length * 3.2;
+          eduHeight += courseworkLines.length * 2.8;
         }
         if (edu.leadership) {
-          eduHeight += 4; // Header for leadership section
-          eduHeight += edu.leadership.length * 3.6; // Each leadership role
+          eduHeight += 3; // Header for leadership section
+          eduHeight += edu.leadership.length * 3;
         }
-        eduHeight += 2; // Spacing
+        eduHeight += 1.5; // Spacing
         
         // Check if we have enough space for the complete education entry
         if (currentY + eduHeight > pageHeight - margin - 10) {
-          pdf.addPage();
-          currentY = margin;
+          if (currentPage < maxPages) {
+            pdf.addPage();
+            currentY = margin;
+            currentPage++;
+          }
         }
         
         addText(`${edu.degree} | ${edu.institution}`, 10, true);
         addText(`${edu.inProgress ? 'Expected Completion: ' : 'Completed: '}${new Date(edu.graduationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`, 9);
         if (edu.relevantCoursework) {
           addText('Key Coursework:', 9, true);
-          addText(edu.relevantCoursework.join(', '), 8, false, 3);
+          // Show more coursework for General Assembly, less for others
+          const courseworkToShow = edu.id === 'general-assembly-2025' ? edu.relevantCoursework : edu.relevantCoursework.slice(0, 5);
+          addText(courseworkToShow.join(', '), 8, false, 3);
         }
         if (edu.leadership) {
           addText('Leadership:', 9, true);
@@ -345,7 +375,7 @@ export default function PDFDownloadButton({
             addText(`• ${role}`, 9, false, 3);
           });
         }
-        currentY += 1;
+        currentY += 0.5; // Spacing between education entries
       });
 
       // === CERTIFICATIONS SECTION ===
@@ -356,13 +386,22 @@ export default function PDFDownloadButton({
         });
       }
 
-      // === REFERENCES SECTION ===
-      addSection('REFERENCES');
-      references.forEach(ref => {
-        addText(`${ref.name} | ${ref.title} at ${ref.company}`, 9, true);
-        const contactInfo = ref.phone ? `Email: ${ref.email} | Phone: ${ref.phone}` : `Email: ${ref.email}`;
-        addText(contactInfo, 9);
+      // === PROFESSIONAL ASSOCIATIONS SECTION ===
+      addSection('PROFESSIONAL ASSOCIATIONS');
+      professionalAssociations.slice(0, 3).forEach(association => { // Show top 3 associations
+        addText(`${association.name} - ${association.status}`, 9);
       });
+
+      // === ACTIVITIES & INTERESTS SECTION ===
+      addSection('ACTIVITIES & INTERESTS');
+      activities.slice(0, 2).forEach(activity => { // Show top 2 activities
+        addText(`${activity.name} - ${activity.status}`, 9);
+      });
+
+      // === REFERENCES SECTION ===
+      // Always include references, even if it's at the very bottom of page 2
+      addSection('REFERENCES');
+      addText('References available upon request.', 10);
 
       /**
        * PDF Download

@@ -4,14 +4,14 @@ export const projects: Project[] = [
   {
     id: 'stircraft',
     title: 'StirCraft: Professional Cocktail Manager',
-    description: 'A sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals. Led team development with comprehensive recipe management, social features, and professional deployment.',
-    longDescription: 'StirCraft is a comprehensive cocktail recipe management platform that transforms how you discover, create, and share cocktail recipes. Built with Django and modern web technologies, it offers recipe creation with precise measurements, social features including user profiles and custom lists, ABV calculation, recipe forking with attribution tracking, advanced search and filtering, and professional-grade deployment on Heroku. Led a team of developers in creating this production-ready application with 57 comprehensive tests, 6 core database models with advanced relationships, and sophisticated demo data generation for presentations.',
-    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit'],
+    description: 'A sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals. Team lead for production-ready platform with comprehensive social features, advanced database relationships, and professional deployment.',
+    longDescription: 'StirCraft is a comprehensive cocktail recipe management platform that transforms how you discover, create, and share cocktail recipes. As team lead, I architected this production-ready Django application featuring: 6 core database models with advanced relationships; Recipe management with precise measurements, ABV calculation, and forking with attribution tracking; Social features including user profiles, custom lists, favorites system, and public discovery feed; Advanced search and filtering with intelligent tag management; AJAX-powered UI with bulk operations, dynamic forms, and WCAG AA accessibility; Comprehensive testing with 57 tests achieving 100% critical path coverage; Professional deployment on Heroku with PostgreSQL, static file management, and environment configuration; Sophisticated demo data system with 15+ themed users, 316 total favorites, and 209 professional cocktails with metadata.',
+    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Agile/Scrum'],
     liveUrl: 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
     githubUrl: 'https://github.com/macfarley/stir-craft',
     featured: true,
     completedDate: '2025-08-27',
-    imageUrl: '/stircraft-screenshot.png'
+    imageUrl: '/StirCraftLiveScreenshot.png'
   },
   {
     id: 'phantastic-beasts',
