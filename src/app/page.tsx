@@ -12,7 +12,6 @@
  * in a new tab for quick developer reference while browsing the portfolio.
  */
 
-import VisitorCounter from '../components/VisitorCounter';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
@@ -195,19 +194,14 @@ export default function Home() {
         <LazyProjectsGrid /> {/* Lazy-loaded component for better performance */}
       </div>
 
-      {/* Nostalgic Footer with Visitor Counter */}
+      {/* Clean Footer */}
       <footer className="py-8 px-4 bg-stone-200 dark:bg-gray-900 border-t border-amber-600/20 dark:border-gray-700">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Visitor Counter - Retro Web Nostalgia */}
-          <div className="mb-4">
-            <VisitorCounter style="retro" className="mx-auto" />
-          </div>
-          
           {/* Copyright and Fun Footer Text */}
           <div className="text-sm text-amber-800 dark:text-gray-400 space-y-2">
             <p>© 2025 Mac McCoy | Sites by Mac | Built with Next.js & TypeScript</p>
             <p className="text-xs text-amber-600 dark:text-gray-500 font-mono">
-              🦎 Powered by McAxl™ | Best viewed with Netscape Navigator 😉
+              🦎 Powered by McAxl™ | Crafted with passion and pixels
             </p>
           </div>
         </div>
