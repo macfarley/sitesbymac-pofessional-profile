@@ -11,16 +11,25 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getProjectRedirectUrl, generateTrackingUrl } from './src/utils/redirects';
 
-// Static mappings for projects (fallback if dynamic lookup fails)
-// This could be dynamically generated from your projects data if needed
+// Project URL mapping - self-contained for Edge runtime compatibility
 const PROJECT_REDIRECTS: Record<string, string> = {
   'stircraft': 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
   'phantastic-beasts': 'https://phantastic-beasts-d585c0bc1aa9.herokuapp.com/',
   'slay-the-dagron': 'https://macfarley.github.io/slay-the-dagron/',
   'dream-weaver': 'https://dream-weaver-rho.vercel.app/',
 };
+
+// Utility function for adding tracking parameters
+function addTrackingParams(url: string, projectId: string, source: string = 'portfolio'): string {
+  const urlObj = new URL(url);
+  urlObj.searchParams.set('utm_source', source);
+  urlObj.searchParams.set('utm_medium', 'redirect');
+  urlObj.searchParams.set('utm_campaign', 'portfolio-redirect');
+  urlObj.searchParams.set('utm_content', projectId);
+  urlObj.searchParams.set('utm_term', new Date().toISOString().split('T')[0]);
+  return urlObj.toString();
+}
 
 // Alternative short URL patterns
 const SHORT_URL_PATTERNS = [
@@ -39,16 +48,12 @@ export function middleware(request: NextRequest) {
   const projectLiveMatch = pathname.match(/^\/projects\/([^\/]+)\/live\/?$/);
   if (projectLiveMatch) {
     const projectId = projectLiveMatch[1];
-    
-    // Try dynamic lookup first, fallback to static mapping
-    let redirectUrl = getProjectRedirectUrl(projectId) || PROJECT_REDIRECTS[projectId];
+    const redirectUrl = PROJECT_REDIRECTS[projectId];
     
     if (redirectUrl) {
-      // Add analytics tracking
-      redirectUrl = generateTrackingUrl(redirectUrl, projectId, 'portfolio-live-link');
-      
-      console.log(`Redirecting /projects/${projectId}/live → ${redirectUrl}`);
-      return NextResponse.redirect(redirectUrl, 302);
+      const trackedUrl = addTrackingParams(redirectUrl, projectId, 'portfolio-live-link');
+      console.log(`Redirecting /projects/${projectId}/live → ${trackedUrl}`);
+      return NextResponse.redirect(trackedUrl, 302);
     }
   }
   
@@ -59,16 +64,14 @@ export function middleware(request: NextRequest) {
       
       console.log(`Found pattern ${pattern} for project: ${projectId}`);
       
-      // Try dynamic lookup first, fallback to static mapping
-      let redirectUrl = getProjectRedirectUrl(projectId) || PROJECT_REDIRECTS[projectId];
+      const redirectUrl = PROJECT_REDIRECTS[projectId];
       
       if (redirectUrl) {
-        // Add analytics tracking with pattern-specific source
         const source = pattern.replace(/\//g, '') || 'short-link';
-        redirectUrl = generateTrackingUrl(redirectUrl, projectId, `portfolio-${source}`);
+        const trackedUrl = addTrackingParams(redirectUrl, projectId, `portfolio-${source}`);
         
-        console.log(`Redirecting ${pathname} → ${redirectUrl}`);
-        return NextResponse.redirect(redirectUrl, 302);
+        console.log(`Redirecting ${pathname} → ${trackedUrl}`);
+        return NextResponse.redirect(trackedUrl, 302);
       } else {
         console.log(`No redirect found for project: ${projectId}`);
       }
@@ -86,8 +89,9 @@ export function middleware(request: NextRequest) {
   
   for (const { pattern, redirect } of legacyPatterns) {
     if (pattern.test(pathname) && redirect) {
-      console.log(`Legacy redirect: ${pathname} → ${redirect}`);
-      return NextResponse.redirect(redirect, 301); // Permanent redirect for legacy URLs
+      const trackedUrl = addTrackingParams(redirect, 'legacy', 'legacy-link');
+      console.log(`Legacy redirect: ${pathname} → ${trackedUrl}`);
+      return NextResponse.redirect(trackedUrl, 301); // Permanent redirect for legacy URLs
     }
   }
   
