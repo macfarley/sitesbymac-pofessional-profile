@@ -11,7 +11,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/macfarley/stir-craft',
     featured: true,
     completedDate: '2025-08-27',
-    imageUrl: '/stircraft-screenshot.png'
+    imageUrl: '/stircraft-image.png'
   },
   {
     id: 'phantastic-beasts',
