@@ -3,7 +3,7 @@ import ProjectsGrid from '../components/ProjectsGrid'
 
 // Mock ProjectCard component
 jest.mock('../components/ProjectCard', () => {
-  return function MockProjectCard({ project }: { project: any }) {
+  return function MockProjectCard({ project }: { project: { id: string; title: string; description: string } }) {
     return (
       <div data-testid={`project-card-${project.id}`}>
         <h3>{project.title}</h3>

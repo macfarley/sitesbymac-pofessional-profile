@@ -100,7 +100,7 @@ export default function VisitorCounter({
         }
         
         setIsLoading(false);
-      } catch (error) {
+      } catch {
         // Fallback for localStorage errors (private browsing, etc.)
         console.warn('Visitor counter: localStorage not available');
         setVisitorCount(1337); // Fun fallback number
