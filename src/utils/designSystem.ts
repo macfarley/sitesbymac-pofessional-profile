@@ -14,6 +14,7 @@ export const colors = {
     light: {
       50: 'amber-50',
       100: 'amber-100', 
+      500: 'amber-500',
       600: 'amber-600',
       700: 'amber-700',
       800: 'amber-800',
