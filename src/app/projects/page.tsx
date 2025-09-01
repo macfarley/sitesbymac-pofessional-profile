@@ -2,6 +2,11 @@ import { projects } from '../../data/projects';
 import ProjectCard from '../../components/ProjectCard';
 
 export default function ProjectsPage() {
+  // Sort projects in reverse chronological order (newest first)
+  const sortedProjects = [...projects].sort((a, b) => 
+    new Date(b.completedDate).getTime() - new Date(a.completedDate).getTime()
+  );
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16 px-4">
       <div className="max-w-6xl mx-auto">
@@ -14,8 +19,9 @@ export default function ProjectsPage() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+        {/* 2x2 grid on desktop, single column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {sortedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>

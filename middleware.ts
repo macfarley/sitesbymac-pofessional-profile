@@ -42,7 +42,9 @@ const SHORT_URL_PATTERNS = [
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
+  // Debug logging
   console.log('🔄 Middleware triggered for:', pathname);
+  console.log('🔍 Headers:', Object.fromEntries(request.headers.entries()));
   
   // Handle /projects/{id}/live pattern
   const projectLiveMatch = pathname.match(/^\/projects\/([^\/]+)\/live\/?$/);
@@ -52,8 +54,10 @@ export function middleware(request: NextRequest) {
     
     if (redirectUrl) {
       const trackedUrl = addTrackingParams(redirectUrl, projectId, 'portfolio-live-link');
-      console.log(`Redirecting /projects/${projectId}/live → ${trackedUrl}`);
+      console.log(`✅ Redirecting /projects/${projectId}/live → ${trackedUrl}`);
       return NextResponse.redirect(trackedUrl, 302);
+    } else {
+      console.log(`❌ No redirect found for project: ${projectId}`);
     }
   }
   
@@ -62,7 +66,8 @@ export function middleware(request: NextRequest) {
     if (pathname.startsWith(pattern)) {
       const projectId = pathname.replace(pattern, '').replace(/\/$/, '');
       
-      console.log(`Found pattern ${pattern} for project: ${projectId}`);
+      console.log(`🎯 Found pattern ${pattern} for project: ${projectId}`);
+      console.log(`🗂️ Available redirects:`, Object.keys(PROJECT_REDIRECTS));
       
       const redirectUrl = PROJECT_REDIRECTS[projectId];
       
@@ -70,10 +75,11 @@ export function middleware(request: NextRequest) {
         const source = pattern.replace(/\//g, '') || 'short-link';
         const trackedUrl = addTrackingParams(redirectUrl, projectId, `portfolio-${source}`);
         
-        console.log(`Redirecting ${pathname} → ${trackedUrl}`);
+        console.log(`✅ Redirecting ${pathname} → ${trackedUrl}`);
         return NextResponse.redirect(trackedUrl, 302);
       } else {
-        console.log(`No redirect found for project: ${projectId}`);
+        console.log(`❌ No redirect found for project: ${projectId}`);
+        console.log(`📋 Available projects: ${Object.keys(PROJECT_REDIRECTS).join(', ')}`);
       }
     }
   }
@@ -90,10 +96,12 @@ export function middleware(request: NextRequest) {
   for (const { pattern, redirect } of legacyPatterns) {
     if (pattern.test(pathname) && redirect) {
       const trackedUrl = addTrackingParams(redirect, 'legacy', 'legacy-link');
-      console.log(`Legacy redirect: ${pathname} → ${trackedUrl}`);
+      console.log(`✅ Legacy redirect: ${pathname} → ${trackedUrl}`);
       return NextResponse.redirect(trackedUrl, 301); // Permanent redirect for legacy URLs
     }
   }
+  
+  console.log(`⏭️ No matching redirect for: ${pathname}`);
   
   // Continue to next middleware or page
   return NextResponse.next();
@@ -102,11 +110,14 @@ export function middleware(request: NextRequest) {
 // Configure which paths this middleware should run on
 export const config = {
   matcher: [
+    // Short URL patterns
     '/go/:path*',
     '/app/:path*', 
     '/demo/:path*',
     '/live/:path*',
+    // Project live URLs
     '/projects/:path*/live',
+    // Legacy direct project URLs
     '/stircraft',
     '/beasts',
     '/dagron',

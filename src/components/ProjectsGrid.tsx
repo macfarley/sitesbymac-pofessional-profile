@@ -2,6 +2,11 @@ import { projects } from '../data/projects';
 import ProjectCard from './ProjectCard';
 
 export default function ProjectsGrid() {
+  // Sort projects in reverse chronological order (newest first)
+  const sortedProjects = [...projects].sort((a, b) => 
+    new Date(b.completedDate).getTime() - new Date(a.completedDate).getTime()
+  );
+
   return (
     <section className="py-16 px-4 bg-stone-100 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
@@ -9,8 +14,9 @@ export default function ProjectsGrid() {
           Featured Projects
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
-          {projects.map((project) => (
+        {/* 2x2 grid on desktop, single column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {sortedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
