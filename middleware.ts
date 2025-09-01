@@ -110,18 +110,22 @@ export function middleware(request: NextRequest) {
 // Configure which paths this middleware should run on
 export const config = {
   matcher: [
-    // Short URL patterns
+    // Use more specific patterns that work with Vercel's edge runtime
     '/go/:path*',
     '/app/:path*', 
     '/demo/:path*',
     '/live/:path*',
-    // Project live URLs
     '/projects/:path*/live',
-    // Legacy direct project URLs
+    // Legacy patterns
     '/stircraft',
-    '/beasts',
+    '/beasts', 
     '/dagron',
     '/dream',
     '/dreams',
+    // Add explicit paths for testing
+    '/go/stircraft',
+    '/go/dream-weaver',
+    '/go/phantastic-beasts',
+    '/go/slay-the-dagron',
   ],
 };
