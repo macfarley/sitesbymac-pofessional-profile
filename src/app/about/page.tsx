@@ -1,4 +1,4 @@
-import { personalInfo, education, workExperience, skills, certifications, professionalAssociations, activities, communityOutreach } from '../../data/resume';
+import { personalInfo, education, workExperience, skills, certifications, professionalAssociations, activities, communityOutreach, softwareProjects } from '../../data/resume';
 import { getFeaturedProjects } from '../../data/projects';
 import PDFDownloadButton from '../../components/PDFDownloadButton';
 
@@ -91,6 +91,86 @@ export default function AboutPage() {
                       {skill}
                     </span>
                   ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Software Projects */}
+        <section className="mb-16 print:mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 print:text-xl print:mb-4 print:text-black">
+            Software Projects
+          </h2>
+          <div className="space-y-8 print:space-y-4">
+            {softwareProjects.map((project) => (
+              <div 
+                key={project.id}
+                className="border-l-4 border-purple-500 pl-6 pb-6 print:border-l-2 print:pl-3 print:pb-3"
+              >
+                <div className="mb-4 print:mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white print:text-base print:text-black">
+                    {project.title}
+                  </h3>
+                  <p className="text-purple-600 dark:text-purple-400 font-medium print:text-black print:text-sm">
+                    {project.context}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm print:text-black print:text-xs">
+                    {project.startDate} - {project.endDate}
+                  </p>
+                </div>
+                
+                <p className="text-gray-600 dark:text-gray-300 mb-4 print:text-black print:text-sm print:mb-2">
+                  {project.description}
+                </p>
+                
+                <ul className="space-y-2 mb-4 print:space-y-1 print:mb-2">
+                  {project.achievements.map((achievement, index) => (
+                    <li 
+                      key={index}
+                      className="text-gray-600 dark:text-gray-300 flex items-start print:text-black print:text-sm"
+                    >
+                      <span className="text-purple-500 mr-2 mt-1.5 print:text-black">•</span>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+                
+                {project.technologies && (
+                  <div className="flex flex-wrap gap-2 mb-4 print:gap-1 print:mb-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded print:px-1 print:py-0 print:bg-gray-100 print:text-black print:text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Project Links */}
+                <div className="flex gap-3 print:hidden">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 dark:text-purple-400 hover:underline text-sm"
+                    >
+                      Live Demo →
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 dark:text-gray-400 hover:underline text-sm"
+                    >
+                      Code →
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

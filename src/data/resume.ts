@@ -1,4 +1,4 @@
-import { Education, WorkExperience, Certification, Skill } from '../types/resume';
+import { Education, WorkExperience, Certification, Skill, SoftwareProject } from '../types/resume';
 
 // 📝 PROFESSIONAL RESUME DATA - Travis McCoy
 // This is your single source of truth for resume information
@@ -76,26 +76,6 @@ export const education: Education[] = [
 
 export const workExperience: WorkExperience[] = [
   {
-    id: 'stircraft-team-lead',
-    title: 'Team Lead & Full-Stack Developer',
-    company: 'StirCraft Project - General Assembly',
-    location: 'Remote',
-    startDate: '2025-08-01',
-    endDate: '2025-08-31',
-    description: 'Led development team for sophisticated Django cocktail management platform with comprehensive social features',
-    achievements: [
-      'Led a team of developers in architecting and implementing a production-ready Django web application with 6 core database models, advanced relationships, and comprehensive social features.',
-      'Designed sophisticated business logic including automatic ABV calculation algorithms, recipe forking with attribution tracking, and intelligent tag management systems.',
-      'Implemented comprehensive testing strategy resulting in 57 tests with 100% critical path coverage, ensuring code reliability and maintainability.',
-      'Created advanced demo data generation system with 15+ themed users, 316 total favorites, and realistic social interaction patterns for professional presentations.',
-      'Architected and deployed production-ready application on Heroku with PostgreSQL database, static file management via WhiteNoise, and professional deployment pipeline.',
-      'Developed complex UI components including bulk operations, dynamic forms with real-time validation, AJAX-powered interfaces, and WCAG AA accessible design.',
-      'Integrated TheCocktailDB API for professional recipe data import and established robust data seeding infrastructure with 209 sample cocktails.',
-      'Led code reviews, sprint planning, and agile development practices while maintaining strict quality standards and comprehensive documentation.'
-    ],
-    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Project Management']
-  },
-  {
     id: 'correctional-officer',
     title: 'Correctional Officer V',
     company: 'Texas Department of Criminal Justice - Holliday Transfer Facility',
@@ -146,6 +126,51 @@ export const workExperience: WorkExperience[] = [
       'Maintained strict quality standards for automotive industry requirements.'
     ],
     technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols']
+  }
+];
+
+export const softwareProjects: SoftwareProject[] = [
+  {
+    id: 'stircraft',
+    title: 'StirCraft: Professional Cocktail Manager',
+    description: 'Sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals',
+    context: 'General Assembly Capstone Project - Team Lead',
+    startDate: '2025-08-01',
+    endDate: '2025-08-31',
+    achievements: [
+      'Led a team of developers in architecting and implementing a production-ready Django web application with 6 core database models, advanced relationships, and comprehensive social features.',
+      'Designed sophisticated business logic including automatic ABV calculation algorithms, recipe forking with attribution tracking, and intelligent tag management systems.',
+      'Implemented comprehensive testing strategy resulting in 57 tests with 100% critical path coverage, ensuring code reliability and maintainability.',
+      'Created advanced demo data generation system with 15+ themed users, 316 total favorites, and realistic social interaction patterns for professional presentations.',
+      'Architected and deployed production-ready application on Heroku with PostgreSQL database, static file management via WhiteNoise, and professional deployment pipeline.',
+      'Developed complex UI components including bulk operations, dynamic forms with real-time validation, AJAX-powered interfaces, and WCAG AA accessible design.',
+      'Integrated TheCocktailDB API for professional recipe data import and established robust data seeding infrastructure with 209 sample cocktails.',
+      'Led code reviews, sprint planning, and agile development practices while maintaining strict quality standards and comprehensive documentation.'
+    ],
+    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Project Management'],
+    liveUrl: 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
+    githubUrl: 'https://github.com/macfarley/stir-craft',
+    featured: true
+  },
+  {
+    id: 'dream-weaver',
+    title: 'Dream Weaver: Sleep Tracking Application',
+    description: 'Full-stack MERN application for tracking and analyzing sleep patterns with data visualization',
+    context: 'General Assembly Individual Project',
+    startDate: '2025-07-15',
+    endDate: '2025-07-25',
+    achievements: [
+      'Developed full-stack MERN application with user authentication, data persistence, and responsive design.',
+      'Implemented comprehensive sleep tracking features with mood correlation and pattern analysis.',
+      'Created intuitive data visualization dashboard using modern JavaScript charting libraries.',
+      'Designed and implemented RESTful API with MongoDB for efficient data storage and retrieval.',
+      'Deployed production application on Vercel with MongoDB Atlas backend integration.',
+      'Applied modern UI/UX principles with responsive design optimized for mobile and desktop use.'
+    ],
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JavaScript', 'CSS3', 'Vercel', 'MongoDB Atlas'],
+    liveUrl: 'https://dream-weaver-rho.vercel.app/',
+    githubUrl: 'https://github.com/macfarley/dream-weaver',
+    featured: true
   }
 ];
 
@@ -247,6 +272,14 @@ export const communityOutreach = [
 ];
 
 export const references = [
+  {
+    id: 'tor-johnson',
+    name: 'Tor Johnson',
+    title: 'Software Engineering Instructor',
+    company: 'General Assembly',
+    email: 'tor.johnson@generalassemb.ly',
+    relationship: 'Professor - Software Engineering Immersive Program'
+  },
   {
     id: 'joseph-granger',
     name: 'Joseph Granger',

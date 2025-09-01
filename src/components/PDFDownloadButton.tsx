@@ -22,8 +22,8 @@
 'use client';
 
 import jsPDF from 'jspdf';
-import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, activities } from '../data/resume';
-import { WorkExperience } from '../types/resume';
+import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, activities, softwareProjects } from '../data/resume';
+import { WorkExperience, SoftwareProject } from '../types/resume';
 
 /**
  * Component Props Interface
@@ -310,6 +310,64 @@ export default function PDFDownloadButton({
         height += 3; // Spacing after job
         return height;
       };
+
+      /**
+       * Calculate Space Needed for Software Project Entry
+       * 
+       * Similar to job height calculation but for software projects
+       */
+      const calculateProjectHeight = (project: SoftwareProject) => {
+        let height = 0;
+        
+        // Title and context line
+        pdf.setFontSize(10);
+        pdf.setFont('arial', 'bold');
+        const titleLines = pdf.splitTextToSize(`${project.title} | ${project.context}`, contentWidth);
+        height += titleLines.length * 4;
+        
+        // Date line
+        height += 3.5;
+        
+        // Achievement lines (with text wrapping)
+        pdf.setFontSize(9);
+        pdf.setFont('arial', 'normal');
+        project.achievements.forEach(achievement => {
+          const achievementLines = pdf.splitTextToSize(`• ${achievement}`, contentWidth - 3);
+          height += achievementLines.length * 3.6;
+        });
+        
+        height += 3; // Spacing after project
+        return height;
+      };
+
+      // === SOFTWARE PROJECTS SECTION ===
+      addSection('SOFTWARE PROJECTS');
+      softwareProjects.forEach(project => {
+        // Calculate space needed for this entire project entry
+        const projectHeight = calculateProjectHeight(project);
+        
+        // Check if we have enough space for the complete project entry
+        if (currentY + projectHeight > pageHeight - margin - 10) {
+          if (currentPage < maxPages) {
+            pdf.addPage();
+            currentY = margin;
+            currentPage++;
+          }
+        }
+        
+        addText(`${project.title} | ${project.context}`, 10, true);
+        addText(`${project.startDate} - ${project.endDate}`, 9);
+        addText(project.description, 9);
+        // Show key achievements for software projects
+        const achievementsToShow = project.achievements.slice(0, 4); // Limit to 4 achievements
+        achievementsToShow.forEach(achievement => {
+          addText(`• ${achievement}`, 9, false, 3); // 3mm indent for bullets
+        });
+        if (project.liveUrl) {
+          addText(`Live: ${project.liveUrl}`, 8);
+        }
+        currentY += 1.5; // Space between projects
+      });
 
       // === WORK EXPERIENCE SECTION ===
       addSection('PROFESSIONAL EXPERIENCE');

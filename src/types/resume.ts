@@ -197,6 +197,32 @@ export interface Reference {
 }
 
 /**
+ * Software Project Interface
+ * 
+ * For significant software development projects that demonstrate technical skills.
+ * Separate from work experience to highlight development capabilities.
+ * 
+ * Design Philosophy:
+ * - Focus on technical achievements and complexity
+ * - Include deployment and testing information
+ * - Highlight technologies and methodologies used
+ * - Show progression and growth in skills
+ */
+export interface SoftwareProject {
+  id: string;                    // Unique identifier for the project
+  title: string;                 // Project name
+  description: string;           // Brief project description
+  context: string;              // Context (coursework, personal, freelance, etc.)
+  startDate: string;            // Project start date
+  endDate: string;              // Project completion date
+  achievements: string[];       // Key technical accomplishments
+  technologies: string[];       // Technologies, frameworks, and tools used
+  liveUrl?: string;             // Live deployment URL
+  githubUrl?: string;           // Source code repository URL
+  featured?: boolean;           // Whether to highlight this project
+}
+
+/**
  * ==========================================
  * TYPE USAGE PATTERNS & COOL TECHNIQUES
  * ==========================================
