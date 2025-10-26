@@ -12,7 +12,7 @@ export const personalInfo = {
   website: 'https://sitesbymac.dev',
   linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
   github: 'https://github.com/macfarley',
-  summary: 'Full-stack developer with a decade of leadership experience in high-pressure environments, now specializing in Django, Python, and modern web technologies. As team lead for StirCraft, I architected a production-ready platform with 6 database models, 57 comprehensive tests, and advanced features like recipe forking and ABV calculation. My systematic approach and proven ability to manage teams of 30+ people drives reliable API design, maintainable architectures, and applications that combine technical excellence with meaningful user experiences.'
+  summary: 'Detail-driven Full-Stack Developer with hands-on experience building and deploying production-ready applications using Django, Python, React, and modern JavaScript frameworks. Combines disciplined execution with agile teamwork to architect reliable, scalable, and test-driven systems. Proven ability to lead cross-functional teams, deliver complex features such as automated ABV calculations and recipe forking in StirCraft while maintaining 100% test coverage. Passionate about creating secure, maintainable, and user-centered software that drives impact for mission-driven organizations.'
 };
 
 export const education: Education[] = [
@@ -46,84 +46,81 @@ export const education: Education[] = [
     id: 'ohio-university',
     institution: 'Ohio University',
     degree: 'International Relations (Pre-Law)',
-    field: 'International Relations',
-    graduationDate: '2010-12-01',
-    leadership: [
-      'Vice President, Athens Wargamers - Tabletop Role Playing and Collaborative Story Telling'
-    ]
+    graduationDate: '2010-12-01'
   },
   {
     id: 'wright-state',
     institution: 'Wright State University',
     degree: 'Political Science (Dual Enrollment)',
-    field: 'Political Science',
-    graduationDate: '2009-12-01',
-    gpa: '3.75',
-    leadership: [
-      'Secretary of Psychology Society - Organized Excursions for the Discussion and Study Group'
-    ]
+    graduationDate: '2009-12-01'
   },
   {
     id: 'celina-high',
     institution: 'Celina High School',
     degree: 'Honors Diploma',
-    graduationDate: '2009-06-01',
-    leadership: [
-      'Captain of Scholastic Quiz Bowl Team - Led a 4-Week Run on High Q (WHIO Television Channel 7)'
-    ]
+    graduationDate: '2009-06-01'
   }
 ];
 
 export const workExperience: WorkExperience[] = [
   {
+    id: 'sites-by-mac',
+    title: 'Founder & Full-Stack Developer',
+    company: 'Sites by Mac – Freelance Web Development & Consulting',
+    location: 'Dayton, OH',
+    startDate: '2023-01-01',
+    // endDate: null, // Present - omit for current position
+    description: 'Freelance web development and consulting services under the Sites by Mac brand',
+    achievements: [
+      'Built and deployed production-ready applications showcased at sitesbymac.dev and GitHub repositories.',
+      'Designed and implemented full-stack solutions using Next.js, React in TypeScript, Tailwind CSS, Django, and Flask.',
+      'Published open-source tools and reusable components under MIT license, expanding visibility in developer communities.',
+      'Consulted with peers and small teams on branding, UX, and MVP strategy, translating business needs into scalable technical solutions.'
+    ],
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Django', 'Flask', 'Python', 'JavaScript', 'Open Source', 'Consulting']
+  },
+  {
     id: 'correctional-officer',
     title: 'Correctional Officer V',
-    company: 'Texas Department of Criminal Justice - Holliday Transfer Facility',
-    location: 'TX',
+    company: 'Texas Department of Criminal Justice – Holliday Transfer Facility',
+    location: 'Huntsville, TX',
     startDate: '2017-09-01',
     endDate: '2024-10-01',
     description: 'High-security supervision and crisis management in correctional facility environment',
     achievements: [
-      'Supervised high-security housing units and conducted wellness checks.',
-      'Led suicide-watch interventions and emergency escort teams; CPR/AED certified.',
-      'Trained staff in communication, de-escalation, and safety drills.',
-      'Implemented physical security protocols and identified potential social engineering threats.',
-      'Learned operational Spanish for daily communications with inmates of diverse backgrounds.',
-      'Was instrumental in maintaining American Correctional Association Accreditation through meticulous report generation.',
-      'Managed a team of 30 inmates to produce 2200 meals while maintaining inventory control (ingredients) and materiel control of sensitive tools (knives, anything that could be made a weapon) and maintained strict cleanliness and food safety standards during white-glove inspections of the kitchen.'
+      'Supervised high-security housing units and conducted wellness checks for 200+ individuals.',
+      'Led suicide-watch interventions and emergency escort teams; became CPR/AED certified.',
+      'Trained staff in communication, de-escalation, and safety drills.'
     ],
     technologies: ['Crisis Management', 'Team Leadership', 'Safety Protocols', 'Documentation Systems']
   },
   {
     id: 'kitchenaid-factory',
-    title: 'Assembly, Testing & Inventory Auditor',
-    company: 'KitchenAid Factory Distribution Center',
+    title: 'Assembly | Testing & Inventory Auditor',
+    company: 'KitchenAid Distribution Center',
     location: 'Greenville, OH',
     startDate: '2015-09-01',
     endDate: '2017-08-01',
     description: 'Manufacturing operations including assembly, quality testing, and inventory management',
     achievements: [
-      'Operated robotic-assisted metal machining and electronic assembly lines under high-volume targets.',
+      'Operated robotic-assisted assembly lines under high-volume targets.',
       'Conducted QA testing and logged defect data for cross-team review.',
-      'Led inventory audits that strengthened supply chain reliability and reduced discrepancies.',
-      'Maintained production quality standards in high-volume manufacturing environment.'
+      'Spearheaded inventory audits, strengthening supply chain reliability and reducing discrepancies.'
     ],
     technologies: ['Manufacturing Systems', 'Quality Control', 'Inventory Management', 'Data Logging']
   },
   {
     id: 'gti-greenville',
-    title: 'Quality Inspector / Machine Operator',
+    title: 'Quality Inspector | Machine Operator',
     company: 'GTI Greenville Technology Inc. (Moriroku Network)',
     location: 'Greenville, OH',
     startDate: '2012-06-01',
     endDate: '2015-08-01',
     description: 'Quality inspection and machine operation for automotive component manufacturing',
     achievements: [
-      'In 3 years never caused a lost-time quality problem by sending inferior parts, saving Moriroku $10k per minute (the supplier got charged for work stoppage on the auto assembly line).',
+      'Maintained a flawless quality record over 3 years, preventing costly line stoppages and saving $10,000 per minute in potential penalties.',
       'Operated injection-molding machinery and Dukane sonic welders.',
-      'Applied 5S and Kanban systems for workflow optimization.',
-      'Managed forklift logistics and completed OSHA-style safety training.',
-      'Maintained strict quality standards for automotive industry requirements.'
+      'Applied 5S and Kanban systems for workflow optimization.'
     ],
     technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols']
   }
@@ -214,18 +211,6 @@ export const professionalAssociations = [
     name: 'Out in Tech',
     status: 'Member',
     description: 'LGBTQ+ professionals in technology'
-  },
-  {
-    id: 'mentorcruise',
-    name: 'MentorCruise',
-    status: 'Member',
-    description: 'Professional mentorship platform'
-  },
-  {
-    id: 'boy-scouts',
-    name: 'Boy Scouts of America',
-    status: 'Former Life Scout - Troop 69, Order of the Arrow',
-    description: 'Currently seeking service opportunities with Troop 236 in Kettering'
   }
 ];
 
@@ -322,27 +307,23 @@ export const skills: Skill[] = [
     skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Django', 'React', 'Next.js', 'Node.js', 'Express', 'Flask']
   },
   {
-    category: 'Frontend & Styling',
+    category: 'Frontend',
     skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility', 'AJAX']
   },
   {
     category: 'Backend & Databases',
-    skills: ['MongoDB', 'Mongoose', 'PostgreSQL', 'Django ORM', 'RESTful API Design', 'JWT Authentication', 'Database Migrations', 'API Integration']
+    skills: ['PostgreSQL', 'MongoDB', 'Mongoose', 'Django ORM', 'RESTful API Design', 'JWT Authentication']
   },
   {
-    category: 'Development Tools',
-    skills: ['Git/GitHub', 'VS Code', 'Postman', 'Jest', 'Django Testing Framework', 'Environment Variables', 'PIL/Pillow', 'ESLint']
+    category: 'Tools & Practices',
+    skills: ['Git/GitHub', 'VS Code', 'Postman', 'Jest', 'Django Testing Framework', 'CI/CD', 'Agile/Scrum', 'TDD', 'Unit & Integration Testing']
+  },
+  {
+    category: 'Core Competencies',
+    skills: ['Project Management', 'Team Leadership', 'Code Reviews', 'Sprint Planning', 'Technical Documentation', 'Communication', 'Crisis Management', 'Public Speaking']
   },
   {
     category: 'Deployment & Hosting',
     skills: ['Vercel', 'Netlify', 'Heroku', 'PostgreSQL Production', 'Static Generation', 'SSL Certificates', 'WhiteNoise', 'Domain Management']
-  },
-  {
-    category: 'Project Management & Testing',
-    skills: ['Agile/Scrum', 'Team Leadership', 'Code Reviews', 'Sprint Planning', 'Technical Documentation', 'Unit Testing', 'Integration Testing', 'TDD']
-  },
-  {
-    category: 'Leadership & Communication',
-    skills: ['Crisis Management', 'Team Leadership', 'Developer Mentoring', 'Technical Communication', 'Conflict Resolution', 'Public Speaking']
   }
 ];

@@ -30,7 +30,7 @@ describe('Resume Data', () => {
 
     it('includes StirCraft team leadership in summary', () => {
       expect(personalInfo.summary).toContain('StirCraft')
-      expect(personalInfo.summary).toContain('leading development teams')
+      expect(personalInfo.summary).toContain('lead cross-functional teams')
     })
   })
 
@@ -64,13 +64,13 @@ describe('Resume Data', () => {
       expect(workExperience.length).toBeGreaterThan(0)
     })
 
-    it('includes StirCraft team lead experience', () => {
-      const stircraft = workExperience.find(exp => exp.id === 'stircraft-team-lead')
-      expect(stircraft).toBeDefined()
-      expect(stircraft?.title).toContain('Team Lead')
-      expect(stircraft?.company).toContain('StirCraft')
-      expect(stircraft?.technologies).toContain('Django')
-      expect(stircraft?.technologies).toContain('Team Leadership')
+    it('includes Sites by Mac freelance experience', () => {
+      const sitesByMac = workExperience.find(exp => exp.id === 'sites-by-mac')
+      expect(sitesByMac).toBeDefined()
+      expect(sitesByMac?.title).toContain('Founder & Full-Stack Developer')
+      expect(sitesByMac?.company).toContain('Sites by Mac')
+      expect(sitesByMac?.technologies).toContain('Next.js')
+      expect(sitesByMac?.technologies).toContain('Django')
     })
 
     it('each work experience has required fields', () => {
@@ -128,13 +128,13 @@ describe('Resume Data', () => {
       const languages = skills.find(s => s.category === 'Languages & Frameworks')
       expect(languages?.skills).toContain('Django')
       
-      const testing = skills.find(s => s.category === 'Testing & Quality Assurance')
-      expect(testing).toBeDefined()
-      expect(testing?.skills).toContain('Django Testing')
+      const tools = skills.find(s => s.category === 'Tools & Practices')
+      expect(tools).toBeDefined()
+      expect(tools?.skills).toContain('Jest')
       
-      const leadership = skills.find(s => s.category === 'Leadership & Communication')
-      expect(leadership?.skills).toContain('Developer Mentoring')
-      expect(leadership?.skills).toContain('Technical Communication')
+      const competencies = skills.find(s => s.category === 'Core Competencies')
+      expect(competencies?.skills).toContain('Team Leadership')
+      expect(competencies?.skills).toContain('Project Management')
     })
 
     it('each skill category has required structure', () => {

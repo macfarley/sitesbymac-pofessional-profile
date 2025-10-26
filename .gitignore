@@ -61,3 +61,10 @@ Thumbs.db
 # Jest
 /coverage/
 .nyc_output
+
+# Private notes and development logs
+notes/
+*.notes
+development.log
+NOTES.md
+

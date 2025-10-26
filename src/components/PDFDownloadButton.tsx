@@ -386,8 +386,8 @@ export default function PDFDownloadButton({
         
         addText(`${job.title} | ${job.company}, ${job.location}`, 10, true);
         addText(`${job.startDate} - ${job.current ? 'Present' : job.endDate}`, 9);
-        // Show more achievements for the first job (StirCraft), fewer for others
-        const achievementsToShow = job.id === 'stircraft-team-lead' ? job.achievements.slice(0, 6) : job.achievements.slice(0, 3);
+        // Show more achievements for the first job (Sites by Mac), fewer for others
+        const achievementsToShow = job.id === 'sites-by-mac' ? job.achievements.slice(0, 6) : job.achievements.slice(0, 3);
         achievementsToShow.forEach(achievement => {
           addText(`• ${achievement}`, 9, false, 3); // 3mm indent for bullets
         });
