@@ -12,7 +12,7 @@ export const personalInfo = {
   website: 'https://sitesbymac.dev',
   linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
   github: 'https://github.com/macfarley',
-  summary: 'Junior Software Engineer with hands-on experience designing, developing, and deploying production-ready applications using Python, Django, React, and modern JavaScript frameworks. Strong foundation in algorithms, data structures, and test-driven development, with current upskilling in C++ and C#. Combines disciplined execution from seven years in high-security operations with collaborative software engineering experience. Native-born U.S. citizen (both parents U.S. citizens), clean criminal record, fingerprinted and extensively background-checked by Texas DPS; no foreign ties beyond brief travel to Canada. Fully eligible for U.S. government security clearance and actively pursuing DoD 8570 IAT Level II certification.'
+  summary: 'Full-Stack Developer with hands-on experience building and deploying production-ready applications using Python, Django, React, and modern JavaScript frameworks. Strong foundation in algorithms, data structures, and test-driven development, with current upskilling in C++, C#, and Angular. Passionate about software craftsmanship, problem-solving, and building inclusive, user-centered applications.'
 };
 
 export const education: Education[] = [
@@ -43,22 +43,18 @@ export const education: Education[] = [
     ]
   },
   {
-    id: 'ohio-university',
-    institution: 'Ohio University',
-    degree: 'International Relations (Pre-Law)',
-    graduationDate: '2010-12-01'
+    id: 'independent-study',
+    institution: 'Self-Directed Learning',
+    degree: 'Continuing independent study in C++, C#, Angular, and Flutter',
+    graduationDate: '2025-12-31',
+    inProgress: true
   },
   {
-    id: 'wright-state',
-    institution: 'Wright State University',
-    degree: 'Political Science (Dual Enrollment)',
-    graduationDate: '2009-12-01'
-  },
-  {
-    id: 'celina-high',
-    institution: 'Celina High School',
-    degree: 'Honors Diploma',
-    graduationDate: '2009-06-01'
+    id: 'future-education',
+    institution: 'Future Formal Education',
+    degree: 'Committed to resuming formal degree-track education; not currently enrolled',
+    graduationDate: '2026-12-31',
+    inProgress: false
   }
 ];
 
@@ -68,7 +64,7 @@ export const workExperience: WorkExperience[] = [
     title: 'Founder & Full-Stack Developer',
     company: 'Sites by Mac – Freelance Web Development & Consulting',
     location: 'Dayton, OH',
-    startDate: '2023-01-01',
+    startDate: '2025-07-01',
     // endDate: null, // Present - omit for current position
     description: 'Freelance web development and consulting services under the Sites by Mac brand',
     achievements: [
@@ -99,10 +95,10 @@ export const workExperience: WorkExperience[] = [
   {
     id: 'kitchenaid-factory',
     title: 'Assembly | Testing & Inventory Auditor',
-    company: 'KitchenAid Distribution Center',
+    company: 'KitchenAid Distribution Center (Whirlpool)',
     location: 'Greenville, OH',
-    startDate: '2015-09-01',
-    endDate: '2017-08-01',
+    startDate: '2015-03-01',
+    endDate: '2017-06-01',
     description: 'Manufacturing operations including assembly, quality testing, and inventory management',
     achievements: [
       'Conducted QA testing and logged defect data for cross-team review.',
@@ -116,8 +112,8 @@ export const workExperience: WorkExperience[] = [
     title: 'Quality Inspector | Machine Operator',
     company: 'GTI Greenville Technology Inc. (Moriroku Network)',
     location: 'Greenville, OH',
-    startDate: '2012-06-01',
-    endDate: '2015-08-01',
+    startDate: '2012-09-01',
+    endDate: '2015-01-01',
     description: 'Quality inspection and machine operation for automotive component manufacturing',
     achievements: [
       'Maintained a flawless quality record over 3 years, preventing costly line stoppages.',
@@ -125,6 +121,21 @@ export const workExperience: WorkExperience[] = [
       'Documented inspections and ensured compliance with manufacturing standards.'
     ],
     technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols']
+  },
+  {
+    id: 'tastemorr-grain',
+    title: 'Production & Operations',
+    company: 'Tastemorr Basic Grain',
+    location: 'Coldwater, OH',
+    startDate: '2010-11-01',
+    endDate: '2012-08-01',
+    description: 'Production and operations in grain processing facility',
+    achievements: [
+      'Operated production equipment and maintained quality standards.',
+      'Managed inventory and supply chain logistics.',
+      'Ensured compliance with safety and operational protocols.'
+    ],
+    technologies: ['Production Equipment', 'Inventory Management', 'Quality Control', 'Safety Protocols']
   }
 ];
 
@@ -313,12 +324,12 @@ export const skills: Skill[] = [
     skills: ['Algorithms & Data Structures', 'RESTful API Design', 'Test-Driven Development', 'CI/CD', 'Unit & Integration Testing']
   },
   {
-    category: 'Security & Clearance Readiness',
-    skills: ['Native-born U.S. citizen', 'clean criminal record', 'fingerprinted/background-checked', 'no foreign ties', 'clearance eligible']
+    category: 'Platforms & Tools',
+    skills: ['AWS (familiar)', 'Docker', 'Git/GitHub', 'Postman', 'Agile/Scrum']
   },
   {
     category: 'Collaboration',
-    skills: ['Agile/Scrum', 'Technical Documentation', 'Team Leadership', 'Training & Mentorship']
+    skills: ['Technical Documentation', 'Team Leadership', 'Training & Mentorship']
   },
   {
     category: 'Deployment & Hosting',

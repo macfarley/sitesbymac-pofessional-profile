@@ -30,7 +30,7 @@ describe('Resume Data', () => {
 
     it('includes StirCraft team leadership in summary', () => {
       expect(personalInfo.summary).toContain('algorithms')
-      expect(personalInfo.summary).toContain('security clearance')
+      expect(personalInfo.summary).toContain('software craftsmanship')
     })
   })
 
@@ -132,8 +132,8 @@ describe('Resume Data', () => {
       expect(engineering).toBeDefined()
       expect(engineering?.skills).toContain('Test-Driven Development')
 
-      const security = skills.find(s => s.category === 'Security & Clearance Readiness')
-      expect(security?.skills).toContain('clearance eligible')
+      const platforms = skills.find(s => s.category === 'Platforms & Tools')
+      expect(platforms?.skills).toContain('Git')
     })
 
     it('each skill category has required structure', () => {
@@ -158,9 +158,9 @@ describe('Resume Data', () => {
       expect(allSkills).toContain('Django')
       expect(allSkills).toContain('Node.js')
 
-      // Security and clearance
-      expect(allSkills).toContain('clearance eligible')
-      expect(allSkills).toContain('clean criminal record')
+      // Platforms and tools
+      expect(allSkills).toContain('Git')
+      expect(allSkills).toContain('Docker')
     })
   })
 })

@@ -8,22 +8,22 @@ import { references } from './resume';
  * the resume within 2 pages.
  */
 
-export const coverLetterTemplate = {
+export const seatGeekCoverLetter = {
   opening: {
-    greeting: "Dear Hiring Manager,",
-    intro: "I am writing to express my strong interest in the [POSITION_TITLE] position at [COMPANY_NAME]. With my background in full-stack development and proven leadership experience, I am excited about the opportunity to contribute to your team's success."
+    greeting: "Dear SeatGeek Hiring Team,",
+    intro: "I am excited to apply for the Software Engineering Internship position at SeatGeek. As a passionate developer with a strong foundation in full-stack development and a commitment to continuous learning, I am eager to contribute to your innovative platform that connects fans with live events."
   },
   
   body: {
-    technicalSkills: "As a full-stack developer specializing in Django, Python, and modern web technologies, I recently led the development of StirCraft, a sophisticated cocktail management platform. This project showcased my ability to architect production-ready applications with 6 core database models, 57 comprehensive tests, and advanced features like recipe forking with attribution tracking and automatic ABV calculation algorithms.",
+    technicalSkills: "My technical journey has equipped me with expertise in modern web technologies including React, Next.js, TypeScript, and Node.js. I recently completed General Assembly's Software Engineering Immersive program, where I built production-ready applications with comprehensive testing suites and advanced features. My portfolio includes StirCraft, a sophisticated cocktail management platform with 6 database models, 57 tests, and complex algorithms for recipe attribution and ABV calculations.",
     
-    leadership: "My leadership experience spans both technical and operational environments. I have successfully managed development teams through complex projects using Agile methodologies, while also leading operational teams of 30+ people in high-pressure situations. This combination of technical expertise and proven leadership makes me uniquely qualified to contribute to both individual projects and team initiatives.",
+    passion: "What draws me to SeatGeek is your mission to make live events more accessible and enjoyable for fans worldwide. I'm particularly impressed by your technical challenges in handling high-traffic event data, real-time inventory management, and creating seamless user experiences across multiple platforms. These challenges align perfectly with my interest in scalable systems and user-centric design.",
     
-    impact: "My systematic approach to problem-solving, developed through a decade of experience in manufacturing and corrections, translates directly into reliable API design, maintainable code architectures, and applications that combine technical excellence with meaningful user experiences."
+    fit: "As someone who has led teams through complex projects and managed high-pressure operations, I understand the importance of collaboration, rapid iteration, and delivering reliable solutions. I'm committed to resuming formal degree-track education while continuing my independent study in technologies like C++, C#, Angular, and Flutter to expand my technical toolkit."
   },
   
   closing: {
-    callToAction: "I would welcome the opportunity to discuss how my technical skills and leadership experience can contribute to [COMPANY_NAME]'s continued success. Thank you for your time and consideration.",
+    callToAction: "I would love the opportunity to discuss how my technical skills, passion for event technology, and dedication to continuous learning can contribute to SeatGeek's mission. Thank you for considering my application.",
     signature: "Sincerely,\nTravis M. McCoy"
   }
 };
