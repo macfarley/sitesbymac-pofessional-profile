@@ -52,7 +52,7 @@ export const education: Education[] = [
   {
     id: 'future-education',
     institution: 'Future Formal Education',
-    degree: 'Committed to resuming formal degree-track education; not currently enrolled',
+    degree: 'Expected to re-enroll in formal degree-track education Fall 2026',
     graduationDate: '2026-12-31',
     inProgress: false
   }

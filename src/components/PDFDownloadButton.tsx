@@ -22,7 +22,7 @@
 'use client';
 
 import jsPDF from 'jspdf';
-import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, activities, softwareProjects } from '../data/resume';
+import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, activities, softwareProjects, references } from '../data/resume';
 import { WorkExperience, SoftwareProject } from '../types/resume';
 
 /**
@@ -459,7 +459,13 @@ export default function PDFDownloadButton({
       // === REFERENCES SECTION ===
       // Always include references, even if it's at the very bottom of page 2
       addSection('REFERENCES');
-      addText('References available upon request.', 10);
+      references.forEach(ref => {
+        addText(`${ref.name}`, 10, true);
+        addText(`${ref.title} at ${ref.company}`, 9);
+        addText(`Email: ${ref.email}${ref.phone ? ` | Phone: ${ref.phone}` : ''}`, 9);
+        addText(`Relationship: ${ref.relationship}`, 9);
+        currentY += 1; // Space between references
+      });
 
       /**
        * PDF Download
