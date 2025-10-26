@@ -29,8 +29,8 @@ describe('Resume Data', () => {
     })
 
     it('includes StirCraft team leadership in summary', () => {
-      expect(personalInfo.summary).toContain('StirCraft')
-      expect(personalInfo.summary).toContain('lead cross-functional teams')
+      expect(personalInfo.summary).toContain('algorithms')
+      expect(personalInfo.summary).toContain('security clearance')
     })
   })
 
@@ -125,16 +125,15 @@ describe('Resume Data', () => {
     })
 
     it('includes enhanced skills from StirCraft project', () => {
-      const languages = skills.find(s => s.category === 'Languages & Frameworks')
-      expect(languages?.skills).toContain('Django')
-      
-      const tools = skills.find(s => s.category === 'Tools & Practices')
-      expect(tools).toBeDefined()
-      expect(tools?.skills).toContain('Jest')
-      
-      const competencies = skills.find(s => s.category === 'Core Competencies')
-      expect(competencies?.skills).toContain('Team Leadership')
-      expect(competencies?.skills).toContain('Project Management')
+      const programming = skills.find(s => s.category === 'Programming')
+      expect(programming?.skills).toContain('Django')
+
+      const engineering = skills.find(s => s.category === 'Software Engineering')
+      expect(engineering).toBeDefined()
+      expect(engineering?.skills).toContain('Test-Driven Development')
+
+      const security = skills.find(s => s.category === 'Security & Clearance Readiness')
+      expect(security?.skills).toContain('clearance eligible')
     })
 
     it('each skill category has required structure', () => {
@@ -151,21 +150,17 @@ describe('Resume Data', () => {
       
       // Frontend technologies
       expect(allSkills).toContain('React')
-      expect(allSkills).toContain('TypeScript')
-      expect(allSkills).toContain('Tailwind CSS')
-      
+      expect(allSkills).toContain('JavaScript/TypeScript')
+      expect(allSkills).toContain('Next.js')
+
       // Backend technologies
-      expect(allSkills).toContain('Node.js')
+      expect(allSkills).toContain('Python')
       expect(allSkills).toContain('Django')
-      expect(allSkills).toContain('PostgreSQL')
-      
-      // Testing
-      expect(allSkills).toContain('Jest')
-      expect(allSkills).toContain('Django Testing Framework')
-      
-      // Deployment
-      expect(allSkills).toContain('Heroku')
-      expect(allSkills).toContain('Vercel')
+      expect(allSkills).toContain('Node.js')
+
+      // Security and clearance
+      expect(allSkills).toContain('clearance eligible')
+      expect(allSkills).toContain('clean criminal record')
     })
   })
 })

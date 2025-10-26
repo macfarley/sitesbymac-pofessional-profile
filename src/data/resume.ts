@@ -12,7 +12,7 @@ export const personalInfo = {
   website: 'https://sitesbymac.dev',
   linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
   github: 'https://github.com/macfarley',
-  summary: 'Detail-driven Full-Stack Developer with hands-on experience building and deploying production-ready applications using Django, Python, React, and modern JavaScript frameworks. Combines disciplined execution with agile teamwork to architect reliable, scalable, and test-driven systems. Proven ability to lead cross-functional teams, deliver complex features such as automated ABV calculations and recipe forking in StirCraft while maintaining 100% test coverage. Passionate about creating secure, maintainable, and user-centered software that drives impact for mission-driven organizations.'
+  summary: 'Junior Software Engineer with hands-on experience designing, developing, and deploying production-ready applications using Python, Django, React, and modern JavaScript frameworks. Strong foundation in algorithms, data structures, and test-driven development, with current upskilling in C++ and C#. Combines disciplined execution from seven years in high-security operations with collaborative software engineering experience. Native-born U.S. citizen (both parents U.S. citizens), clean criminal record, fingerprinted and extensively background-checked by Texas DPS; no foreign ties beyond brief travel to Canada. Fully eligible for U.S. government security clearance and actively pursuing DoD 8570 IAT Level II certification.'
 };
 
 export const education: Education[] = [
@@ -88,9 +88,11 @@ export const workExperience: WorkExperience[] = [
     endDate: '2024-10-01',
     description: 'High-security supervision and crisis management in correctional facility environment',
     achievements: [
-      'Supervised high-security housing units and conducted wellness checks for 200+ individuals.',
-      'Led suicide-watch interventions and emergency escort teams; became CPR/AED certified.',
-      'Trained staff in communication, de-escalation, and safety drills.'
+      'Supervised housing units of 200+ individuals, ensuring compliance with strict policies and schedules.',
+      'Maintained flawless accountability records over 7 years, never delaying mandatory counts.',
+      'Trained and mentored new staff in communication, reporting, and safety protocols.',
+      'Produced detailed reports (incident logs, maintenance requests, behavioral interventions).',
+      'Led emergency response and coordinated cross-team operations under pressure.'
     ],
     technologies: ['Crisis Management', 'Team Leadership', 'Safety Protocols', 'Documentation Systems']
   },
@@ -103,9 +105,9 @@ export const workExperience: WorkExperience[] = [
     endDate: '2017-08-01',
     description: 'Manufacturing operations including assembly, quality testing, and inventory management',
     achievements: [
-      'Operated robotic-assisted assembly lines under high-volume targets.',
       'Conducted QA testing and logged defect data for cross-team review.',
-      'Spearheaded inventory audits, strengthening supply chain reliability and reducing discrepancies.'
+      'Spearheaded inventory audits, improving supply chain reliability.',
+      'Operated robotic-assisted assembly lines under high-volume targets.'
     ],
     technologies: ['Manufacturing Systems', 'Quality Control', 'Inventory Management', 'Data Logging']
   },
@@ -118,9 +120,9 @@ export const workExperience: WorkExperience[] = [
     endDate: '2015-08-01',
     description: 'Quality inspection and machine operation for automotive component manufacturing',
     achievements: [
-      'Maintained a flawless quality record over 3 years, preventing costly line stoppages and saving $10,000 per minute in potential penalties.',
-      'Operated injection-molding machinery and Dukane sonic welders.',
-      'Applied 5S and Kanban systems for workflow optimization.'
+      'Maintained a flawless quality record over 3 years, preventing costly line stoppages.',
+      'Applied 5S and Kanban systems for workflow optimization.',
+      'Documented inspections and ensured compliance with manufacturing standards.'
     ],
     technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols']
   }
@@ -131,18 +133,14 @@ export const softwareProjects: SoftwareProject[] = [
     id: 'stircraft',
     title: 'StirCraft: Professional Cocktail Manager',
     description: 'Sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals',
-    context: 'General Assembly Capstone Project - Team Lead',
+    context: 'Team Lead',
     startDate: '2025-08-01',
     endDate: '2025-08-31',
     achievements: [
-      'Led a team of developers in architecting and implementing a production-ready Django web application with 6 core database models, advanced relationships, and comprehensive social features.',
-      'Designed sophisticated business logic including automatic ABV calculation algorithms, recipe forking with attribution tracking, and intelligent tag management systems.',
-      'Implemented comprehensive testing strategy resulting in 57 tests with 100% critical path coverage, ensuring code reliability and maintainability.',
-      'Created advanced demo data generation system with 15+ themed users, 316 total favorites, and realistic social interaction patterns for professional presentations.',
-      'Architected and deployed production-ready application on Heroku with PostgreSQL database, static file management via WhiteNoise, and professional deployment pipeline.',
-      'Developed complex UI components including bulk operations, dynamic forms with real-time validation, AJAX-powered interfaces, and WCAG AA accessible design.',
-      'Integrated TheCocktailDB API for professional recipe data import and established robust data seeding infrastructure with 209 sample cocktails.',
-      'Led code reviews, sprint planning, and agile development practices while maintaining strict quality standards and comprehensive documentation.'
+      'Architected and implemented a production-ready Django application with 6 database models and advanced relationships.',
+      'Designed ABV calculation algorithms, recipe forking with attribution tracking, and intelligent tag management.',
+      'Implemented 57 automated tests achieving 100% critical path coverage.',
+      'Built demo data system with 15+ themed users and 300+ interactions.'
     ],
     technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Project Management'],
     liveUrl: 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
@@ -153,16 +151,14 @@ export const softwareProjects: SoftwareProject[] = [
     id: 'dream-weaver',
     title: 'Dream Weaver: Sleep Tracking Application',
     description: 'Full-stack MERN application for tracking and analyzing sleep patterns with data visualization',
-    context: 'General Assembly Individual Project',
+    context: 'Individual Project',
     startDate: '2025-07-15',
     endDate: '2025-07-25',
     achievements: [
-      'Developed full-stack MERN application with user authentication, data persistence, and responsive design.',
-      'Implemented comprehensive sleep tracking features with mood correlation and pattern analysis.',
-      'Created intuitive data visualization dashboard using modern JavaScript charting libraries.',
-      'Designed and implemented RESTful API with MongoDB for efficient data storage and retrieval.',
-      'Deployed production application on Vercel with MongoDB Atlas backend integration.',
-      'Applied modern UI/UX principles with responsive design optimized for mobile and desktop use.'
+      'Developed full-stack MERN application with authentication, data persistence, and responsive design.',
+      'Implemented mood correlation and pattern analysis features.',
+      'Designed data visualization dashboard using modern JS charting libraries.',
+      'Created RESTful API with MongoDB for efficient storage and retrieval.'
     ],
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JavaScript', 'CSS3', 'Vercel', 'MongoDB Atlas'],
     liveUrl: 'https://dream-weaver-rho.vercel.app/',
@@ -190,6 +186,12 @@ export const certifications: Certification[] = [
     name: 'Diversity, Equity & Inclusion Training',
     issuer: 'Traliant',
     issueDate: '2025-01-01'
+  },
+  {
+    id: 'dod-8570-iat',
+    name: 'DoD 8570 IAT Level II',
+    issuer: 'In Progress',
+    issueDate: '2025-12-31' // Future date for in-progress
   }
 ];
 
@@ -303,24 +305,20 @@ export const references = [
 
 export const skills: Skill[] = [
   {
-    category: 'Languages & Frameworks',
-    skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Django', 'React', 'Next.js', 'Node.js', 'Express', 'Flask']
+    category: 'Programming',
+    skills: ['Python', 'JavaScript/TypeScript', 'React', 'Django', 'Next.js', 'Node.js', 'Flask', 'C++ (coursework)', 'C# (in progress)', 'Angular (in progress)']
   },
   {
-    category: 'Frontend',
-    skills: ['HTML5', 'CSS3', 'Sass', 'Bootstrap', 'Tailwind CSS', 'Responsive Design', 'WCAG Accessibility', 'AJAX']
+    category: 'Software Engineering',
+    skills: ['Algorithms & Data Structures', 'RESTful API Design', 'Test-Driven Development', 'CI/CD', 'Unit & Integration Testing']
   },
   {
-    category: 'Backend & Databases',
-    skills: ['PostgreSQL', 'MongoDB', 'Mongoose', 'Django ORM', 'RESTful API Design', 'JWT Authentication']
+    category: 'Security & Clearance Readiness',
+    skills: ['Native-born U.S. citizen', 'clean criminal record', 'fingerprinted/background-checked', 'no foreign ties', 'clearance eligible']
   },
   {
-    category: 'Tools & Practices',
-    skills: ['Git/GitHub', 'VS Code', 'Postman', 'Jest', 'Django Testing Framework', 'CI/CD', 'Agile/Scrum', 'TDD', 'Unit & Integration Testing']
-  },
-  {
-    category: 'Core Competencies',
-    skills: ['Project Management', 'Team Leadership', 'Code Reviews', 'Sprint Planning', 'Technical Documentation', 'Communication', 'Crisis Management', 'Public Speaking']
+    category: 'Collaboration',
+    skills: ['Agile/Scrum', 'Technical Documentation', 'Team Leadership', 'Training & Mentorship']
   },
   {
     category: 'Deployment & Hosting',

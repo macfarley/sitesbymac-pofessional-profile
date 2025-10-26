@@ -223,6 +223,22 @@ export interface SoftwareProject {
 }
 
 /**
+ * Cover Letter Interface
+ * 
+ * For customizable cover letter templates that can be adapted for different job applications.
+ * Supports dynamic content generation based on job descriptions.
+ */
+export interface CoverLetter {
+  id: string;                    // Unique identifier for the cover letter template
+  title: string;                 // Descriptive title (e.g., "KBR Junior Software Engineer")
+  company: string;              // Target company name
+  position: string;             // Target position title
+  jobId?: string;               // Job posting ID (optional)
+  date: string;                 // Date the cover letter was created
+  content: string;              // Full cover letter text
+}
+
+/**
  * ==========================================
  * TYPE USAGE PATTERNS & COOL TECHNIQUES
  * ==========================================
