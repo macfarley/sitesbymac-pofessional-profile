@@ -190,8 +190,8 @@ export const certifications: Certification[] = [
   {
     id: 'dod-8570-iat',
     name: 'DoD 8570 IAT Level II',
-    issuer: 'In Progress',
-    issueDate: '2025-12-31' // Future date for in-progress
+    issuer: 'Eligible',
+    issueDate: '2025-12-31' // Future date for eligibility
   }
 ];
 
