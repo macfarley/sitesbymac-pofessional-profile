@@ -8,22 +8,22 @@ import { references } from './resume';
  * the resume within 2 pages.
  */
 
-export const seatGeekCoverLetter = {
+export const americanEquityCoverLetter = {
   opening: {
-    greeting: "Dear SeatGeek Hiring Team,",
-    intro: "I am excited to apply for the Software Engineering Internship position at SeatGeek. As a passionate developer with a strong foundation in full-stack development and a commitment to continuous learning, I am eager to contribute to your innovative platform that connects fans with live events."
+    greeting: "Dear American Equity Hiring Team,",
+    intro: "I am excited to apply for the IT Intern, Service Transformation position at American Equity. As a recent graduate of General Assembly's Software Engineering Immersive program with a passion for modernizing digital services and creating efficient user experiences, I am eager to contribute to your mission of empowering clients' retirement needs through innovative technology solutions."
   },
   
   body: {
-    technicalSkills: "My technical journey has equipped me with expertise in modern web technologies including React, Next.js, TypeScript, and Node.js. I recently completed General Assembly's Software Engineering Immersive program, where I built production-ready applications with comprehensive testing suites and advanced features. My portfolio includes StirCraft, a sophisticated cocktail management platform with 6 database models, 57 tests, and complex algorithms for recipe attribution and ABV calculations.",
+    technicalSkills: "My technical foundation aligns perfectly with the Service Transformation role, particularly in low code/no code technologies and creating single pane of glass user interfaces. I recently completed General Assembly's intensive program where I mastered modern web technologies including React, Next.js, TypeScript, and Node.js. My capstone project, StirCraft, involved designing and implementing a sophisticated web application with complex user interactions, API integrations, and responsive design principles that mirror the requirements gathering and UI design work described in your internship.",
     
-    passion: "What draws me to SeatGeek is your mission to make live events more accessible and enjoyable for fans worldwide. I'm particularly impressed by your technical challenges in handling high-traffic event data, real-time inventory management, and creating seamless user experiences across multiple platforms. These challenges align perfectly with my interest in scalable systems and user-centric design.",
+    experience: "I have hands-on experience with the tools and methodologies mentioned in your posting, including GitHub for version control, collaborative development workflows, and API testing with Postman. My background includes working with cross-functional teams to gather requirements and translate business needs into technical solutions. During my time at General Assembly, I collaborated remotely across different time zones using video conferencing tools like MS Teams, and I utilized Jira for project management and issue tracking.",
     
-    fit: "As someone who has led teams through complex projects and managed high-pressure operations, I understand the importance of collaboration, rapid iteration, and delivering reliable solutions. I'm committed to resuming formal degree-track education while continuing my independent study in technologies like C++, C#, Angular, and Flutter to expand my technical toolkit."
+    fit: "What particularly draws me to American Equity is your focus on enhancing internal digital services to improve employee efficiency and deliver amazing solutions to your customers. I'm excited about the opportunity to work on meaningful projects that drive measurable business outcomes while gaining experience in cloud infrastructure solutions like MongoDB. As someone who thrives in collaborative environments and enjoys learning new technologies quickly, I am confident I would contribute positively to your internship program and the broader American Equity team."
   },
   
   closing: {
-    callToAction: "I would love the opportunity to discuss how my technical skills, passion for event technology, and dedication to continuous learning can contribute to SeatGeek's mission. Thank you for considering my application.",
+    callToAction: "I would welcome the opportunity to discuss how my technical skills, passion for digital transformation, and eagerness to learn can contribute to American Equity's continued success in empowering retirements nationwide. Thank you for considering my application.",
     signature: "Sincerely,\nTravis M. McCoy"
   }
 };
