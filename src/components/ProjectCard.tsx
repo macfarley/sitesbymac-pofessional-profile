@@ -25,9 +25,16 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
       )}
       
       <div className="p-6">
-        <h3 className="text-xl font-bold text-amber-900 dark:text-gray-100 mb-2">
-          {project.title}
-        </h3>
+        <div className="flex items-start justify-between mb-2">
+          <h3 className="text-xl font-bold text-amber-900 dark:text-gray-100">
+            {project.title}
+          </h3>
+          {(project.id === 'volunqueer' || project.id === 'fridge-buddy') && !project.liveUrl && (
+            <span className="ml-2 px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded-full whitespace-nowrap">
+              UNDER CONSTRUCTION
+            </span>
+          )}
+        </div>
         
         <p className="text-amber-800 dark:text-gray-300 mb-4">
           {project.description}
@@ -52,14 +59,23 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
             View Details
           </Link>
           
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-stone-600 dark:bg-pink-500 text-stone-100 dark:text-gray-100 rounded-lg hover:bg-stone-700 dark:hover:bg-pink-400 transition-colors font-medium"
-          >
-            Live Demo
-          </a>
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-stone-600 dark:bg-pink-500 text-stone-100 dark:text-gray-100 rounded-lg hover:bg-stone-700 dark:hover:bg-pink-400 transition-colors font-medium"
+            >
+              Live Demo
+            </a>
+          ) : (
+            <button
+              disabled
+              className="px-4 py-2 bg-gray-400 dark:bg-gray-600 text-stone-100 dark:text-gray-300 rounded-lg cursor-not-allowed opacity-60 font-medium"
+            >
+              Live Demo
+            </button>
+          )}
           
           {project.githubUrl && (
             <a

@@ -45,7 +45,7 @@ export interface Project {
   description: string;           // Short description for cards and previews
   longDescription?: string;      // Detailed description for project detail pages
   technologies: string[];        // Tech stack (e.g., ['React', 'TypeScript', 'Tailwind'])
-  liveUrl: string;              // Live demo URL (can be relative for proxy rewrites)
+  liveUrl?: string;             // Live demo URL (can be relative for proxy rewrites)
   githubUrl?: string;           // Source code repository URL
   imageUrl?: string;            // Project screenshot or preview image path
   featured?: boolean;           // Whether to show in featured projects section
