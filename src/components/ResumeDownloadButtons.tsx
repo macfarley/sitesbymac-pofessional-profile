@@ -1,37 +1,25 @@
 'use client';
 
-export default function ResumeDownloadButtons() {
-  const handleDownload = (filename: string, filepath: string) => {
-    const link = document.createElement('a');
-    link.href = filepath;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+import PDFDownloadButton from './PDFDownloadButton';
 
+export default function ResumeDownloadButtons() {
   return (
     <div className="flex gap-4 justify-center flex-wrap">
-      <button
-        onClick={() => handleDownload('Travis_McCoy_Resume_ATS.pdf', '/resume_ats.pdf')}
+      <PDFDownloadButton 
+        filename="Travis_McCoy_Resume_ATS.pdf"
+        variant="ats"
         className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-        aria-label="Download ATS-friendly resume"
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        ATS-Friendly Resume
-      </button>
-      <button
-        onClick={() => handleDownload('Travis_McCoy_Resume.pdf', '/resume_styled.pdf')}
+      />
+      <a 
+        href="/resume_styled.pdf"
+        download="Travis_McCoy_Resume_Stylized.pdf"
         className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-        aria-label="Download printer-friendly resume"
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
         </svg>
-        Printer-Friendly Resume
-      </button>
+        <span>Stylized Resume</span>
+      </a>
     </div>
   );
 }

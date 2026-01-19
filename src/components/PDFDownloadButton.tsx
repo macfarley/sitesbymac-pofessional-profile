@@ -1,142 +1,66 @@
 /**
  * PDF Download Button Component for Sites by Mac Portfolio
  * 
- * This component generates and downloads a professional PDF resume using jsPDF.
- * It's designed to create a clean, ATS-friendly resume format that's optimized
- * for both human readers and applicant tracking systems.
- * 
- * Key Features:
- * - Programmatic PDF generation (no DOM rendering required)
- * - Automatic page breaks and text wrapping
- * - Two-column skills layout for space efficiency
- * - Professional typography and spacing
- * - Data-driven content from resume.ts
- * 
- * Technical Approach:
- * - Uses jsPDF for direct PDF creation (faster than DOM-to-PDF)
- * - Calculates layout mathematically for consistent results
- * - Handles text overflow and pagination automatically
- * - Optimized for A4 paper size with proper margins
+ * Generates professional PDF resumes from resume.ts data
+ * Supports two variants: ATS (2-page detailed) and Stylized (1-page condensed)
  */
 
 'use client';
 
 import jsPDF from 'jspdf';
-import { personalInfo, workExperience, education, skills, certifications, professionalAssociations, activities, softwareProjects, references } from '../data/resume';
-import { WorkExperience, SoftwareProject } from '../types/resume';
+import { personalInfo, coreCompetencies, languages, workExperience, education, skills, certifications } from '../data/resume';
 
-/**
- * Component Props Interface
- * 
- * @param targetId - Currently unused, kept for future DOM-based generation
- * @param filename - Name of the downloaded PDF file
- * @param className - Additional CSS classes for styling the button
- */
 interface PDFDownloadButtonProps {
   targetId?: string;
   filename?: string;
   className?: string;
+  variant?: 'ats' | 'stylized';
 }
 
 export default function PDFDownloadButton({ 
   filename = 'Travis_McCoy_Resume.pdf',
-  className = '' 
+  className = '',
+  variant = 'ats' 
 }: PDFDownloadButtonProps) {
-  /**
-   * PDF Generation Function
-   * 
-   * This is the core function that creates the entire PDF document.
-   * It uses a programmatic approach rather than converting HTML to PDF
-   * for better control over layout and typography.
-   * 
-   * Cool Technical Details:
-   * - Calculates all positions mathematically
-   * - Uses helper functions for consistent spacing
-   * - Implements automatic page breaks
-   * - Handles text wrapping with jsPDF's splitTextToSize
-   */
+
   const generatePDF = async () => {
     try {
-      /**
-       * PDF Configuration
-       * 
-       * These settings create a standard A4 resume format:
-       * - Portrait orientation (tall, not wide)
-       * - Millimeter units for precise positioning
-       * - A4 format (210 x 297 mm) - international standard
-       * 
-       * Cool Setting: Use 'letter' format for US-specific resumes
-       */
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
         format: 'a4'
       });
 
-      /**
-       * Layout Constants
-       * 
-       * These values control the overall document layout:
-       * - pageWidth/Height: Available space for content
-       * - margin: White space around edges (12mm = ~0.47 inches for tighter margins)
-       * - contentWidth: Actual usable width for text
-       * - currentY: Tracks vertical position as we add content
-       * - maxPages: Strict 2-page limit
-       * 
-       * Cool Pattern: Use tighter margins for maximum content density
-       */
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const margin = 12; // Reduced from 15mm for more space
+      const margin = 12;
       const contentWidth = pageWidth - (margin * 2);
-      const maxPages = 2; // Strict 2-page limit
+      const maxPages = variant === 'ats' ? 2 : 1;
       let currentY = margin;
       let currentPage = 1;
 
-      /**
-       * Text Addition Helper Function
-       * 
-       * This function handles the complex task of adding text with:
-       * - Automatic line wrapping
-       * - Page break detection and handling (optimized for 2-page filling)
-       * - Font size and weight management
-       * - Balanced spacing for full page utilization
-       * - Section break protection
-       * 
-       * @param text - The text content to add
-       * @param fontSize - Size in points (10pt = standard body text)
-       * @param isBold - Whether to use bold font weight
-       * @param indent - Left indentation in mm (for bullet points)
-       * @param isSection - Whether this is a section header (prevents orphaning)
-       * 
-       * Cool Technical Detail: Uses splitTextToSize for automatic wrapping
-       */
       const addText = (text: string, fontSize: number = 10, isBold: boolean = false, indent: number = 0, isSection: boolean = false) => {
-        // More lenient page break logic - allow more content per page
         if (isSection && currentY > pageHeight - margin - 12) {
           if (currentPage < maxPages) {
             pdf.addPage();
             currentY = margin;
             currentPage++;
           } else if (currentPage === maxPages && currentY > pageHeight - margin - 8) {
-            return; // Only skip if really at the very bottom of page 2
+            return;
           }
-        } else if (!isSection && currentY > pageHeight - margin - 6) {
-          // For regular text, be more aggressive about filling pages
+        } else if (!isSection && currentY > pageHeight - margin - 4) {
           if (currentPage < maxPages) {
             pdf.addPage();
             currentY = margin;
             currentPage++;
-          } else if (currentPage === maxPages && currentY > pageHeight - margin - 4) {
-            return; // Only skip if at very bottom of page 2
+          } else if (currentPage === maxPages && currentY > pageHeight - margin - 3) {
+            return;
           }
         }
 
-        // Font configuration
         pdf.setFontSize(fontSize);
         pdf.setFont('arial', isBold ? 'bold' : 'normal');
         
-        // Text wrapping and positioning
         const lines = pdf.splitTextToSize(text, contentWidth - indent);
         lines.forEach((line: string) => {
           if (currentY > pageHeight - margin - 4) {
@@ -145,89 +69,139 @@ export default function PDFDownloadButton({
               currentY = margin;
               currentPage++;
             } else {
-              return; // Skip only if we're truly at the bottom of page 2
+              return;
             }
           }
           pdf.text(line, margin + indent, currentY);
-          currentY += fontSize * 0.35; // Maintain tight line height
+          currentY += fontSize * 0.35;
         });
-        currentY += isSection ? 1.5 : 1; // Maintain compact spacing
+        currentY += isSection ? 1.5 : 1;
       };
 
-      /**
-       * Section Header Helper Function
-       * 
-       * Creates consistent section headers throughout the document
-       * with protection against orphaning and tighter spacing
-       * 
-       * @param title - The section title (e.g., "PROFESSIONAL EXPERIENCE")
-       * 
-       * Cool Pattern: All-caps titles with larger font size for hierarchy
-       */
-      const addSection = (title: string) => {
-        currentY += 2; // Reduced section spacing (from 3)
-        addText(title, 13, true, 0, true); // 13pt bold for section headers, marked as section
-        currentY += 0.5; // Reduced space after header (from 1)
+      const addSection = (title: string, extraSpaceBefore: number = 0) => {
+        currentY += 2 + extraSpaceBefore;
+        addText(title, 13, true, 0, true);
+        currentY += 0.5;
       };
 
-      /**
-       * DOCUMENT CONTENT GENERATION
-       * 
-       * The following sections build the resume content in order:
-       * 1. Header with contact information
-       * 2. Professional summary
-       * 3. Technical skills (two-column layout)
-       * 4. Work experience with achievements
-       * 5. Education and training
-       * 6. Certifications
-       * 7. Professional associations
-       * 8. Community outreach
-       * 9. References
-       */
+      // Helper to render bullets with bold all-caps subheaders
+      const addAchievement = (achievement: string, fontSize: number = 9, indent: number = 3) => {
+        const allCapsMatch = achievement.match(/^([A-Z\s&\/,]+):/);
+        
+        if (allCapsMatch) {
+          // Has all-caps subheader - render it bold
+          const header = allCapsMatch[0]; // Includes the colon and space
+          const content = achievement.substring(header.length);
+          
+          pdf.setFontSize(fontSize);
+          pdf.setFont('arial', 'bold');
+          const bulletHeader = `\u2022 ${header}`;
+          const headerWidth = pdf.getTextWidth(bulletHeader);
+          
+          // Check if we need a new page
+          if (currentY > pageHeight - margin - 4 && currentPage < maxPages) {
+            pdf.addPage();
+            currentY = margin;
+            currentPage++;
+          }
+          
+          // Render bullet + bold header
+          pdf.text(bulletHeader, margin + indent, currentY);
+          
+          // Render content on same line if it fits, otherwise wrap
+          pdf.setFont('arial', 'normal');
+          const availableWidth = contentWidth - indent - headerWidth - 1;
+          const contentLines = pdf.splitTextToSize(content, availableWidth);
+          
+          // First line goes on same line as header
+          pdf.text(contentLines[0], margin + indent + headerWidth + 1, currentY);
+          currentY += fontSize * 0.35;
+          
+          // Remaining lines wrap with indent
+          for (let i = 1; i < contentLines.length; i++) {
+            pdf.text(contentLines[i], margin + indent, currentY);
+            currentY += fontSize * 0.35;
+          }
+          currentY += 1;
+        } else {
+          // No subheader - render normally
+          addText(`\u2022 ${achievement}`, fontSize, false, indent);
+        }
+      };
 
-      // === HEADER SECTION ===
-      // Uses larger fonts for name and title for visual hierarchy
-      addText(personalInfo.name, 18, true);  // 18pt for name - largest font
-      addText(`${personalInfo.title} | ${personalInfo.location}`, 12);  // 12pt for title
-      addText(`Profile: ${personalInfo.website}`, 11, true);  // 11pt bold for profile website
-      addText(`${personalInfo.phone} | ${personalInfo.email}`, 10);     // 10pt for contact
-      addText(`LinkedIn: ${personalInfo.linkedin}`, 10);
-      addText(`GitHub: ${personalInfo.github}`, 10);
+      // === HEADER ===
+      addText(personalInfo.name, 18, true);
+      addText(personalInfo.title, 12, true);
+      const headerLine3 = `${personalInfo.location} • ${(personalInfo as any).locationNote || 'Willing to Relocate'} • ${(personalInfo as any).clearance || 'Security Clearance Eligible'}`;
+      addText(headerLine3, 10);
+      
+      // Contact info with bold labels
+      pdf.setFontSize(9);
+      pdf.setFont('arial', 'bold');
+      let contactY = currentY;
+      pdf.text('Portfolio:', margin, contactY);
+      pdf.setFont('arial', 'normal');
+      pdf.text(' ' + personalInfo.website, margin + pdf.getTextWidth('Portfolio:'), contactY);
+      pdf.setFont('arial', 'bold');
+      const githubX = margin + contentWidth / 2;
+      pdf.text('GitHub:', githubX, contactY);
+      pdf.setFont('arial', 'normal');
+      pdf.text(' ' + personalInfo.github, githubX + pdf.getTextWidth('GitHub:'), contactY);
+      currentY += 3.5;
+      
+      pdf.setFont('arial', 'bold');
+      pdf.text('LinkedIn:', margin, currentY);
+      pdf.setFont('arial', 'normal');
+      pdf.text(' ' + personalInfo.linkedin, margin + pdf.getTextWidth('LinkedIn:'), currentY);
+      pdf.setFont('arial', 'bold');
+      const phoneX = margin + contentWidth / 2;
+      pdf.text('Phone:', phoneX, currentY);
+      pdf.setFont('arial', 'normal');
+      pdf.text(' ' + personalInfo.phone, phoneX + pdf.getTextWidth('Phone:'), currentY);
+      currentY += 3.5;
+      
+      pdf.setFont('arial', 'bold');
+      pdf.text('Email:', margin, currentY);
+      pdf.setFont('arial', 'normal');
+      pdf.text(' ' + personalInfo.email, margin + pdf.getTextWidth('Email:'), currentY);
+      currentY += 3.5;
       
       // === PROFESSIONAL SUMMARY ===
       addSection('PROFESSIONAL SUMMARY');
       addText(personalInfo.summary, 10);
+      
+      // === CORE COMPETENCIES ===
+      if (variant === 'ats') {
+        addSection('CORE COMPETENCIES', 1.5);
+        const compStartY = currentY;
+        const colWidth = contentWidth / 3;
+        
+        // Display competencies in 3 columns (4 items per column)
+        coreCompetencies.forEach((comp, index) => {
+          const col = index % 3;
+          const row = Math.floor(index / 3);
+          const xPos = margin + (col * colWidth);
+          const yPos = compStartY + (row * 3.5);
+          
+          pdf.setFontSize(9);
+          pdf.setFont('arial', 'normal');
+          pdf.text(`\u2022 ${comp}`, xPos, yPos);
+        });
+        
+        currentY = compStartY + (Math.ceil(coreCompetencies.length / 3) * 3.5) + 2;
+      }
 
-      // === TECHNICAL SKILLS SECTION ===
-      // This section uses a two-column layout to maximize space efficiency
-      addSection('TECHNICAL SKILLS');
+      // === SKILLS ===
+      addSection('TECHNICAL SKILLS', 1.5);
       
-      /**
-       * Two-Column Skills Layout
-       * 
-       * Cool Technical Implementation:
-       * - Calculates half-width for each column
-       * - Splits skills array into two equal parts
-       * - Tracks Y position for each column independently
-       * - Uses the maximum Y position to continue layout
-       * - Ensures enough space or starts new page
-       * 
-       * This pattern can be reused for any two-column content
-       */
-      
-      // Check if we have enough space for the skills section (at least 30mm)
-      if (currentY > pageHeight - margin - 30) {
-        if (currentPage < maxPages) {
-          pdf.addPage();
-          currentY = margin;
-          currentPage++;
-          addSection('TECHNICAL SKILLS');
-        }
+      if (currentY > pageHeight - margin - 30 && currentPage < maxPages) {
+        pdf.addPage();
+        currentY = margin;
+        currentPage++;
+        addSection('TECHNICAL SKILLS');
       }
       
-      const halfContentWidth = (contentWidth - 8) / 2; // Account for column gap (reduced from 10)
-      
-      // Split skills into two equal columns
+      const halfContentWidth = (contentWidth - 8) / 2;
       const leftColumnSkills = skills.slice(0, Math.ceil(skills.length / 2));
       const rightColumnSkills = skills.slice(Math.ceil(skills.length / 2));
       
@@ -235,34 +209,30 @@ export default function PDFDownloadButton({
       let leftY = startY;
       let rightY = startY;
       
-      // Left column rendering
       leftColumnSkills.forEach(skillCategory => {
-        if (leftY > pageHeight - margin - 15 || currentPage >= maxPages) return; // Stop if near page end or page limit
+        if (leftY > pageHeight - margin - 15 || currentPage >= maxPages) return;
         
-        // Category name in bold
         pdf.setFontSize(10);
         pdf.setFont('arial', 'bold');
         pdf.text(`${skillCategory.category}:`, margin, leftY);
-        leftY += 3.5; // Tighter spacing (reduced from 4)
+        leftY += 3.5;
         
-        // Skills list in normal weight
-        pdf.setFontSize(9); // Slightly smaller font (reduced from 10)
+        pdf.setFontSize(9);
         pdf.setFont('arial', 'normal');
         const skillLines = pdf.splitTextToSize(skillCategory.skills.join(', '), halfContentWidth);
         skillLines.forEach((line: string) => {
           pdf.text(line, margin, leftY);
-          leftY += 3; // Tighter line spacing (reduced from 3.5)
+          leftY += 3;
         });
-        leftY += 1.5; // Reduced spacing between categories (from 2)
+        leftY += 1.5;
       });
       
-      // Right column rendering (same pattern, different X position)
       rightColumnSkills.forEach(skillCategory => {
         if (rightY > pageHeight - margin - 15 || currentPage >= maxPages) return;
         
         pdf.setFontSize(10);
         pdf.setFont('arial', 'bold');
-        pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 4, rightY); // Reduced gap from 5 to 4
+        pdf.text(`${skillCategory.category}:`, margin + halfContentWidth + 4, rightY);
         rightY += 3.5;
         
         pdf.setFontSize(9);
@@ -275,232 +245,256 @@ export default function PDFDownloadButton({
         rightY += 1.5;
       });
       
-      // Continue layout from the bottom of both columns
-      currentY = Math.max(leftY, rightY) + 2; // Reduced spacing (from 3)
+      currentY = Math.max(leftY, rightY) + 2;
 
-      /**
-       * Calculate Space Needed for Job Entry
-       * 
-       * This helper function estimates how much vertical space a complete job entry will need
-       * to prevent splitting job entries across pages. It accounts for text wrapping.
-       * 
-       * @param job - The work experience job object
-       * @returns estimated height in mm
-       */
-      const calculateJobHeight = (job: WorkExperience) => {
-        let height = 0;
+      // === LANGUAGES ===
+      if (variant === 'ats') {
+        addSection('LANGUAGES', 1.5);
+        const langStartY = currentY;
         
-        // Title line (with text wrapping consideration)
-        pdf.setFontSize(10);
-        pdf.setFont('arial', 'bold');
-        const titleLines = pdf.splitTextToSize(`${job.title} | ${job.company}, ${job.location}`, contentWidth);
-        height += titleLines.length * 4;
-        
-        // Date line
-        height += 3.5;
-        
-        // Achievement lines (with text wrapping)
-        pdf.setFontSize(9);
-        pdf.setFont('arial', 'normal');
-        job.achievements.forEach(achievement => {
-          const achievementLines = pdf.splitTextToSize(`• ${achievement}`, contentWidth - 3);
-          height += achievementLines.length * 3.6;
+        // Display languages in 2 columns
+        languages.forEach((lang, index) => {
+          const column = index % 2;
+          const row = Math.floor(index / 2);
+          const xPos = column === 0 ? margin : margin + halfContentWidth + 4;
+          const yPos = langStartY + (row * 3.5);
+          
+          pdf.setFontSize(9);
+          pdf.setFont('arial', 'normal');
+          pdf.text(`${lang.language} — ${lang.proficiency}`, xPos, yPos);
         });
         
-        height += 3; // Spacing after job
-        return height;
-      };
-
-      /**
-       * Calculate Space Needed for Software Project Entry
-       * 
-       * Similar to job height calculation but for software projects
-       */
-      const calculateProjectHeight = (project: SoftwareProject) => {
-        let height = 0;
-        
-        // Title and context line
-        pdf.setFontSize(10);
-        pdf.setFont('arial', 'bold');
-        const titleLines = pdf.splitTextToSize(`${project.title} | ${project.context}`, contentWidth);
-        height += titleLines.length * 4;
-        
-        // Date line
-        height += 3.5;
-        
-        // Achievement lines (with text wrapping)
-        pdf.setFontSize(9);
-        pdf.setFont('arial', 'normal');
-        project.achievements.forEach(achievement => {
-          const achievementLines = pdf.splitTextToSize(`• ${achievement}`, contentWidth - 3);
-          height += achievementLines.length * 3.6;
-        });
-        
-        height += 3; // Spacing after project
-        return height;
-      };
-
-      // === SOFTWARE PROJECTS SECTION ===
-      addSection('SOFTWARE PROJECTS');
-      softwareProjects.forEach(project => {
-        // Calculate space needed for this entire project entry
-        const projectHeight = calculateProjectHeight(project);
-        
-        // Check if we have enough space for the complete project entry
-        if (currentY + projectHeight > pageHeight - margin - 10) {
-          if (currentPage < maxPages) {
-            pdf.addPage();
-            currentY = margin;
-            currentPage++;
-          }
-        }
-        
-        addText(`${project.title} | ${project.context}`, 10, true);
-        addText(`${project.startDate} - ${project.endDate}`, 9);
-        addText(project.description, 9);
-        // Show key achievements for software projects
-        const achievementsToShow = project.achievements.slice(0, 4); // Limit to 4 achievements
-        achievementsToShow.forEach(achievement => {
-          addText(`• ${achievement}`, 9, false, 3); // 3mm indent for bullets
-        });
-        if (project.liveUrl) {
-          addText(`Live: ${project.liveUrl}`, 8);
-        }
-        currentY += 1.5; // Space between projects
-      });
-
-      // === WORK EXPERIENCE SECTION ===
-      addSection('PROFESSIONAL EXPERIENCE');
-      workExperience.forEach(job => {
-        // Calculate space needed for this entire job entry
-        const jobHeight = calculateJobHeight(job);
-        
-        // Check if we have enough space for the complete job entry
-        if (currentY + jobHeight > pageHeight - margin - 10) {
-          if (currentPage < maxPages) {
-            pdf.addPage();
-            currentY = margin;
-            currentPage++;
-          }
-        }
-        
-        addText(`${job.title} | ${job.company}, ${job.location}`, 10, true);
-        addText(`${job.startDate} - ${job.current ? 'Present' : job.endDate}`, 9);
-        // Show more achievements for the first job (Sites by Mac), fewer for others
-        const achievementsToShow = job.id === 'sites-by-mac' ? job.achievements.slice(0, 6) : job.achievements.slice(0, 3);
-        achievementsToShow.forEach(achievement => {
-          addText(`• ${achievement}`, 9, false, 3); // 3mm indent for bullets
-        });
-        currentY += 1.5; // Space between jobs
-      });
-
-      // === EDUCATION SECTION ===
-      addSection('EDUCATION & TRAINING');
-      education.forEach(edu => {
-        // Calculate space needed for this education entry
-        let eduHeight = 6; // Base height for degree + date lines
-        if (edu.relevantCoursework) {
-          eduHeight += 4; // Additional height for coursework section
-          const courseworkLines = pdf.splitTextToSize(edu.relevantCoursework.join(', '), contentWidth - 3);
-          eduHeight += courseworkLines.length * 2.8;
-        }
-        if (edu.leadership) {
-          eduHeight += 3; // Header for leadership section
-          eduHeight += edu.leadership.length * 3;
-        }
-        eduHeight += 1.5; // Spacing
-        
-        // Check if we have enough space for the complete education entry
-        if (currentY + eduHeight > pageHeight - margin - 10) {
-          if (currentPage < maxPages) {
-            pdf.addPage();
-            currentY = margin;
-            currentPage++;
-          }
-        }
-        
-        addText(`${edu.degree} | ${edu.institution}`, 10, true);
-        addText(`${edu.inProgress ? 'Expected Completion: ' : 'Completed: '}${new Date(edu.graduationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`, 9);
-        if (edu.relevantCoursework) {
-          addText('Key Coursework:', 9, true);
-          // Show more coursework for General Assembly, less for others
-          const courseworkToShow = edu.id === 'general-assembly-2025' ? edu.relevantCoursework : edu.relevantCoursework.slice(0, 5);
-          addText(courseworkToShow.join(', '), 8, false, 3);
-        }
-        if (edu.leadership) {
-          addText('Leadership:', 9, true);
-          edu.leadership.forEach(role => {
-            addText(`• ${role}`, 9, false, 3);
-          });
-        }
-        currentY += 0.5; // Spacing between education entries
-      });
-
-      // === CERTIFICATIONS SECTION ===
-      if (certifications.length > 0) {
-        addSection('CERTIFICATIONS');
-        certifications.forEach(cert => {
-          addText(`${cert.name} | ${cert.issuer} | ${cert.issueDate}`, 9);
-        });
+        currentY = langStartY + (Math.ceil(languages.length / 2) * 3.5) + 1;
       }
 
-      // === PROFESSIONAL ASSOCIATIONS SECTION ===
-      addSection('PROFESSIONAL ASSOCIATIONS');
-      professionalAssociations.slice(0, 3).forEach(association => { // Show top 3 associations
-        addText(`${association.name} - ${association.status}`, 9);
+      // === TECHNICAL EXPERIENCE (VOLUNQUEER) ===
+      if (variant === 'ats') {
+        const volunqueer = workExperience.find(job => job.id === 'volunqueer');
+        if (volunqueer) {
+          addSection('TECHNICAL EXPERIENCE', 1.5);
+          addText(`${volunqueer.title} | ${volunqueer.company}`, 10, true);
+          // Parse YYYY-MM or YYYY format without timezone issues
+          const formatDate = (dateStr: string) => {
+            const [year, month] = dateStr.split('-');
+            if (month) {
+              const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+              return `${monthNames[parseInt(month) - 1]} ${year}`;
+            }
+            return year;
+          };
+          const vqStart = formatDate(volunqueer.startDate);
+          const vqEnd = volunqueer.endDate ? formatDate(volunqueer.endDate) : 'Present';
+          addText(`${vqStart} - ${vqEnd}`, 9);
+          
+          volunqueer.achievements.forEach(achievement => {
+            addAchievement(achievement, 9, 3);
+          });
+          
+          if (volunqueer.technologies) {
+            addText(`Technologies: ${volunqueer.technologies.join(', ')}`, 8);
+          }
+          currentY += 1.5;
+        }
+      }
+
+      // === AWARDS & CERTIFICATIONS (ON PAGE 1) ===
+      if (variant === 'ats' && certifications.length > 0) {
+        addSection('AWARDS & CERTIFICATIONS', 1.5);
+        certifications.forEach(cert => {
+          // Use issueDate directly since it's already formatted as year
+          addText(`${cert.name} — ${cert.issuer} (${cert.issueDate})`, 9);
+        });
+        currentY += 1.5;
+      }
+
+      // === FORCE PAGE BREAK AFTER AWARDS (END OF PAGE 1) ===
+      if (variant === 'ats' && currentPage === 1) {
+        pdf.addPage();
+        currentY = margin;
+        currentPage++;
+      }
+
+      // === PROFESSIONAL EXPERIENCE ===
+      addSection('PROFESSIONAL EXPERIENCE');
+      
+      // Filter out Volunqueer (shown in Technical Experience for ATS) and Sites by Mac, Tastemorr
+      const jobsFilteredExperience = workExperience.filter(job => {
+        if (variant === 'ats') {
+          // ATS: Skip Volunqueer (already shown), Sites by Mac, and Tastemorr
+          return job.id !== 'volunqueer' && job.id !== 'sites-by-mac' && job.id !== 'tastemorr-grain';
+        } else {
+          // Stylized: Show top 2 non-Volunqueer jobs
+          return job.id !== 'volunqueer' && job.id !== 'sites-by-mac' && job.id !== 'tastemorr-grain';
+        }
+      }).slice(0, variant === 'stylized' ? 2 : 10);
+      
+      jobsFilteredExperience.forEach(job => {
+        addText(`${job.title} | ${job.company}, ${job.location}`, 10, true);
+        
+        // Hardcode dates to avoid conversion issues
+        let dateRange = '';
+        if (job.id === 'correctional-officer') {
+          dateRange = '2017 - 2024';
+        } else if (job.id === 'kitchenaid-factory') {
+          dateRange = '2015 - 2017';
+        } else if (job.id === 'gti-greenville') {
+          dateRange = '2012 - 2015';
+        } else {
+          // Fallback for any other jobs
+          const startYear = job.startDate.length === 4 ? job.startDate : job.startDate.split('-')[0];
+          const endYear = job.endDate ? (job.endDate.length === 4 ? job.endDate : job.endDate.split('-')[0]) : 'Present';
+          dateRange = `${startYear} - ${endYear}`;
+        }
+        addText(dateRange, 9);
+        
+        let achievementsToShow;
+        if (variant === 'stylized') {
+          achievementsToShow = job.achievements.slice(0, 3);
+        } else {
+          // ATS: Show all bullets for TDCJ (7 categorized), all for KitchenAid, all for GTI
+          achievementsToShow = job.achievements;
+        }
+        
+        achievementsToShow.forEach(achievement => {
+          addAchievement(achievement, 9, 3);
+        });
+        currentY += 1.5;
       });
 
-      // === ACTIVITIES & INTERESTS SECTION ===
-      addSection('ACTIVITIES & INTERESTS');
-      activities.slice(0, 2).forEach(activity => { // Show top 2 activities
-        addText(`${activity.name} - ${activity.status}`, 9);
+      // === EDUCATION ===
+      addSection('EDUCATION & TRAINING');
+      
+      // Show all 4 education entries for ATS (no filtering)
+      const eduToShow = variant === 'stylized' ? education.slice(0, 2) : education;
+      
+      eduToShow.forEach(edu => {
+        // Format: Degree | Institution
+        addText(`${edu.degree}`, 10, true);
+        
+        // Format: Institution • Location • Date
+        // Show month+year for General Assembly, year only for others
+        const isGeneralAssembly = edu.id === 'general-assembly-2025';
+        const dateOptions: Intl.DateTimeFormatOptions = isGeneralAssembly 
+          ? { year: 'numeric', month: 'long' }
+          : { year: 'numeric' };
+        const completionDate = new Date(edu.graduationDate).toLocaleDateString('en-US', dateOptions);
+        const locationPart = edu.location ? ` • ${edu.location}` : '';
+        addText(`${edu.institution}${locationPart} • ${edu.inProgress ? 'In Progress' : completionDate}`, 9);
+        
+        // Show notes for all education entries
+        if (edu.notes && variant === 'ats') {
+          addText(edu.notes, 8, false, 3);
+        }
+        
+        currentY += 0.5;
       });
 
-      // === REFERENCES SECTION ===
-      // Always include references, even if it's at the very bottom of page 2
-      addSection('REFERENCES');
-      references.forEach(ref => {
-        addText(`${ref.name}`, 10, true);
-        addText(`${ref.title} at ${ref.company}`, 9);
-        addText(`Email: ${ref.email}${ref.phone ? ` | Phone: ${ref.phone}` : ''}`, 9);
-        addText(`Relationship: ${ref.relationship}`, 9);
-        currentY += 1; // Space between references
-      });
+      //=== PROJECTS (SIX PROJECTS FOR ATS) ===
+      if (variant === 'ats') {
+        addSection('SELECTED PROJECTS');
+        
+        // Column headers
+        const projectHalfWidth = (contentWidth - 6) / 2;
+        pdf.setFontSize(10);
+        pdf.setFont('arial', 'bold');
+        pdf.text('Published / Shipped', margin, currentY);
+        pdf.text('Prototyping / New Tech', margin + projectHalfWidth + 6, currentY);
+        currentY += 4;
+        pdf.setFont('arial', 'normal');
+        
+        // LEFT COLUMN: Shipped/Published projects
+        const leftProjects = [
+          { 
+            name: 'StirCraft', 
+            desc: 'Full-stack Django application with 245 Python tests + 23 JavaScript tests achieving 100% critical path coverage. Built advanced search, vibe-based filtering, and a data-cleaning pipeline normalizing 400+ cocktails and 325+ ingredients. Implemented inline formsets, Redis caching, and Heroku deployment.'
+          },
+          { 
+            name: 'SitesByMac.dev', 
+            desc: 'Next.js 15/TypeScript portfolio with WCAG AA accessibility, dynamic content loading, automated resume PDF generation, Jest/RTL testing, and Vercel CI/CD deployment.'
+          },
+          { 
+            name: 'DreamWeaver', 
+            desc: 'Node.js/Express/MongoDB backend with JWT auth, RBAC, bcrypt hashing, ownership validation, admin safeguards, and a comprehensive realistic data seeding system.'
+          }
+        ];
+        
+        // RIGHT COLUMN: Prototyping stage/experiments
+        const rightProjects = [
+          { 
+            name: 'HappeningHere', 
+            desc: 'LLM-powered platform surfacing grassroots events, free meals, community resources, local sports, festivals, and neighborhood happenings within a zip-code radius. Optional SMS handoff for Google Maps links. Built with accessibility-first design and category-based filtering.'
+          },
+          { 
+            name: 'BidOnThis', 
+            desc: 'QR-based bidding system for community events, schools, and fundraisers. Features real-time bidding, SMS winner notifications, cashless/cashbox payment options, and a projector-friendly organizer dashboard with fundraising goal tracking and sponsor placements.'
+          },
+          { 
+            name: 'Office Quartermaster', 
+            desc: 'Tablet-optimized system with QR badge scanning for employee authentication and item checkout. Real-time low-stock alerts, multi-tier approval workflows (e.g., laptops require supervisor approval), audit-ready usage logs, and loss-prevention insights such as consumption anomalies and equipment lifecycle trends.'
+          }
+        ];
+        
+        // Render projects in 2 columns (side by side)
+        const projectStartY = currentY;
+        let leftY = projectStartY;
+        let rightY = projectStartY;
+        
+        // Render left column
+        leftProjects.forEach((project) => {
+          if (leftY > pageHeight - margin - 8) return;
+          
+          pdf.setFontSize(9);
+          pdf.setFont('arial', 'bold');
+          pdf.text(project.name, margin, leftY);
+          leftY += 3;
+          
+          pdf.setFontSize(8);
+          pdf.setFont('arial', 'normal');
+          const descLines = pdf.splitTextToSize(project.desc, projectHalfWidth - 2);
+          descLines.forEach((line: string) => {
+            if (leftY > pageHeight - margin - 3) return;
+            pdf.text(line, margin, leftY);
+            leftY += 2.5;
+          });
+          leftY += 2;
+        });
+        
+        // Render right column
+        rightProjects.forEach((project) => {
+          if (rightY > pageHeight - margin - 8) return;
+          
+          pdf.setFontSize(9);
+          pdf.setFont('arial', 'bold');
+          pdf.text(project.name, margin + projectHalfWidth + 6, rightY);
+          rightY += 3;
+          
+          pdf.setFontSize(8);
+          pdf.setFont('arial', 'normal');
+          const descLines = pdf.splitTextToSize(project.desc, projectHalfWidth - 2);
+          descLines.forEach((line: string) => {
+            if (rightY > pageHeight - margin - 3) return;
+            pdf.text(line, margin + projectHalfWidth + 3, rightY);
+            rightY += 2.5;
+          });
+          rightY += 2;
+        });
+        
+        currentY = Math.max(leftY, rightY);
+      }
 
-      /**
-       * PDF Download
-       * 
-       * The save() method triggers the browser's download functionality
-       * with the specified filename. The PDF is generated entirely in
-       * memory before download.
-       */
       pdf.save(filename);
       
     } catch (error) {
       console.error('Error generating PDF:', error);
-      // In production, you might want to show a user-friendly error message
     }
   };
 
-  /**
-   * Button Component Render
-   * 
-   * Returns a styled button with:
-   * - PDF download icon (SVG)
-   * - Hover effects
-   * - Accessible design
-   * - Custom styling support via className prop
-   * 
-   * Cool Pattern: The SVG icon is inline for better performance
-   * and styling control compared to external icon libraries
-   */
   return (
     <button
       onClick={generatePDF}
-      className={`inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium ${className}`}
-      aria-label="Download resume as PDF file"
+      className={className}
+      aria-label={`Download ${variant === 'ats' ? 'ATS-friendly' : 'stylized'} resume as PDF`}
     >
-      {/* PDF Download Icon - Heroicons outline style */}
       <svg 
         className="w-5 h-5 mr-2" 
         fill="none" 
@@ -515,7 +509,7 @@ export default function PDFDownloadButton({
           d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
         />
       </svg>
-      Download PDF Resume
+      {variant === 'ats' ? 'ATS Resume (2-page)' : 'Stylized Resume (1-page)'}
     </button>
   );
 }

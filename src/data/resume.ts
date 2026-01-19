@@ -4,61 +4,98 @@ import { Education, WorkExperience, Certification, Skill, SoftwareProject } from
 // This is your single source of truth for resume information
 
 export const personalInfo = {
-  name: 'Travis M. McCoy',
-  title: 'Full-Stack Developer',
-  location: 'Dayton, OH 45342',
+  name: 'Travis "Mac" McCoy',
+  title: 'Full Stack Software Engineer, Security & Trust Architect',
+  subtitle: 'Security & Compliance',
+  location: 'Dayton, OH',
+  locationNote: 'Willing to Relocate',
+  clearance: 'Security Clearance Eligible (United States Citizen)',
   phone: '(937) 467-9312',
   email: 'mac@sitesbymac.dev',
-  website: 'https://sitesbymac.dev',
-  linkedin: 'http://www.linkedin.com/in/travis-mccoy-fullstack',
-  github: 'https://github.com/macfarley',
-  summary: 'Full-Stack Developer with hands-on experience building and deploying production-ready applications using Python, Django, React, and modern JavaScript frameworks. Strong foundation in algorithms, data structures, and test-driven development, with current upskilling in C++, C#, and Angular. Passionate about software craftsmanship, problem-solving, and building inclusive, user-centered applications.'
+  website: 'sitesbymac.dev',
+  linkedin: 'linkedin.com/in/travis-mccoy-fullstack',
+  github: 'github.com/macfarley',
+  summary: 'Full-Stack Software Engineer specializing in security, privacy, and ethical system design. I bring a rare hybrid background that blends information security, operational safety, human-behavior analysis, and modern engineering practices. My experience in incident command and threat assessment trained me to think in continuous SWOT-style cycles and translate insights into iterative improvements that fit naturally into Scrum workflows. I\'m the engineer who sees a single form field and asks how to protect the company, improve the user experience, and build long-term trust simultaneously. Focused on designing systems that anticipate misuse, strengthen public confidence, and unify security architecture, Trust & Safety, and privacy-first product design.'
 };
+
+export const coreCompetencies = [
+  'Security & Compliance',
+  'Trust & Safety',
+  'Risk Assessment',
+  'Incident Command (ICS)',
+  'Threat Modeling',
+  'Data Minimization',
+  'Privacy-First Architecture',
+  'WCAG Accessibility',
+  'Role-Based Access Control',
+  'Cross-Functional Collaboration',
+  'Training & Mentorship',
+  'Documentation & Audit Readiness'
+];
+
+export const languages = [
+  { language: 'English', proficiency: 'Native' },
+  { language: 'Spanish', proficiency: 'Conversational (corrections/field experience)' },
+  { language: 'German', proficiency: 'Basic conversational' },
+  { language: 'Arabic', proficiency: 'Reading proficiency (academic study)' }
+];
 
 export const education: Education[] = [
   {
     id: 'general-assembly-2025',
     institution: 'General Assembly',
-    degree: 'Software Engineering Immersive',
+    degree: 'Software Engineering Immersive — Certificate of Completion',
+    location: 'New York, NY',
     graduationDate: '2025-08-31',
     inProgress: false,
-    relevantCoursework: [
-      'HTML5 & CSS3',
-      'JavaScript (ES6+) & TypeScript',
-      'React & Next.js',
-      'Node.js & Express',
-      'MongoDB & PostgreSQL', 
-      'Django & Python Web Development',
-      'RESTful API Design',
-      'Git & GitHub',
-      'Agile/Scrum Workflows',
-      'JWT Authentication',
-      'Deployment (Vercel, Netlify, Heroku)',
-      'Python & Flask',
-      'Modular Code Architecture',
-      'Secure Web App Fundamentals',
-      'Team Leadership & Project Management',
-      'Test-Driven Development',
-      'Database Design & Optimization'
-    ]
+    notes: 'Project-based full-stack program emphasizing test-driven development, accessibility, and collaborative Git workflows. Focused on ethical system design, agile team practices, and scalable architecture. Built and deployed multiple full-stack applications using modern frameworks, CI/CD pipelines, and accessibility-first principles.'
   },
   {
-    id: 'independent-study',
-    institution: 'Self-Directed Learning',
-    degree: 'Continuing independent study in C++, C#, Angular, and Flutter',
-    graduationDate: '2025-12-31',
-    inProgress: true
+    id: 'ohio-university',
+    institution: 'Ohio University',
+    degree: 'Philosophy – Pre-Law Discipline',
+    location: 'Athens, OH',
+    graduationDate: '2010-12-31',
+    inProgress: false,
+    notes: 'Coursework included ethics, logic, political theory, comparative religion, international studies, and foreign languages (Arabic and German).'
   },
   {
-    id: 'future-education',
-    institution: 'Future Formal Education',
-    degree: 'Expected to re-enroll in formal degree-track education Fall 2026',
-    graduationDate: '2026-12-31',
-    inProgress: false
+    id: 'wright-state',
+    institution: 'Wright State University',
+    degree: 'Undergraduate Coursework',
+    location: 'Celina, OH',
+    graduationDate: '2009-12-31',
+    inProgress: false,
+    notes: 'Completed 72 quarter hours as a dual-enrollment student during junior and senior years of high school. Dean\'s List for six quarters • 3.75 cumulative GPA. Completed English Composition sequence and a comprehensive 3-term Western Civilization series emphasizing nomadic pastoralism, cultural drift, and simultaneous regional developments. Took multiple psychology courses and served as Vice President of the Psychology Society — a student-faculty discussion and excursion group.'
+  },
+  {
+    id: 'celina-high',
+    institution: 'Celina High School',
+    degree: 'Honors Diploma • Top 10%',
+    location: 'Celina, OH',
+    graduationDate: '2009-05-31',
+    inProgress: false,
+    notes: 'GPA 3.52 • SAT 1420 (740 Math, 680 Verbal) • ACT 31 • AP Chemistry (5). Captain of the Scholastic Team with five televised WHIO High Q appearances. Ohio Mock Trial Attorney and Junior Engineering Technology and Science (JETS) competition team captain.'
   }
 ];
 
 export const workExperience: WorkExperience[] = [
+  {
+    id: 'volunqueer',
+    title: 'Junior Developer & Security/Privacy Contributor',
+    company: 'VolunQueer — Community Tech Platform',
+    location: 'Remote',
+    startDate: '2025-11',
+    description: 'Contributing to Django/PostgreSQL platform connecting volunteers with community organizations',
+    achievements: [
+      'SECURITY, PRIVACY & ACCESS CONTROL: Authored guidelines for data minimization, consent-driven onboarding, and Role-Based Access Control (RBAC). Designed privacy-first volunteer profiles with opt-in identity fields, anonymized messaging, and transparent access tiers.',
+      'ACCESSIBILITY & FORM DESIGN: Improved form UX by reducing intimidation, clarifying required fields, and aligning components with WCAG. Advocated for inclusive defaults and user autonomy in profile and application flows.',
+      'ARCHITECTURE & PLATFORM TRANSITION: Participated in rebasing the platform from AWS and Supabase to a Django/PostgreSQL stack. Gained exposure to legacy infrastructure while contributing to the new backend and deployment pipeline.',
+      'DEBUGGING & DEVELOPER EXPERIENCE: Built custom utilities to trace React/Django data flows, improving visibility and reducing time-to-resolution. Supported onboarding and async collaboration through documentation, commit hygiene, and communication templates.',
+      'DISTRIBUTED TEAMWORK: Collaborated across time zones using GitHub, Discord, Trello, Google Workspace, and Figma. Provided peer mentorship and helped shape team norms for clarity, safety, and async progress.'
+    ],
+    technologies: ['Django', 'PostgreSQL', 'TypeScript', 'React', 'Docker', 'AWS', 'WCAG Accessibility', 'Privacy-First Design', 'Security', 'Role-Based Access Control']
+  },
   {
     id: 'sites-by-mac',
     title: 'Founder & Full-Stack Developer',
@@ -78,64 +115,54 @@ export const workExperience: WorkExperience[] = [
   {
     id: 'correctional-officer',
     title: 'Correctional Officer V',
-    company: 'Texas Department of Criminal Justice – Holliday Transfer Facility',
+    company: 'Texas Department of Criminal Justice — Holliday Unit',
     location: 'Huntsville, TX',
     startDate: '2017-09-01',
-    endDate: '2024-10-01',
+    endDate: '2024-10-31',
     description: 'High-security supervision and crisis management in correctional facility environment',
     achievements: [
-      'Supervised housing units of 200+ individuals, ensuring compliance with strict policies and schedules.',
-      'Maintained flawless accountability records over 7 years, never delaying mandatory counts.',
-      'Trained and mentored new staff in communication, reporting, and safety protocols.',
-      'Produced detailed reports (incident logs, maintenance requests, behavioral interventions).',
-      'Led emergency response and coordinated cross-team operations under pressure.'
+      'INCIDENT COMMAND & EMERGENCY RESPONSE: Served as on-scene Incident Commander for fires, medical crises, assaults, and disturbances. Directed emergency procedures, secured movement, and delivered SITREPs.',
+      'STG INTELLIGENCE: Identified recruitment patterns, prohibited iconography, and indicators of emerging STG activity. Monitored communications and property for unauthorized materials.',
+      'SAFETY, VULNERABILITY & DUTY OF CARE: Identified individuals in distress and initiated protective protocols. Provided confidential guidance to individuals hesitant to report safety concerns.',
+      'SITUATIONAL AWARENESS & BEHAVIORAL OBSERVATION: Assessed group dynamics and environmental cues to detect early indicators of conflict or risk. Maintained authority and calm under pressure.',
+      'FACILITIES & OPERATIONAL CONTINUITY: Created work orders and supervised critical maintenance projects including power loss, HVAC failures, and plumbing emergencies. Ensured continuity during staffing shortages.',
+      'KITCHEN OPERATIONS & INVENTORY CONTROL: Supervised 30-person inmate work crews producing ~2,000 meals per shift. Maintained strict inventory controls on tools, equipment, and food supplies.',
+      'TRAINING & DOCUMENTATION: Served as primary shift trainer, coaching new officers on communication, boundaries, and real-world operations. Managed confidential records and contributed to ACA accreditation.'
     ],
-    technologies: ['Crisis Management', 'Team Leadership', 'Safety Protocols', 'Documentation Systems']
+    technologies: ['Incident Command (ICS)', 'Emergency Response', 'STG Intelligence', 'PREA Compliance', 'Risk Assessment', 'Training & Mentorship', 'Documentation']
   },
   {
     id: 'kitchenaid-factory',
-    title: 'Assembly | Testing & Inventory Auditor',
-    company: 'KitchenAid Distribution Center (Whirlpool)',
+    title: 'Production, QA, and Inventory Technician',
+    company: 'KitchenAid / Whirlpool',
     location: 'Greenville, OH',
-    startDate: '2015-03-01',
-    endDate: '2017-06-01',
+    startDate: '2015',
+    endDate: '2017',
     description: 'Manufacturing operations including assembly, quality testing, and inventory management',
     achievements: [
-      'Conducted QA testing and logged defect data for cross-team review.',
-      'Spearheaded inventory audits, improving supply chain reliability.',
-      'Operated robotic-assisted assembly lines under high-volume targets.'
+      'Worked on the KitchenAid Stand Mixer line including robotic machining, QA testing, and end-of-line verification.',
+      'Conducted defect logging and cross-team QA reporting to support continuous improvement.',
+      'Spearheaded inventory audits, improving supply chain reliability and reducing stock discrepancies.',
+      'Applied Lean, Kaizen, and 5S principles to improve workflow efficiency.'
     ],
-    technologies: ['Manufacturing Systems', 'Quality Control', 'Inventory Management', 'Data Logging']
+    technologies: ['Manufacturing Systems', 'Quality Control', 'Inventory Management', 'Lean Manufacturing', '5S', 'Kaizen']
   },
   {
     id: 'gti-greenville',
     title: 'Quality Inspector | Machine Operator',
-    company: 'GTI Greenville Technology Inc. (Moriroku Network)',
+    company: 'Moriroku North America (formerly GTI)',
     location: 'Greenville, OH',
-    startDate: '2012-09-01',
-    endDate: '2015-01-01',
+    startDate: '2012',
+    endDate: '2015',
     description: 'Quality inspection and machine operation for automotive component manufacturing',
     achievements: [
-      'Maintained a flawless quality record over 3 years, preventing costly line stoppages.',
-      'Applied 5S and Kanban systems for workflow optimization.',
-      'Documented inspections and ensured compliance with manufacturing standards.'
+      'Maintained a flawless quality record over three years, preventing costly line stoppages.',
+      'Inspected injection-molded components for Honda Civic and Accord to maintain Honda Quality standards.',
+      'Operated forklifts and completed in-house safety certification.',
+      'Used enterprise defect logging, time management, and barcode-based inventory systems.',
+      'Every missed defect could cost $10,000 per minute at the Marysville Assembly Plant — I was never the cause of a lost-time defect.'
     ],
-    technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols']
-  },
-  {
-    id: 'tastemorr-grain',
-    title: 'Production & Operations',
-    company: 'Tastemorr Basic Grain',
-    location: 'Coldwater, OH',
-    startDate: '2010-11-01',
-    endDate: '2012-08-01',
-    description: 'Production and operations in grain processing facility',
-    achievements: [
-      'Operated production equipment and maintained quality standards.',
-      'Managed inventory and supply chain logistics.',
-      'Ensured compliance with safety and operational protocols.'
-    ],
-    technologies: ['Production Equipment', 'Inventory Management', 'Quality Control', 'Safety Protocols']
+    technologies: ['Quality Management Systems', 'Manufacturing Equipment', '5S/Kanban', 'Safety Protocols', 'Forklift Operation']
   }
 ];
 
@@ -143,66 +170,107 @@ export const softwareProjects: SoftwareProject[] = [
   {
     id: 'stircraft',
     title: 'StirCraft: Professional Cocktail Manager',
-    description: 'Sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals',
+    description: 'Full-stack Django application with 245 Python tests + 23 JavaScript tests achieving 100% critical path coverage. Built advanced search, vibe-based filtering, and a data-cleaning pipeline normalizing 400+ cocktails and 325+ ingredients',
     context: 'Team Lead',
     startDate: '2025-08-01',
     endDate: '2025-08-31',
     achievements: [
-      'Architected and implemented a production-ready Django application with 6 database models and advanced relationships.',
-      'Designed ABV calculation algorithms, recipe forking with attribution tracking, and intelligent tag management.',
-      'Implemented 57 automated tests achieving 100% critical path coverage.',
-      'Built demo data system with 15+ themed users and 300+ interactions.'
+      'Led three-person team through architecture, task planning, and delivery of full-stack Django application.',
+      'Engineered Python data-cleaning pipeline to normalize inconsistent third-party API data.',
+      'Designed recipe-forking system enabling derivative recipes with automatic attribution.',
+      'Implemented inline formsets, Redis caching, and Heroku deployment.'
     ],
-    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Project Management'],
+    technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'Redis', 'Team Leadership'],
     liveUrl: 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
     githubUrl: 'https://github.com/macfarley/stir-craft',
     featured: true
   },
   {
     id: 'dream-weaver',
-    title: 'Dream Weaver: Sleep Tracking Application',
-    description: 'Full-stack MERN application for tracking and analyzing sleep patterns with data visualization',
-    context: 'Individual Project',
+    title: 'DreamWeaver: Sleep Tracking Backend',
+    description: 'Node.js/Express/MongoDB backend with JWT auth, RBAC, bcrypt hashing, ownership validation, admin safeguards, and comprehensive realistic data seeding system',
+    context: 'Completed',
     startDate: '2025-07-15',
     endDate: '2025-07-25',
     achievements: [
-      'Developed full-stack MERN application with authentication, data persistence, and responsive design.',
-      'Implemented mood correlation and pattern analysis features.',
-      'Designed data visualization dashboard using modern JS charting libraries.',
-      'Created RESTful API with MongoDB for efficient storage and retrieval.'
+      'Built Node.js/Express backend with JWT authentication and role-based access control.',
+      'Implemented bcrypt password hashing and ownership validation middleware.',
+      'Created comprehensive data seeding system with realistic sleep patterns.',
+      'Deployed to production with MongoDB Atlas and Vercel.'
     ],
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JavaScript', 'CSS3', 'Vercel', 'MongoDB Atlas'],
+    technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'bcrypt', 'Vercel', 'MongoDB Atlas'],
     liveUrl: 'https://dream-weaver-rho.vercel.app/',
     githubUrl: 'https://github.com/macfarley/dream-weaver',
     featured: true
+  },
+  {
+    id: 'happening-here',
+    title: 'HappeningHere: Hyperlocal Discovery Engine',
+    description: 'LLM-powered platform surfacing grassroots events, free meals, community resources, local sports, festivals, and neighborhood happenings within a zip-code radius',
+    context: 'Concept/Prototype',
+    startDate: '2025-11-01',
+    endDate: '2025-11-01',
+    achievements: [
+      'Designed accessibility-first discovery platform for community events and resources.',
+      'Prototyped LLM-powered event summarization and categorization.',
+      'Planned zip-code radius search with SMS handoff for Google Maps links.',
+      'Built category-based filtering system for events, meals, sports, and resources.'
+    ],
+    technologies: ['LLM Integration', 'API Design', 'Accessibility', 'SMS Integration', 'Prototype'],
+    featured: false
+  },
+  {
+    id: 'bid-on-this',
+    title: 'BidOnThis: Lightweight Auction & Fundraising Tool',
+    description: 'QR-based bidding system for community events, schools, and fundraisers with real-time bidding, SMS notifications, and projector-friendly organizer dashboard',
+    context: 'Concept/Prototype',
+    startDate: '2025-12-01',
+    endDate: '2025-12-01',
+    achievements: [
+      'Designed QR-based authentication and bidding workflow for events.',
+      'Prototyped real-time bidding system with SMS winner notifications.',
+      'Planned cashless/cashbox payment options and audit trails.',
+      'Created projector-friendly dashboard with fundraising goal tracking and sponsor placements.'
+    ],
+    technologies: ['QR Codes', 'Real-time Systems', 'SMS Integration', 'Event Management', 'Prototype'],
+    featured: false
+  },
+  {
+    id: 'office-quartermaster',
+    title: 'Office Quartermaster: Tablet-First Inventory Workflow',
+    description: 'Tablet-optimized system with QR badge scanning for employee authentication and item checkout, with real-time low-stock alerts and audit-ready usage logs',
+    context: 'Concept/Prototype',
+    startDate: '2026-01-01',
+    endDate: '2026-01-01',
+    achievements: [
+      'Designed tablet-first UI for QR badge scanning and item checkout.',
+      'Prototyped multi-tier approval workflows (e.g., laptops require supervisor approval).',
+      'Planned real-time low-stock alerts and consumption anomaly detection.',
+      'Created audit-ready usage logs with equipment lifecycle tracking.'
+    ],
+    technologies: ['QR Codes', 'Tablet UI', 'Inventory Management', 'RBAC', 'Prototype'],
+    featured: false
   }
 ];
 
 export const certifications: Certification[] = [
   {
-    id: 'general-assembly',
-    name: 'Software Engineering Immersive Certificate',
-    issuer: 'General Assembly',
-    issueDate: '2025-08-31',
-    url: '/GA-Certificate.pdf'
+    id: 'traliant-dei',
+    name: 'Diversity, Equity & Inclusion Training',
+    issuer: 'Traliant',
+    issueDate: '2025'
   },
   {
     id: 'cpr-aed',
     name: 'CPR/AED Certified',
     issuer: 'American Red Cross',
-    issueDate: '2024-01-01'
+    issueDate: '2023'
   },
   {
-    id: 'traliant-dei',
-    name: 'Diversity, Equity & Inclusion Training',
-    issuer: 'Traliant',
-    issueDate: '2025-01-01'
-  },
-  {
-    id: 'dod-8570-iat',
-    name: 'DoD 8570 IAT Level II',
-    issuer: 'Eligible',
-    issueDate: '2025-12-31' // Future date for eligibility
+    id: 'beto-award',
+    name: 'George Beto Excellence Award',
+    issuer: 'Texas Department of Criminal Justice',
+    issueDate: '2017'
   }
 ];
 
@@ -316,23 +384,27 @@ export const references = [
 
 export const skills: Skill[] = [
   {
-    category: 'Programming',
-    skills: ['Python', 'JavaScript/TypeScript', 'React', 'Django', 'Next.js', 'Node.js', 'Flask', 'C++ (coursework)', 'C# (in progress)', 'Angular (in progress)']
+    category: 'Languages & Frameworks',
+    skills: ['Python', 'Django', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'SQL', 'PostgreSQL', 'FastAPI', 'C#', 'Angular', 'Flutter']
   },
   {
-    category: 'Software Engineering',
-    skills: ['Algorithms & Data Structures', 'RESTful API Design', 'Test-Driven Development', 'CI/CD', 'Unit & Integration Testing']
+    category: 'Engineering Practices',
+    skills: ['Test-Driven Development', 'Object-Oriented Design', 'RESTful APIs', 'Agile/Scrum', 'Code Review', 'Debugging', 'DRY Principles', 'Data Normalization', 'LLM Integration', 'Prompt Engineering']
   },
   {
-    category: 'Platforms & Tools',
-    skills: ['AWS (familiar)', 'Docker', 'Git/GitHub', 'Postman', 'Agile/Scrum']
+    category: 'DevOps & Tools',
+    skills: ['Git', 'GitHub', 'Docker', 'CI/CD', 'AWS', 'Google Workspace', 'Trello', 'Figma', 'Discord']
   },
   {
-    category: 'Collaboration',
-    skills: ['Technical Documentation', 'Team Leadership', 'Training & Mentorship']
+    category: 'Security & Accessibility',
+    skills: ['Threat Modeling', 'Risk Assessment', 'Data Minimization', 'Privacy-First Design', 'WCAG Accessibility', 'Role-Based Access Control', 'Incident Command (ICS)', 'PREA Compliance']
   },
   {
-    category: 'Deployment & Hosting',
-    skills: ['Vercel', 'Netlify', 'Heroku', 'PostgreSQL Production', 'Static Generation', 'SSL Certificates', 'WhiteNoise', 'Domain Management']
+    category: 'Collaboration & Remote Work',
+    skills: ['Async Communication', 'Distributed Teams', 'Cross-Functional Collaboration', 'Training & Mentorship', 'Documentation', 'Technical Writing', 'Stakeholder Communication']
+  },
+  {
+    category: 'Administrative',
+    skills: ['Microsoft Office', 'Google Workspace', 'Recordkeeping', 'Policy Interpretation', '51 WPM Typing']
   }
 ];

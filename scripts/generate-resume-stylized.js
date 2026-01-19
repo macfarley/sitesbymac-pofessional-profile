@@ -1,0 +1,529 @@
+#!/usr/bin/env node
+
+/**
+ * Stylized Resume Generator
+ * Generates a visually appealing, condensed 1-page resume HTML
+ * 
+ * Usage: node scripts/generate-resume-stylized.js
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const generateStylizedResume = () => {
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travis "Mac" McCoy - Full-Stack Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --accent-teal: #0d9488;
+            --dark-slate: #1e293b;
+            --medium-gray: #475569;
+            --light-gray: #cbd5e1;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            --corner-ornament: "❖";
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.35;
+            color: var(--dark-slate);
+            background: #fff;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.35in 0.5in;
+            position: relative;
+        }
+
+        /* Decorative corner ornaments */
+        body::before,
+        body::after {
+            content: var(--corner-ornament);
+            position: absolute;
+            font-size: 14pt;
+            color: var(--accent-teal);
+            opacity: 0.4;
+        }
+        
+        body::before {
+            top: 0.2in;
+            left: 0.2in;
+        }
+        
+        body::after {
+            top: 0.2in;
+            right: 0.2in;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 0.15in;
+            padding-bottom: 10pt;
+            border-bottom: 3pt double var(--primary-blue);
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -2pt;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60pt;
+            height: 2pt;
+            background: var(--accent-teal);
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 4pt;
+            letter-spacing: -0.3pt;
+            text-shadow: 1px 1px 0 rgba(14, 116, 144, 0.1);
+        }
+
+        .tagline {
+            font-size: 10.5pt;
+            color: var(--medium-gray);
+            font-weight: 600;
+            margin-bottom: 6pt;
+            letter-spacing: 0.5pt;
+        }
+
+        .contact-info {
+            font-size: 8.5pt;
+            color: #64748b;
+            display: flex;
+            justify-content: center;
+            gap: 8pt;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-blue);
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--primary-blue);
+            border-bottom: 2pt solid var(--light-gray);
+            margin-top: 10pt;
+            margin-bottom: 6pt;
+            padding-bottom: 2pt;
+            letter-spacing: 0.3pt;
+            position: relative;
+        }
+        
+        h2::before {
+            content: "◆";
+            position: absolute;
+            left: -12pt;
+            color: var(--accent-teal);
+            font-size: 8pt;
+        }
+
+        h3 {
+            font-size: 9.5pt;
+            font-weight: 600;
+            margin-bottom: 2pt;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8pt 16pt;
+        }
+
+        .summary {
+            font-size: 9.5pt;
+            line-height: 1.45;
+            text-align: justify;
+            margin-bottom: 6pt;
+            padding: 8pt 12pt;
+            background: linear-gradient(to right, #f0f9ff, #f8fafc);
+            border-left: 3pt solid var(--accent-teal);
+            border-radius: 2pt;
+            color: var(--dark-slate);
+            font-style: italic;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1pt;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .company {
+            font-weight: 500;
+            color: var(--medium-gray);
+        }
+
+        .dates {
+            font-size: 8.5pt;
+            font-style: italic;
+            color: #64748b;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        ul {
+            margin-left: 14pt;
+            margin-bottom: 6pt;
+        }
+
+        li {
+            margin-bottom: 1.5pt;
+            font-size: 9pt;
+            line-height: 1.35;
+        }
+        
+        li::marker {
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
+        .skills-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4pt 12pt;
+            font-size: 8.5pt;
+        }
+
+        .skill-row {
+            display: flex;
+            gap: 4pt;
+            padding: 3pt 6pt;
+            background: #f8fafc;
+            border-radius: 2pt;
+        }
+
+        .skill-row strong {
+            min-width: 70pt;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .skill-row span {
+            color: var(--medium-gray);
+        }
+
+        .projects-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6pt 10pt;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 3pt solid var(--accent-teal);
+            border-top: 1pt solid #bae6fd;
+            padding: 7pt 9pt;
+            border-radius: 3pt;
+            box-shadow: 0 1pt 3pt rgba(0,0,0,0.05);
+        }
+
+        .project-title {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 9.5pt;
+            margin-bottom: 2pt;
+        }
+
+        .project-desc {
+            font-size: 8.5pt;
+            color: var(--medium-gray);
+            line-height: 1.35;
+            margin-bottom: 3pt;
+        }
+
+        .project-tech {
+            font-size: 7.5pt;
+            color: #0d9488;
+            font-weight: 600;
+        }
+
+        .education-compact {
+            font-size: 9pt;
+        }
+
+        .edu-item {
+            margin-bottom: 4pt;
+            display: flex;
+            justify-content: space-between;
+            padding: 2pt 0;
+        }
+
+        .edu-item strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .awards-compact {
+            font-size: 8.5pt;
+            color: var(--medium-gray);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3pt 8pt;
+        }
+
+        .awards-compact span {
+            background: #f0f9ff;
+            padding: 2pt 6pt;
+            border-radius: 2pt;
+            font-weight: 500;
+        }
+        
+        .awards-compact span::before {
+            content: "◆ ";
+            color: var(--accent-teal);
+            font-size: 7pt;
+        }
+
+        @media print {
+            body {
+                padding: 0.3in 0.45in;
+            }
+            .contact-info a {
+                color: var(--accent-teal);
+            }
+        }
+
+        @media screen {
+            body {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <h1>Travis "Mac" McCoy</h1>
+        <div class="tagline">Full-Stack Software Engineer • Security & Trust Architect</div>
+        <div class="contact-info">
+            <span>Dayton, OH</span>
+            <span>•</span>
+            <span>(937) 467-9312</span>
+            <span>•</span>
+            <span><a href="mailto:mac@sitesbymac.dev">mac@sitesbymac.dev</a></span>
+            <span>•</span>
+            <span><a href="https://sitesbymac.dev">sitesbymac.dev</a></span>
+            <span>•</span>
+            <span><a href="https://github.com/macfarley">GitHub</a></span>
+            <span>•</span>
+            <span><a href="https://linkedin.com/in/travis-mccoy-fullstack">LinkedIn</a></span>
+        </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section>
+        <div class="summary">
+            Full-Stack Software Engineer blending information security, operational safety, and ethical system design. Proven track record in high-stakes incident command, threat assessment, and emergency response. Technical expertise in Python, Django, TypeScript, React, PostgreSQL, Docker, and privacy-first architecture. Focused on building trust-centered, accessible applications that anticipate misuse and strengthen public confidence.
+        </div>
+    </section>
+
+    <!-- SKILLS (COMPACT) -->
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-compact">
+            <div class="skill-row">
+                <strong>Languages:</strong>
+                <span>Python, JavaScript, TypeScript, SQL, C#</span>
+            </div>
+            <div class="skill-row">
+                <strong>Frontend:</strong>
+                <span>React, Next.js, Angular, Flutter, HTML5, CSS3</span>
+            </div>
+            <div class="skill-row">
+                <strong>Backend:</strong>
+                <span>Django, Node.js, Express, FastAPI, REST APIs</span>
+            </div>
+            <div class="skill-row">
+                <strong>DevOps:</strong>
+                <span>Git, Docker, CI/CD, AWS, Heroku, Vercel</span>
+            </div>
+            <div class="skill-row">
+                <strong>Security:</strong>
+                <span>Threat Modeling, Risk Assessment, Access Control</span>
+            </div>
+            <div class="skill-row">
+                <strong>Other:</strong>
+                <span>Testing, Debugging, WCAG, Agile, Documentation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE (CONDENSED) -->
+    <section>
+        <h2>Professional Experience</h2>
+
+        <div style="margin-bottom: 8pt;">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Junior Developer & Security Contributor</span> — <span class="company">VolunQueer</span>
+                </div>
+                <span class="dates">Nov 2025–Present</span>
+            </div>
+            <ul>
+                <li>Contributing Django/PostgreSQL volunteer platform; authored RBAC and data minimization guidelines</li>
+                <li>Built debugging utilities for React-Django data flows; supported AWS/Supabase to Docker migration</li>
+                <li>Improved accessibility (WCAG), form UX, and consent-driven onboarding workflows</li>
+            </ul>
+        </div>
+
+        <div style="margin-bottom: 8pt;">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Correctional Officer V</span> — <span class="company">Texas Department of Criminal Justice</span>
+                </div>
+                <span class="dates">2017–2024</span>
+            </div>
+            <ul>
+                <li>Incident Commander for fires, medical crises, assaults; trained 50+ officers in emergency protocols</li>
+                <li>STG intelligence analyst; monitored communications, identified recruitment patterns and prohibited materials</li>
+                <li>Supervised 30-person kitchen crews producing 2,000 meals/shift; maintained strict inventory controls</li>
+            </ul>
+        </div>
+
+        <div style="margin-bottom: 8pt;">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Production & QA Technician</span> — <span class="company">KitchenAid (Whirlpool)</span>
+                </div>
+                <span class="dates">2015–2017</span>
+            </div>
+            <ul>
+                <li>Stand Mixer assembly line QA; applied Lean/Kaizen/5S for quality and workflow optimization</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 8pt;">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Quality Inspector</span> — <span class="company">Moriroku (formerly GTI)</span>
+                </div>
+                <span class="dates">2012–2015</span>
+            </div>
+            <ul>
+                <li>Flawless 3-year quality record inspecting Honda components; prevented costly assembly line stoppages</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJECTS (COMPACT GRID) -->
+    <section>
+        <h2>Featured Projects</h2>
+        <div class="projects-compact">
+            <div class="project-card">
+                <div class="project-title">StirCraft (Team Lead)</div>
+                <div class="project-desc">Django cocktail app with 245 Python + 23 JS tests (100% coverage), advanced search, vibe filtering, data normalization pipeline for 400+ cocktails</div>
+                <div class="project-tech">Django • PostgreSQL • Redis • Heroku</div>
+            </div>
+            <div class="project-card">
+                <div class="project-title">SitesByMac Portfolio</div>
+                <div class="project-desc">Next.js 15/TypeScript portfolio with WCAG AA accessibility, automated PDF resume generation, Jest/RTL testing, Vercel CI/CD</div>
+                <div class="project-tech">Next.js • TypeScript • Tailwind • jsPDF</div>
+            </div>
+            <div class="project-card">
+                <div class="project-title">DreamWeaver Backend</div>
+                <div class="project-desc">Node.js/Express sleep tracking API with JWT auth, RBAC, bcrypt hashing, ownership validation, realistic data seeding</div>
+                <div class="project-tech">Node.js • Express • MongoDB • JWT</div>
+            </div>
+            <div class="project-card">
+                <div class="project-title">HappeningHere (Prototype)</div>
+                <div class="project-desc">LLM-powered platform surfacing grassroots events, free meals, community resources within zip-code radius with SMS handoff</div>
+                <div class="project-tech">React • FastAPI • LLM Integration • SMS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS (SIDE BY SIDE) -->
+    <div class="two-column" style="margin-top: 10pt;">
+        <section>
+            <h2 style="margin-top: 0;">Education</h2>
+            <div class="education-compact">
+                <div class="edu-item">
+                    <span><strong>General Assembly</strong> — Software Engineering</span>
+                    <span class="dates">2025</span>
+                </div>
+                <div class="edu-item">
+                    <span><strong>Ohio University</strong> — Undergrad Coursework</span>
+                    <span class="dates">2009–2010</span>
+                </div>
+                <div class="edu-item">
+                    <span><strong>Wright State</strong> — Dual Enrollment (Dean's List)</span>
+                    <span class="dates">2007–2009</span>
+                </div>
+                <div class="edu-item">
+                    <span><strong>Celina HS</strong> — Honors Diploma (Top 10%)</span>
+                    <span class="dates">2009</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="margin-top: 0;">Certifications & Awards</h2>
+            <div class="awards-compact">
+                <span>GA Certificate (2025)</span>
+                <span>Beto Excellence Award</span>
+                <span>CPR/AED</span>
+                <span>Firearms Cert.</span>
+                <span>51 WPM Typing</span>
+            </div>
+            <h2 style="margin-top: 8pt;">Associations</h2>
+            <div class="awards-compact">
+                <span>Out in Tech</span>
+                <span>Allies in Tech</span>
+                <span>MARC</span>
+                <span>Dayton Web Dev</span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>`;
+
+  return html;
+};
+
+// Write to public folder
+const outputPath = path.join(__dirname, '..', 'public', 'resume_styled.html');
+const html = generateStylizedResume();
+
+fs.writeFileSync(outputPath, html, 'utf8');
+console.log('✅ Stylized Resume generated:', outputPath);
+console.log('📄 Open in browser to review formatting and convert to PDF');
