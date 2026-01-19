@@ -16,7 +16,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
           <Image
             src={project.imageUrl} // Use the imageUrl property from project data
             alt={`${project.title} screenshot`} // Use project title for alt text
-            fill
+            fill="true"
             className="object-cover"
             loading="lazy" // Lazy load project images
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive sizing

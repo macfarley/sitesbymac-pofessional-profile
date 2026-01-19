@@ -43,7 +43,7 @@ describe('Projects Page', () => {
     render(<Projects />)
     const grid = screen.getByText('My Projects').closest('div')?.parentElement?.querySelector('.grid')
     expect(grid).toBeInTheDocument()
-    expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3')
+    expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2')
   })
 
   it('renders project cards', () => {

@@ -12,9 +12,9 @@ export const personalInfo = {
   clearance: 'Security Clearance Eligible (United States Citizen)',
   phone: '(937) 467-9312',
   email: 'mac@sitesbymac.dev',
-  website: 'sitesbymac.dev',
-  linkedin: 'linkedin.com/in/travis-mccoy-fullstack',
-  github: 'github.com/macfarley',
+  website: 'https://sitesbymac.dev',
+  linkedin: 'https://linkedin.com/in/travis-mccoy-fullstack',
+  github: 'https://github.com/macfarley',
   summary: 'Full-Stack Software Engineer specializing in security, privacy, and ethical system design. I bring a rare hybrid background that blends information security, operational safety, human-behavior analysis, and modern engineering practices. My experience in incident command and threat assessment trained me to think in continuous SWOT-style cycles and translate insights into iterative improvements that fit naturally into Scrum workflows. I\'m the engineer who sees a single form field and asks how to protect the company, improve the user experience, and build long-term trust simultaneously. Focused on designing systems that anticipate misuse, strengthen public confidence, and unify security architecture, Trust & Safety, and privacy-first product design.'
 };
 
@@ -48,6 +48,7 @@ export const education: Education[] = [
     location: 'New York, NY',
     graduationDate: '2025-08-31',
     inProgress: false,
+    relevantCoursework: ['Django & Python Web Development', 'Team Leadership & Project Management', 'Test-Driven Development', 'Agile Methodologies', 'Full-Stack Architecture'],
     notes: 'Project-based full-stack program emphasizing test-driven development, accessibility, and collaborative Git workflows. Focused on ethical system design, agile team practices, and scalable architecture. Built and deployed multiple full-stack applications using modern frameworks, CI/CD pipelines, and accessibility-first principles.'
   },
   {
@@ -254,6 +255,12 @@ export const softwareProjects: SoftwareProject[] = [
 ];
 
 export const certifications: Certification[] = [
+  {
+    id: 'general-assembly',
+    name: 'Software Engineering Immersive Certificate',
+    issuer: 'General Assembly',
+    issueDate: '2025-08'
+  },
   {
     id: 'traliant-dei',
     name: 'Diversity, Equity & Inclusion Training',

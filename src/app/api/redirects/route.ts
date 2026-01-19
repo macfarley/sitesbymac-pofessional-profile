@@ -199,3 +199,26 @@ function generateHtmlDocumentation(redirectDocs: ReturnType<typeof generateRedir
 </html>
   `.trim();
 }
+
+// Tests
+const { describe, it, expect } = require('@jest/globals'); // Updated syntax for compatibility
+import { generateProjectRedirects, isProjectRedirectSupported } from '../../../utils/redirects';
+
+describe('Redirect API', () => {
+  it('should return supported redirect for valid project ID', () => {
+    const projectId = 'stircraft';
+    const result = isProjectRedirectSupported(projectId);
+    expect(result).toBe(true);
+  });
+
+  it('should return false for unsupported project ID', () => {
+    const projectId = 'unknown-project';
+    const result = isProjectRedirectSupported(projectId);
+    expect(result).toBe(false);
+  });
+
+  it('should generate correct redirect URL', () => {
+    const redirects = generateProjectRedirects();
+    expect(redirects['stircraft']).toBe('https://stircraft-app-0dd06cf5d30a.herokuapp.com/');
+  });
+});

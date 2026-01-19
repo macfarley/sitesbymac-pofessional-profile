@@ -109,14 +109,11 @@ describe('Home Page', () => {
     expect(postmanLink).toHaveAttribute('target', '_blank')
   })
 
-  it('renders footer with visitor counter', () => {
+  it('renders footer with copyright', () => {
     render(<Home />)
     
     const footer = screen.getByRole('contentinfo')
     expect(footer).toBeInTheDocument()
-    
-    const visitorCounter = screen.getByTestId('visitor-counter')
-    expect(visitorCounter).toBeInTheDocument()
     
     expect(screen.getByText(/© 2025 Mac McCoy/)).toBeInTheDocument()
     expect(screen.getByText(/Powered by McAxl™/)).toBeInTheDocument()

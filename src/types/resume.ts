@@ -272,3 +272,28 @@ export interface CoverLetter {
  * 8. Type-Safe Data Fetching:
  *    const fetchEducation = async (): Promise<Education[]> => { ... }
  */
+
+const { describe, it, expect } = require('@jest/globals'); // Updated syntax for compatibility
+import { validateResumeData } from '../utils/resume';
+
+describe('TypeScript Type Checks', () => {
+  it('should validate resume data structure', () => {
+    const validResume = {
+      name: 'John Doe',
+      title: 'Software Engineer',
+      experience: [
+        { company: 'Tech Corp', role: 'Developer', years: 3 },
+      ],
+    };
+    expect(() => validateResumeData(validResume)).not.toThrow();
+  });
+
+  it('should throw error for invalid resume data', () => {
+    const invalidResume = {
+      name: 'John Doe',
+      title: 'Software Engineer',
+      experience: '3 years', // Invalid type
+    };
+    expect(() => validateResumeData(invalidResume)).toThrow();
+  });
+});

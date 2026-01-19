@@ -28,9 +28,9 @@ describe('Resume Data', () => {
       expect(personalInfo.phone).toMatch(/^\(\d{3}\) \d{3}-\d{4}$/)
     })
 
-    it('includes StirCraft team leadership in summary', () => {
-      expect(personalInfo.summary).toContain('algorithms')
-      expect(personalInfo.summary).toContain('software craftsmanship')
+    it('includes security and trust focus in summary', () => {
+      expect(personalInfo.summary).toContain('security')
+      expect(personalInfo.summary).toContain('privacy')
     })
   })
 
@@ -125,15 +125,15 @@ describe('Resume Data', () => {
     })
 
     it('includes enhanced skills from StirCraft project', () => {
-      const programming = skills.find(s => s.category === 'Programming')
-      expect(programming?.skills).toContain('Django')
+      const languagesFrameworks = skills.find(s => s.category === 'Languages & Frameworks')
+      expect(languagesFrameworks?.skills).toContain('Django')
 
-      const engineering = skills.find(s => s.category === 'Software Engineering')
+      const engineering = skills.find(s => s.category === 'Engineering Practices')
       expect(engineering).toBeDefined()
       expect(engineering?.skills).toContain('Test-Driven Development')
 
-      const platforms = skills.find(s => s.category === 'Platforms & Tools')
-      expect(platforms?.skills).toContain('Git')
+      const devops = skills.find(s => s.category === 'DevOps & Tools')
+      expect(devops?.skills).toContain('Git')
     })
 
     it('each skill category has required structure', () => {
@@ -150,13 +150,13 @@ describe('Resume Data', () => {
       
       // Frontend technologies
       expect(allSkills).toContain('React')
-      expect(allSkills).toContain('JavaScript/TypeScript')
+      expect(allSkills).toContain('JavaScript')
+      expect(allSkills).toContain('TypeScript')
       expect(allSkills).toContain('Next.js')
 
       // Backend technologies
       expect(allSkills).toContain('Python')
       expect(allSkills).toContain('Django')
-      expect(allSkills).toContain('Node.js')
 
       // Platforms and tools
       expect(allSkills).toContain('Git')

@@ -11,13 +11,14 @@ jest.mock('../components/PDFDownloadButton', () => {
 describe('About Page', () => {
   it('renders without crashing', () => {
     render(<About />)
-    // Look for any content instead of main role
-    expect(document.body).toContainElement(screen.getByText(/About Travis M. McCoy/i))
+    // Text appears in multiple places - h1 and paragraph
+    const matches = screen.getAllByText(/Travis "Mac" McCoy/i)
+    expect(matches.length).toBeGreaterThan(0)
   })
 
   it('displays professional summary section', () => {
     render(<About />)
-    expect(screen.getByText(/professional summary/i)).toBeInTheDocument()
+    expect(screen.getByText(/Full Stack Software Engineer/i)).toBeInTheDocument()
   })
 
   it('includes PDF download button', () => {

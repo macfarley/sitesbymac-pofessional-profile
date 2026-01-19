@@ -56,6 +56,7 @@ export const projects: Project[] = [
     longDescription: 'VolunQueer is an inclusive platform designed to connect LGBTQ+ volunteers with community organizations and social impact initiatives. Built with Django and PostgreSQL, this pre-launch application focuses on test-driven development practices, WCAG accessibility standards, and strategic migration from AWS Amplify. Features include volunteer profile management, opportunity discovery, organizational matching, and comprehensive volunteer tracking. The project emphasizes team collaboration, accessibility compliance, and robust testing with PyTest coverage.',
     technologies: ['Django', 'PostgreSQL', 'React', 'TypeScript', 'Python', 'Test-Driven Development', 'WCAG Accessibility'],
     githubUrl: 'https://github.com/macfarley/volunqueer_django',
+    liveUrl: 'https://volunqueer.example.com',
     featured: true,
     completedDate: '2025-11-09',
     imageUrl: '/VQcolorLogo.png'
@@ -67,6 +68,7 @@ export const projects: Project[] = [
     longDescription: 'Fridge Buddy is a Django web application designed to help users manage food inventory across multiple containers (fridge, freezer, pantry, shopping lists). Track expiration dates, organize items by categories, and reduce food waste with intelligent organization. Features include global food catalog with nutritional data, container management with semantic URLs, class-based views for CRUD operations, and responsive Django templates. Current development focuses on complete template implementation, user authentication, smart expiration notifications, and advanced features like barcode scanning, recipe suggestions, and meal planning integration.',
     technologies: ['Django', 'Python', 'SQLite', 'HTML5', 'CSS3', 'Pipenv', 'Class-Based Views'],
     githubUrl: 'https://github.com/macfarley/fridge-buddy',
+    liveUrl: 'https://fridgebuddy.example.com',
     featured: true,
     completedDate: '2025-11-09',
     imageUrl: '/fridgebuddy.png'
