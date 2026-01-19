@@ -132,13 +132,13 @@ export default function PDFDownloadButton({
       // === HEADER ===
       addText(personalInfo.name, 18, true);
       addText(personalInfo.title, 12, true);
-      const headerLine3 = `${personalInfo.location} • ${(personalInfo as any).locationNote || 'Willing to Relocate'} • ${(personalInfo as any).clearance || 'Security Clearance Eligible'}`;
+      const headerLine3 = `${personalInfo.location} • ${personalInfo.locationNote || 'Willing to Relocate'} • ${personalInfo.clearance || 'Security Clearance Eligible'}`; // Correctly access properties without casting to string
       addText(headerLine3, 10);
       
       // Contact info with bold labels
       pdf.setFontSize(9);
       pdf.setFont('arial', 'bold');
-      let contactY = currentY;
+      const contactY = currentY; // Ensure 'const' is used as the variable is not reassigned
       pdf.text('Portfolio:', margin, contactY);
       pdf.setFont('arial', 'normal');
       pdf.text(' ' + personalInfo.website, margin + pdf.getTextWidth('Portfolio:'), contactY);
