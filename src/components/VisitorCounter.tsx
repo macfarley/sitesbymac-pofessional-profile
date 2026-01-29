@@ -60,12 +60,8 @@ export default function VisitorCounter({
       try {
         // Check if localStorage is available
         if (typeof window === 'undefined' || !window.localStorage) {
-          window.localStorage = {
-            getItem: () => null,
-            setItem: () => {},
-            removeItem: () => {},
-            clear: () => {},
-          };
+          console.log('localStorage not available');
+          return;
         }
 
         const VISITOR_KEY = 'sitesbymac_visitor_data';

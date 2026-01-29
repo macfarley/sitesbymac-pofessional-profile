@@ -129,23 +129,3 @@ export const config = {
     '/go/slay-the-dagron',
   ],
 };
-
-// Tests for middleware
-const { describe, it, expect } = require('@jest/globals'); // Updated syntax for compatibility
-import { middleware } from './middleware';
-import { NextRequest } from 'next/server';
-
-describe('Middleware', () => {
-  it('should redirect valid project URLs', () => {
-    const request = new NextRequest('http://localhost:3000/go/stircraft');
-    const response = middleware(request);
-    expect(response.status).toBe(302);
-    expect(response.headers.get('location')).toBe('https://stircraft-app-0dd06cf5d30a.herokuapp.com/');
-  });
-
-  it('should return next response for unmatched URLs', () => {
-    const request = new NextRequest('http://localhost:3000/unknown-path');
-    const response = middleware(request);
-    expect(response.status).toBe(200);
-  });
-});
