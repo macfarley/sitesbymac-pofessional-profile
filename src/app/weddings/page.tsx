@@ -51,7 +51,7 @@ export default function WeddingsPage() {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
+        <div className="bg-amber-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
             Let&apos;s Create Something Beautiful
           </h2>
@@ -126,7 +126,7 @@ export default function WeddingsPage() {
             </div>
 
             {/* Website */}
-            <div className="text-center p-4 bg-stone-50 dark:bg-gray-700 rounded-xl">
+            <div className="text-center p-4 bg-amber-50 dark:bg-gray-700 rounded-xl">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Website</p>
               <a 
                 href="https://sitesbymac.com"
@@ -145,7 +145,7 @@ export default function WeddingsPage() {
 
         {/* Business Card with QR Code */}
         <div className="text-center">
-          <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 inline-block">
+          <div className="bg-amber-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 inline-block">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Scan to Save
             </h3>
