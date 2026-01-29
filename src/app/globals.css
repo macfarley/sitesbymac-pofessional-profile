@@ -18,6 +18,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* force vercel css rebuild - 2026-01-29 */
+
 /* 
  * CSS Custom Properties for Theme Management
  * 
