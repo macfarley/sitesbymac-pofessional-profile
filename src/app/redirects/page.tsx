@@ -108,7 +108,7 @@ export default function RedirectsPage() {
         </div>
 
         {redirectData?.redirects.map((redirect) => (
-          <div key={redirect.projectId} className="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <div key={redirect.projectId} className="bg-stone-50 dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">
@@ -142,7 +142,7 @@ export default function RedirectsPage() {
                   
                   return (
                     <div key={pattern} className="border border-gray-200 rounded-lg p-3">
-                      <div className="font-mono text-sm mb-2 bg-gray-50 p-2 rounded">
+                      <div className="font-mono text-sm mb-2 bg-stone-50 dark:bg-gray-700 p-2 rounded">
                         {pattern}
                       </div>
                       <div className="flex gap-2">
@@ -162,7 +162,7 @@ export default function RedirectsPage() {
                         </a>
                       </div>
                       {testResult && (
-                        <div className="mt-2 text-xs text-gray-600 bg-gray-50 p-2 rounded">
+                        <div className="mt-2 text-xs text-gray-600 dark:text-gray-400 bg-stone-50 dark:bg-gray-700 p-2 rounded">
                           {testResult}
                         </div>
                       )}

@@ -126,7 +126,7 @@ export default function WeddingsPage() {
             </div>
 
             {/* Website */}
-            <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
+            <div className="text-center p-4 bg-stone-50 dark:bg-gray-700 rounded-xl">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Website</p>
               <a 
                 href="https://sitesbymac.com"
