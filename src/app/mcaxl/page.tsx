@@ -24,7 +24,7 @@ export default function McAxlPage() {
         </div>
 
         {/* Personality Profile */}
-        <div className="bg-amber-100 dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8">
+        <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8">
           <h2 className="text-3xl font-bold text-blue-800 dark:text-blue-400 mb-6 flex items-center">
             🎨 Personality Profile
           </h2>
@@ -103,7 +103,7 @@ export default function McAxlPage() {
         </div>
 
         {/* Fun Facts */}
-        <div className="bg-amber-100 dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+        <div className="bg-amber-200 dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12">
           <h2 className="text-3xl font-bold text-blue-800 dark:text-blue-400 mb-6">
             ⚡ McAxl Fun Facts
           </h2>

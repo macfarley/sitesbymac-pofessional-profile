@@ -18,6 +18,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force CSS rebuild 2026-01-29 18:45 - stone-50 consistency update */
+
 /* force vercel css rebuild - 2026-01-29 */
 /* second rebuild attempt - cache buster */
 

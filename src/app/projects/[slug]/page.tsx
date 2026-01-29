@@ -64,7 +64,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-stone-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-amber-100 dark:hover:bg-gray-700 transition-colors font-medium"
+              className="px-6 py-3 bg-stone-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-stone-50 dark:hover:bg-gray-700 transition-colors font-medium"
             >
               View Live Site
             </a>
@@ -199,7 +199,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       {/* Other Projects */}
-      <div className="bg-amber-100 dark:bg-gray-800 py-16 px-4">
+      <div className="bg-stone-100 dark:bg-gray-800 py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
             Other Projects
@@ -213,7 +213,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <Link
                   key={otherProject.id}
                   href={`/projects/${otherProject.id}`}
-                  className="group block bg-amber-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                  className="group block bg-stone-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
                 >
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">
