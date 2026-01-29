@@ -27,7 +27,7 @@ export default function WeddingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800">
       <div className="max-w-4xl mx-auto px-4 py-12 sm:py-20">
         {/* Hero Section with Business Card */}
         <div className="text-center mb-12">

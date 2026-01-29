@@ -18,7 +18,7 @@ import dynamic from 'next/dynamic';
 // Lazy load ProjectsGrid for better initial page performance
 const LazyProjectsGrid = dynamic(() => import('../components/ProjectsGrid'), {
   loading: () => (
-    <section className="py-16 px-4 bg-stone-100 dark:bg-gray-900">
+    <section className="py-16 px-4 bg-gradient-to-r from-stone-200 to-stone-300 dark:bg-gradient-to-r dark:from-gray-900 dark:to-slate-800">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-amber-900 dark:text-gray-100 mb-12">
           Featured Projects
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* Tech & Tools Sections - Interactive reference library */}
-      <section className="py-16 px-4 bg-stone-100 dark:bg-gray-800">
+      <section className="py-16 px-4 bg-gradient-to-r from-stone-200 to-stone-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-700">
         <div className="max-w-4xl mx-auto">
           
           {/* Technologies Section - Core development stack */}

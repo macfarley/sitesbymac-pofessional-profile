@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-stone-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-amber-100 to-stone-200 dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-700 text-amber-900 dark:text-gray-100 py-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -199,7 +199,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       {/* Other Projects */}
-      <div className="bg-stone-100 dark:bg-gray-800 py-16 px-4">
+      <div className="bg-gradient-to-r from-stone-200 to-stone-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-700 py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
             Other Projects
