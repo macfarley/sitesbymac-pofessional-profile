@@ -108,7 +108,7 @@ export default function RedirectsPage() {
         </div>
 
         {redirectData?.redirects.map((redirect) => (
-          <div key={redirect.projectId} className="bg-amber-50 dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+          <div key={redirect.projectId} className="bg-amber-100 dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">
