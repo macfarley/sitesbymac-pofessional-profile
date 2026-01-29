@@ -27,7 +27,7 @@ export default function WeddingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-amber-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-stone-100 to-amber-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-4xl mx-auto px-4 py-12 sm:py-20">
         {/* Hero Section with Business Card */}
         <div className="text-center mb-12">
@@ -51,7 +51,7 @@ export default function WeddingsPage() {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
+        <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
             Let&apos;s Create Something Beautiful
           </h2>
@@ -143,23 +143,23 @@ export default function WeddingsPage() {
           </div>
         </div>
 
-        {/* QR Code Section */}
+        {/* Business Card with QR Code */}
         <div className="text-center">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 inline-block">
+          <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 inline-block">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Scan to Save
             </h3>
-            <div className="relative w-64 h-64 mx-auto">
+            <div className="relative w-full max-w-2xl mx-auto">
               <Image
-                src="/businessCardQR.png"
-                alt="QR Code to save contact"
-                width={256}
-                height={256}
-                className="w-full h-full"
+                src="/businessCardWithQR.png"
+                alt="Sites By Mac business card with QR code"
+                width={1024}
+                height={512}
+                className="w-full h-auto rounded-lg"
               />
             </div>
             <p className="text-gray-600 dark:text-gray-400 mt-4">
-              Scan with your phone to save my contact info
+              Scan the QR code to save my contact info
             </p>
           </div>
         </div>

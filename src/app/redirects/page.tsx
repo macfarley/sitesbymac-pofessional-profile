@@ -66,7 +66,7 @@ export default function RedirectsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-8">
+      <div className="min-h-screen bg-stone-100 dark:bg-gray-900 p-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center">Loading redirects...</div>
         </div>
@@ -75,7 +75,7 @@ export default function RedirectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-stone-100 dark:bg-gray-900 p-8">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">

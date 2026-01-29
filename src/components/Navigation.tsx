@@ -28,8 +28,8 @@ export default function Navigation() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    // Main navigation bar with glass morphism effect
-    <nav className="bg-stone-50/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-amber-600/30 dark:border-cyan-400/50">
+    // Main navigation bar with glass morphism effect - sticky to top
+    <nav className="sticky top-0 z-50 bg-stone-50/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-amber-600/30 dark:border-cyan-400/50">
       {/* Navigation content container with max width and padding */}
       <div className="max-w-6xl mx-auto px-4">
         {/* Flexbox layout for logo/links distribution */}
@@ -71,6 +71,12 @@ export default function Navigation() {
               className="text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-50 dark:focus:ring-offset-gray-900 transition-colors duration-200 ease-in-out underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300 focus:decoration-amber-700 dark:focus:decoration-cyan-300 px-2 py-1 rounded-sm"
             >
               McAxl
+            </Link>
+            <Link 
+              href="/weddings" 
+              className="text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-50 dark:focus:ring-offset-gray-900 transition-colors duration-200 ease-in-out underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300 focus:decoration-amber-700 dark:focus:decoration-cyan-300 px-2 py-1 rounded-sm"
+            >
+              Weddings
             </Link>
             <button
               onClick={() => setIsContactOpen(!isContactOpen)}
@@ -130,6 +136,14 @@ export default function Navigation() {
                   className="block text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-100 dark:focus:ring-offset-gray-800 transition-colors duration-200 ease-in-out px-3 py-2 rounded underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300"
                 >
                   McAxl
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/weddings" 
+                  className="block text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-100 dark:focus:ring-offset-gray-800 transition-colors duration-200 ease-in-out px-3 py-2 rounded underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300"
+                >
+                  Weddings
                 </Link>
               </li>
               <li>
