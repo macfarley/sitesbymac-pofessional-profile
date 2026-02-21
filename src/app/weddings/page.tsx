@@ -27,11 +27,14 @@ export default function WeddingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800">
-      <div className="max-w-4xl mx-auto px-4 py-12 sm:py-20">
+    <div className="min-h-screen bg-gradient-to-br from-amber-100 via-rose-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-900 dark:to-slate-800">
+      <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20">
         {/* Hero Section with Business Card */}
         <div className="text-center mb-12">
-          <div className="relative w-full max-w-2xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full bg-stone-900 text-stone-100 px-4 py-1 text-sm tracking-wide uppercase mb-6">
+            Experimental Phase: limited couples
+          </div>
+          <div className="relative w-full max-w-3xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl">
             <Image
               src="/businessCard.png"
               alt="Sites By Mac - Digital Artistry, Forever Memories"
@@ -42,12 +45,186 @@ export default function WeddingsPage() {
             />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Your Romance Websmith
+          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+            The Digital Heirloom: Bespoke Wedding Systems
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-8">
-            Creating beautiful, lasting memories for your special day
+          <p className="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-6">
+            Custom domains. Frictionless photo buckets. Permanent legacies.
           </p>
+          <p className="max-w-3xl mx-auto text-lg text-gray-700 dark:text-gray-300">
+            Most wedding sites are temporary templates. I build digital estates.
+            As an IT generalist and Romance Websmith, I treat your wedding&apos;s
+            technical infrastructure with the same care a florist treats your
+            bouquet so your story remains online, accessible, and beautiful.
+          </p>
+        </div>
+
+        {/* Experimental Phase Callout */}
+        <div className="bg-rose-50 dark:bg-slate-900/60 border border-rose-200 dark:border-slate-700 rounded-2xl shadow-xl p-8 sm:p-10 mb-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Early Adopter Special
+              </h2>
+              <p className="text-gray-700 dark:text-gray-300">
+                I am in an experimental phase with select couples. For a
+                limited time, the Elopement Package is available at-cost
+                ($100 total) for those helping shape the future of this service.
+              </p>
+            </div>
+            <div className="text-center md:text-right">
+              <p className="text-sm text-gray-600 dark:text-gray-400">At-cost rate</p>
+              <p className="text-4xl font-bold text-rose-700 dark:text-rose-300">$100</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Service Tiers */}
+        <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-3">
+            Transparent Service Tiers
+          </h2>
+          <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
+            All packages include a custom domain for 1 year and a permanent
+            transition to a legacy archive at sitesbymac.dev.
+          </p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-separate border-spacing-y-3">
+              <thead>
+                <tr className="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                  <th className="px-4">Feature</th>
+                  <th className="px-4">The Elopement</th>
+                  <th className="px-4">Premier Nuptials</th>
+                  <th className="px-4">The Royal Wedding</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-800 dark:text-gray-200">
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">Investment</td>
+                  <td className="px-4 py-3 font-semibold">$499</td>
+                  <td className="px-4 py-3 font-semibold">$1,499</td>
+                  <td className="px-4 py-3 font-semibold">$2,499</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">Deposit</td>
+                  <td className="px-4 py-3">$100</td>
+                  <td className="px-4 py-3">$300</td>
+                  <td className="px-4 py-3">$500</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">The Core</td>
+                  <td className="px-4 py-3">Custom micro-site</td>
+                  <td className="px-4 py-3">Full multi-page site</td>
+                  <td className="px-4 py-3">Comprehensive digital estate</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">Photo Bucket</td>
+                  <td className="px-4 py-3">QR-access uploads</td>
+                  <td className="px-4 py-3">High-res archive</td>
+                  <td className="px-4 py-3">Priority support + curation</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">Role-Based Access</td>
+                  <td className="px-4 py-3">-</td>
+                  <td className="px-4 py-3">Vendor / bridal party</td>
+                  <td className="px-4 py-3">Granular permissions</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">Coordination</td>
+                  <td className="px-4 py-3">Digital program</td>
+                  <td className="px-4 py-3">Interactive calendar</td>
+                  <td className="px-4 py-3">Full itinerary engine</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">Media Hosting</td>
+                  <td className="px-4 py-3">Vows and text</td>
+                  <td className="px-4 py-3">Highlight clips</td>
+                  <td className="px-4 py-3">Full video integration</td>
+                </tr>
+                <tr className="bg-white dark:bg-slate-900 rounded-xl">
+                  <td className="px-4 py-3 font-semibold">The Legacy</td>
+                  <td className="px-4 py-3">Static archive</td>
+                  <td className="px-4 py-3">Enhanced media vault</td>
+                  <td className="px-4 py-3">Permanent digital home</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Philosophy */}
+        <div className="bg-stone-100/70 dark:bg-gray-800/80 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            The Sites by Mac Philosophy
+          </h2>
+          <div className="grid gap-6">
+            <div className="p-5 rounded-xl bg-white/80 dark:bg-slate-900/70">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                Frictionless Interaction
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Your guests should not have to create a username to celebrate
+                you. Photo Buckets allow instant, app-free uploads.
+              </p>
+            </div>
+            <div className="p-5 rounded-xl bg-white/80 dark:bg-slate-900/70">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                System-Level Logic
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Role-based access means bridesmaids, vendors, and guests see
+                exactly what they need and nothing they do not.
+              </p>
+            </div>
+            <div className="p-5 rounded-xl bg-white/80 dark:bg-slate-900/70">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                The Sunset Strategy
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                One year after your wedding, I de-res heavy interactive elements
+                to save you money while migrating your photos, vows, and story
+                to a permanent, lightweight legacy site that lives forever.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Process */}
+        <div className="bg-stone-50 dark:bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            Ready to Secure Your Date?
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="p-5 rounded-xl bg-white dark:bg-slate-900">
+              <p className="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Step 1</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                Consultation
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We select your custom domain, like names.wedding or theunion.love.
+              </p>
+            </div>
+            <div className="p-5 rounded-xl bg-white dark:bg-slate-900">
+              <p className="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Step 2</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                Agreement
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Review and sign the Service Agreement and submit your deposit.
+              </p>
+            </div>
+            <div className="p-5 rounded-xl bg-white dark:bg-slate-900">
+              <p className="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Step 3</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                The Build
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                I register your domain immediately and begin crafting your
+                digital home.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Contact Section */}
