@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { projects } from '../../../data/projects';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
 interface ProjectPageProps {
   params: Promise<{
@@ -15,19 +16,48 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps) {
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.id === slug);
   
   if (!project) {
     return {
       title: 'Project Not Found',
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
+  const imageUrl = project.imageUrl
+    ? `https://sitesbymac.dev${project.imageUrl.startsWith('/') ? project.imageUrl : `/${project.imageUrl}`}`
+    : 'https://sitesbymac.dev/axlotl.png';
+
   return {
-    title: `${project.title} - Mac Farley Portfolio`,
+    title: project.title,
     description: project.description,
+    alternates: {
+      canonical: `/projects/${project.id}`,
+    },
+    openGraph: {
+      title: `${project.title} | Sites by Mac`,
+      description: project.description,
+      url: `https://sitesbymac.dev/projects/${project.id}`,
+      type: 'article',
+      images: [
+        {
+          url: imageUrl,
+          alt: `${project.title} preview image`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.title} | Sites by Mac`,
+      description: project.description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -39,8 +69,55 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const imageUrl = project.imageUrl
+    ? `https://sitesbymac.dev${project.imageUrl.startsWith('/') ? project.imageUrl : `/${project.imageUrl}`}`
+    : 'https://sitesbymac.dev/axlotl.png';
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://sitesbymac.dev/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Projects',
+        item: 'https://sitesbymac.dev/projects',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: project.title,
+        item: `https://sitesbymac.dev/projects/${project.id}`,
+      },
+    ],
+  };
+
+  const projectSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description,
+    url: `https://sitesbymac.dev/projects/${project.id}`,
+    image: imageUrl,
+    creator: {
+      '@type': 'Person',
+      name: 'Mac McCoy',
+    },
+    datePublished: project.completedDate,
+    dateModified: project.completedDate,
+    keywords: project.technologies.join(', '),
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }} />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-amber-100 to-stone-200 dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-700 text-amber-900 dark:text-gray-100 py-16 px-4">
         <div className="max-w-4xl mx-auto">

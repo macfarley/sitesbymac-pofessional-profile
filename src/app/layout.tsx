@@ -32,11 +32,50 @@ const geistMono = Geist_Mono({
 
 // SEO Metadata Configuration - Optimized for search engines and social sharing
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sitesbymac.dev"),
   // Primary page title shown in browser tab and search results
-  title: "Sites by Mac",
+  title: {
+    default: "Sites by Mac",
+    template: "%s | Sites by Mac",
+  },
   
   // Meta description for SEO and social media previews
-  description: "Portfolio of Mac McCoy - Full-Stack Web Developer specializing in React, TypeScript, and modern web technologies. View my projects and get in touch.",
+  description: "Portfolio and writing hub for Mac McCoy — privacy-minded digital consultant building ethical, human-scale web experiences.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'SitesByMac.dev',
+    url: 'https://sitesbymac.dev',
+    title: 'Sites by Mac',
+    description: 'Portfolio and writing hub for Mac McCoy — privacy-minded digital consultant building ethical, human-scale web experiences.',
+    images: [
+      {
+        url: 'https://sitesbymac.dev/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'SitesByMac.dev — Mac McCoy digital consulting and web engineering',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sites by Mac',
+    description: 'Portfolio and writing hub for Mac McCoy — privacy-minded digital consultant building ethical, human-scale web experiences.',
+    images: ['https://sitesbymac.dev/twitter-image.png'],
+  },
   
   // Comprehensive favicon and icon configuration
   icons: {

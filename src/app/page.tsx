@@ -14,6 +14,21 @@
 
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Mac McCoy builds privacy-minded, human-scale web experiences with modern full-stack technologies and ethical design principles.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Sites by Mac',
+    description: 'Privacy-minded digital consultant building ethical, human-scale web experiences.',
+    url: 'https://sitesbymac.dev/',
+    type: 'website',
+  },
+};
 
 // Lazy load ProjectsGrid for better initial page performance
 const LazyProjectsGrid = dynamic(() => import('../components/ProjectsGrid'), {
@@ -47,9 +62,23 @@ const LazyProjectsGrid = dynamic(() => import('../components/ProjectsGrid'), {
 });
 
 export default function Home() {
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Mac McCoy',
+    url: 'https://sitesbymac.dev',
+    jobTitle: 'Privacy-minded digital consultant and full-stack developer',
+    sameAs: [
+      'https://bsky.app/profile/sitesbymac.bsky.social',
+      'https://medium.com/@sitesbymac',
+      'https://github.com/macfarley',
+    ],
+  };
+
   return (
     // Main container with gradient background that adapts to theme
     <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-200 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800 text-amber-900 dark:text-gray-100">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       
       {/* Hero Section - Brand introduction with McAxl mascot */}
       <section className="py-20 px-4 relative">

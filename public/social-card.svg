@@ -1,0 +1,53 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">SitesByMac.dev social preview card</title>
+  <desc id="desc">Mac McCoy, privacy-minded digital consultant. Ethical web strategy, full-stack builds, creator-first publishing systems, and wedding digital experiences. Find Mac at SitesByMac.dev, Bluesky, and email.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="0.55" stop-color="#1F2937"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="160" y1="60" x2="1040" y2="570" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1F2937"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="190" y1="168" x2="920" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <filter id="shadow" x="120" y="30" width="960" height="570" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="160" y="60" width="880" height="510" rx="28" fill="url(#panel)" stroke="#374151" stroke-width="2"/>
+  </g>
+
+  <rect x="190" y="150" width="740" height="6" rx="3" fill="url(#accent)"/>
+
+  <text x="190" y="125" fill="#FBBF24" font-size="34" font-family="Inter, Segoe UI, Arial, sans-serif" font-weight="800" letter-spacing="0.4">SitesByMac.dev</text>
+  <text x="190" y="205" fill="#F9FAFB" font-size="56" font-family="Inter, Segoe UI, Arial, sans-serif" font-weight="800">Mac McCoy</text>
+  <text x="190" y="245" fill="#D1D5DB" font-size="30" font-family="Inter, Segoe UI, Arial, sans-serif" font-weight="500">Privacy-minded digital consultant &amp; builder</text>
+
+  <text x="190" y="295" fill="#93C5FD" font-size="24" font-family="Inter, Segoe UI, Arial, sans-serif" font-weight="700">What I build</text>
+  <text x="190" y="330" fill="#E5E7EB" font-size="21" font-family="Inter, Segoe UI, Arial, sans-serif">• Ethical web strategy and full-stack implementation</text>
+  <text x="190" y="362" fill="#E5E7EB" font-size="21" font-family="Inter, Segoe UI, Arial, sans-serif">• Creator-first publishing systems and SEO architecture</text>
+  <text x="190" y="394" fill="#E5E7EB" font-size="21" font-family="Inter, Segoe UI, Arial, sans-serif">• Wedding and event digital experiences with long-term stewardship</text>
+
+  <text x="190" y="450" fill="#93C5FD" font-size="24" font-family="Inter, Segoe UI, Arial, sans-serif" font-weight="700">How to find me</text>
+  <text x="190" y="483" fill="#F9FAFB" font-size="22" font-family="Inter, Segoe UI, Arial, sans-serif">sitesbymac.dev</text>
+  <text x="500" y="483" fill="#9CA3AF" font-size="22" font-family="Inter, Segoe UI, Arial, sans-serif">|</text>
+  <text x="525" y="483" fill="#F9FAFB" font-size="22" font-family="Inter, Segoe UI, Arial, sans-serif">@sitesbymac.bsky.social</text>
+
+  <text x="190" y="518" fill="#F9FAFB" font-size="22" font-family="Inter, Segoe UI, Arial, sans-serif">mac@sitesbymac.dev</text>
+  <text x="460" y="518" fill="#9CA3AF" font-size="22" font-family="Inter, Segoe UI, Arial, sans-serif">|</text>
+  <text x="485" y="518" fill="#F9FAFB" font-size="22" font-family="Inter, Segoe UI, Arial, sans-serif">medium.com/@sitesbymac</text>
+
+  <circle cx="990" cy="130" r="24" fill="#22D3EE" opacity="0.9"/>
+  <circle cx="1030" cy="98" r="16" fill="#F59E0B" opacity="0.9"/>
+  <circle cx="1028" cy="545" r="18" fill="#22D3EE" opacity="0.6"/>
+  <circle cx="980" cy="558" r="10" fill="#F59E0B" opacity="0.7"/>
+</svg>

@@ -7,6 +7,7 @@
 
 import { redirect } from 'next/navigation';
 import { projects } from '../../../data/projects';
+import type { Metadata } from 'next';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -40,7 +41,11 @@ export default async function GoRedirectPage({ params }: PageProps) {
   redirect('/projects');
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Redirecting...',
   description: 'Redirecting to project',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };

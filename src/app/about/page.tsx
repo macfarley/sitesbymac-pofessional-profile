@@ -1,10 +1,20 @@
 import CollapsibleAboutSections from './CollapsibleAboutSections';
 import { personalInfo } from '../../data/resume';
 import ResumeDownloadButtons from '../../components/ResumeDownloadButtons';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'About - Mac McCoy | Full-Stack Developer',
-  description: 'Learn about Mac McCoy\'s background, education, experience, and technical skills in full-stack web development.',
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Learn about Mac McCoy\'s background, values, and approach to ethical, privacy-minded web engineering.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About | Sites by Mac',
+    description: 'Background, mission, and professional journey of Mac McCoy.',
+    url: 'https://sitesbymac.dev/about',
+    type: 'profile',
+  },
 };
 
 export default function AboutPage() {
