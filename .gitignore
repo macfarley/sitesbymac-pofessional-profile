@@ -64,6 +64,9 @@ Thumbs.db
 
 # Private notes and development logs
 notes/
+/notes/
+dev-docs/
+/dev-docs/
 *.notes
 development.log
 NOTES.md
