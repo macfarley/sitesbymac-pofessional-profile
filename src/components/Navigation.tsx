@@ -60,6 +60,12 @@ export default function Navigation() {
             >
               About Me
             </Link>
+            <Link
+              href="/blog"
+              className="text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-50 dark:focus:ring-offset-gray-900 transition-colors duration-200 ease-in-out underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300 focus:decoration-amber-700 dark:focus:decoration-cyan-300 px-2 py-1 rounded-sm"
+            >
+              Blog
+            </Link>
             <Link 
               href="/projects" 
               className="text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-50 dark:focus:ring-offset-gray-900 transition-colors duration-200 ease-in-out underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300 focus:decoration-amber-700 dark:focus:decoration-cyan-300 px-2 py-1 rounded-sm"
@@ -120,6 +126,14 @@ export default function Navigation() {
                   className="block text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-100 dark:focus:ring-offset-gray-800 transition-colors duration-200 ease-in-out px-3 py-2 rounded underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300"
                 >
                   About Me
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="block text-base font-medium text-amber-800 dark:text-cyan-400 hover:text-amber-700 dark:hover:text-cyan-300 focus:text-amber-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-stone-100 dark:focus:ring-offset-gray-800 transition-colors duration-200 ease-in-out px-3 py-2 rounded underline decoration-2 decoration-amber-600/30 dark:decoration-cyan-400/30 hover:decoration-amber-700 dark:hover:decoration-cyan-300"
+                >
+                  Blog
                 </Link>
               </li>
               <li>
