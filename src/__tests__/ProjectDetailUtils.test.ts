@@ -40,7 +40,7 @@ describe('Project Detail Page Utils', () => {
       
       const metadata = await generateMetadata({ params })
       
-      expect(metadata.title).toBe(`${testProject.title} - Mac Farley Portfolio`)
+      expect(metadata.title).toBe(testProject.title)
       expect(metadata.description).toBe(testProject.description)
     })
 

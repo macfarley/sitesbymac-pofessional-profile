@@ -36,7 +36,7 @@ describe('Navigation Component', () => {
   it('shows contact button and toggles dropdown', () => {
     render(<Navigation />)
     
-    const contactButton = screen.getByRole('button', { name: /contact/i })
+    const contactButton = screen.getAllByRole('button', { name: /contact/i })[0]
     expect(contactButton).toBeInTheDocument()
     expect(contactButton).toHaveAttribute('aria-expanded', 'false')
     
@@ -83,7 +83,7 @@ describe('Navigation Component', () => {
     render(<Navigation />)
     
     // Open contact dropdown
-    const contactButton = screen.getByRole('button', { name: /contact/i })
+    const contactButton = screen.getAllByRole('button', { name: /contact/i })[0]
     fireEvent.click(contactButton)
     
     const linkedinLink = screen.getByRole('link', { name: /visit linkedin profile/i })
@@ -99,7 +99,7 @@ describe('Navigation Component', () => {
     render(<Navigation />)
     
     // Open contact dropdown
-    const contactButton = screen.getByRole('button', { name: /contact/i })
+    const contactButton = screen.getAllByRole('button', { name: /contact/i })[0]
     fireEvent.click(contactButton)
     
     const profileImage = screen.getByAltText('Travis McCoy')
@@ -109,7 +109,7 @@ describe('Navigation Component', () => {
   it('closes contact dropdown when clicked again', () => {
     render(<Navigation />)
     
-    const contactButton = screen.getByRole('button', { name: /contact/i })
+    const contactButton = screen.getAllByRole('button', { name: /contact/i })[0]
     
     // Open dropdown
     fireEvent.click(contactButton)
