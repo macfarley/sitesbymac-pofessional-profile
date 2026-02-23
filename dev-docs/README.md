@@ -1,48 +1,44 @@
-# Development Documentation & Archives
+# Development Docs (Private Workspace)
 
-**Purpose:** Consolidated development logs, architectural decisions, and archived artifacts for the SitesbyMac professional portfolio.
+Purpose: internal documentation for implementation notes, retrospectives, audits, and archived artifacts.
 
-## Folder Structure
+## Dev-Docs Sitemap
 
-```
-dev-docs/
-├── README.md (THIS FILE)
-├── RESUME-CONSOLIDATION.md       # How resume is generated & updated
-├── resume-development/            # Archived resume templates & versions
-│   ├── resume_from_copilot.md    # Full professional narrative
-│   ├── resume_ats.md             # ATS-optimized version
-│   ├── resume_styled.html        # Last HTML version
-│   ├── resume_styled.pdf         # Styled PDF
-│   ├── resume_ats.pdf            # ATS PDF
-│   ├── resume_temp.html          # Temporary version
-│   ├── resume-style.css          # CSS styling
-│   ├── resume-template.html      # Basic template
-│   ├── resume-template-weasy.html # WeasyPrint template
-│   ├── resume-template.tex       # LaTeX template
-│   └── README_resume_import.md   # Import process notes
-└── (other development guides added as needed)
-```
+### `audits/` (date-first event records)
 
-## Quick Reference
+- `2026-01-29-ui-background-consistency-audit.md`
+- `2026-02-23-dev-docs-structure-audit.md`
 
-### Resume Updates
-→ See `RESUME-CONSOLIDATION.md` for complete resume generation & update process
+### `guides/` (operational playbooks)
 
-### What's Archived Here
-All old resume templates and versions have been consolidated into a single structured source (`/src/data/resume.ts`). These files are kept for reference only:
-- **Do NOT** manually edit these files
-- **DO** update `/src/data/resume.ts` instead
-- Changes sync automatically to all pages
+- `ETHICAL-SEO-GUIDE.md`
+- `RESUME-CONSOLIDATION-GUIDE.md`
 
-### Site Architecture
-→ See `../README.md` for full tech stack and deployment info
+### `history/` (chronology and retrospectives)
 
-## Maintenance Notes
+- `COMMIT-TIMELINE-SEMANTIC.md`
+- `WORKING-LOG.md`
+- `SITE-EVOLUTION-LESSONS.md`
 
-**Last Consolidated:** November 9, 2025
-**Status:** Active (under ongoing development)
+### `planning/` (forward action plans)
 
-### Future Development
-- Consider creating development log for other projects
-- Document Griftopedia and VolunQueer development when available
-- Track design decisions in ADR (Architecture Decision Records)
+- `2026-02-23-forward-path.md`
+
+### `artifacts/` (reference archives, not source-of-truth)
+
+- `artifacts/resume-development/*`
+
+## Source-of-Truth Rules
+
+- Resume/cover-letter source data is local-only in `src/data/*` (ignored).
+- Public-safe reusable templates live in `docs/templates/*`.
+- Curated public artifacts live in `public/`.
+- Archive files under `dev-docs/artifacts/` are historical references only.
+
+## Maintenance Discipline
+
+1. Put audits in `audits/` with `YYYY-MM-DD-...` naming.
+2. Keep one canonical timeline: `history/COMMIT-TIMELINE-SEMANTIC.md`.
+3. Keep one rolling notes file: `history/WORKING-LOG.md`.
+4. Record major lessons in `history/SITE-EVOLUTION-LESSONS.md`.
+5. Avoid duplicate narratives across files; prefer linking to canonical entries.

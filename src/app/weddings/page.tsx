@@ -341,11 +341,6 @@ export default function WeddingsPage() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-16 text-center text-gray-600 dark:text-gray-400">
-          <p className="text-lg font-semibold mb-2">Sites By Mac</p>
-          <p className="italic">Digital Artistry, Forever Memories</p>
-        </div>
       </div>
     </div>
   );

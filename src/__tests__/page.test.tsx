@@ -109,13 +109,9 @@ describe('Home Page', () => {
     expect(postmanLink).toHaveAttribute('target', '_blank')
   })
 
-  it('renders footer with copyright', () => {
+  it('does not render legacy page-level footer', () => {
     render(<Home />)
-    
-    const footer = screen.getByRole('contentinfo')
-    expect(footer).toBeInTheDocument()
-    
-    expect(screen.getByText(/© 2025 Mac McCoy/)).toBeInTheDocument()
-    expect(screen.getByText(/Powered by McAxl™/)).toBeInTheDocument()
+
+    expect(screen.queryByText(/Powered by McAxl™/)).not.toBeInTheDocument()
   })
 })

@@ -71,3 +71,8 @@ dev-docs/
 development.log
 NOTES.md
 
+# Personal resume/cover letter source data (local-only)
+src/data/resume.ts
+src/data/cover-letter.ts
+src/data/coverLetter.ts
+

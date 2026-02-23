@@ -1,0 +1,72 @@
+{
+  "personalInfo": {
+    "name": "Your Name",
+    "title": "Full-Stack Software Engineer",
+    "location": "City, ST",
+    "phone": "(555) 555-5555",
+    "email": "you@example.com",
+    "website": "https://your-portfolio.dev",
+    "linkedin": "https://linkedin.com/in/your-handle",
+    "github": "https://github.com/your-handle",
+    "summary": "Builder focused on secure, accessible, and maintainable digital products."
+  },
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "Django",
+    "PostgreSQL",
+    "Testing",
+    "Accessibility"
+  ],
+  "experience": [
+    {
+      "title": "Software Engineer",
+      "company": "Example Company",
+      "location": "Remote",
+      "dates": "2023–Present",
+      "bullets": [
+        "Built and shipped full-stack features across React and API services.",
+        "Improved reliability and test coverage for critical user workflows.",
+        "Partnered with design and product to deliver accessible interfaces."
+      ]
+    },
+    {
+      "title": "Web Developer",
+      "company": "Freelance",
+      "location": "City, ST",
+      "dates": "2021–2023",
+      "bullets": [
+        "Delivered custom websites and consulting for small businesses.",
+        "Implemented SEO, analytics, and performance optimizations.",
+        "Created repeatable deployment and maintenance workflows."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Project One",
+      "description": "Short description of a production-style project and measurable impact.",
+      "tech": ["Next.js", "TypeScript", "PostgreSQL"],
+      "liveUrl": "https://example.com",
+      "repoUrl": "https://github.com/your-handle/project-one"
+    },
+    {
+      "name": "Project Two",
+      "description": "Short description emphasizing architecture, reliability, or UX outcomes.",
+      "tech": ["Django", "Python", "Bootstrap"],
+      "liveUrl": "https://example-two.com",
+      "repoUrl": "https://github.com/your-handle/project-two"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Example University",
+      "credential": "B.S. Computer Science",
+      "dates": "2017–2021"
+    }
+  ]
+}

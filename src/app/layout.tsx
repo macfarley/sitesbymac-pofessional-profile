@@ -16,6 +16,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css"; // Global styles and Tailwind CSS imports
 import Navigation from "../components/Navigation"; // Site-wide navigation component
+import PoweredByFooter from "../components/PoweredByFooter";
 
 // Font Configuration - Google Fonts integration
 // Geist Sans: Modern, clean sans-serif for body text
@@ -109,6 +110,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navigation />
         {children}
+        <PoweredByFooter />
       </body>
     </html>
   );

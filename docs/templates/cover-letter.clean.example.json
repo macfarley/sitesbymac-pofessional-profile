@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "date": "February 23, 2026",
+    "company": "Hiring Company",
+    "position": "Software Engineer",
+    "jobId": "OPTIONAL-REQ-ID"
+  },
+  "author": {
+    "name": "Your Name",
+    "email": "you@example.com",
+    "phone": "(555) 555-5555",
+    "website": "https://your-portfolio.dev",
+    "location": "City, ST"
+  },
+  "letter": {
+    "greeting": "Dear Hiring Manager,",
+    "opening": "I am excited to apply for the Software Engineer role at Hiring Company.",
+    "bodyParagraphs": [
+      "My recent work has focused on shipping secure, maintainable full-stack features using modern web technologies.",
+      "I bring a product-minded approach to architecture, testing, and accessibility, with a strong bias toward measurable outcomes.",
+      "I am especially motivated by opportunities where reliability, user trust, and thoughtful collaboration are core to the team."
+    ],
+    "closing": "Thank you for your time and consideration. I would welcome the opportunity to discuss how I can contribute.",
+    "signoff": "Sincerely"
+  }
+}
