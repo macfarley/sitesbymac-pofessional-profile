@@ -3,9 +3,9 @@ import { Project } from '../types/project';
 export const projects: Project[] = [
   {
     id: 'stircraft',
-    title: 'StirCraft: Professional Cocktail Manager',
-    description: 'A sophisticated Django web application for cocktail enthusiasts, bartenders, and culinary professionals. Team lead for production-ready platform with comprehensive social features, advanced database relationships, and professional deployment.',
-    longDescription: 'StirCraft is a comprehensive cocktail recipe management platform that transforms how you discover, create, and share cocktail recipes. As team lead, I architected this production-ready Django application featuring: 6 core database models with advanced relationships; Recipe management with precise measurements, ABV calculation, and forking with attribution tracking; Social features including user profiles, custom lists, favorites system, and public discovery feed; Advanced search and filtering with intelligent tag management; AJAX-powered UI with bulk operations, dynamic forms, and WCAG AA accessibility; Comprehensive testing with 57 tests achieving 100% critical path coverage; Professional deployment on Heroku with PostgreSQL, static file management, and environment configuration; Sophisticated demo data system with 15+ themed users, 316 total favorites, and 209 professional cocktails with metadata.',
+    title: 'StirCraft: Mixology Discovery Application',
+    description: 'A full-stack Django mixology discovery application for exploring, saving, and sharing cocktail recipes. Team-led build with social features, robust data modeling, accessibility, and production deployment.',
+    longDescription: 'StirCraft is a full-stack mixology discovery application designed to help users discover, organize, and share cocktail recipes. As team lead, I architected and delivered a production-ready Django platform featuring six core relational models, recipe workflows with measurements and ABV logic, attribution-aware forking, and social discovery features such as profiles, custom lists, favorites, and public feeds. The app includes advanced search and filtering, dynamic AJAX interactions, WCAG AA accessibility practices, and strong test coverage on critical paths. Deployment included Heroku + PostgreSQL configuration, static asset handling, environment management, and seeded demo datasets for realistic product walkthroughs.',
     technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Heroku', 'PIL/Pillow', 'django-taggit', 'Team Leadership', 'Agile/Scrum'],
     liveUrl: 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
     githubUrl: 'https://github.com/macfarley/stir-craft',
@@ -39,10 +39,10 @@ export const projects: Project[] = [
   },
   {
     id: 'dream-weaver',
-    title: 'Dream Weaver',
-    description: 'A creative web application with modern UI/UX design.',
-    longDescription: 'A beautifully designed web application focusing on user experience and modern design patterns. Built with React and deployed on Vercel for optimal performance.',
-    technologies: ['React', 'Vite', 'MongoDB', 'Node.js', 'Heroku', 'Vercel'],
+    title: 'DreamWeaver: Dream Journaling & Mindfulness App',
+    description: 'A full-stack dream journaling and mindfulness application with polished frontend UX, complete MongoDB CRUD workflows, and role-based access control.',
+    longDescription: 'DreamWeaver is a dream journaling and mindfulness application built with a strong full-stack foundation. It provides a polished frontend experience backed by Node/Express APIs and MongoDB persistence with complete CRUD operations for user-created journal content. The platform includes JWT authentication, role-based access control, bcrypt-based credential security, and ownership validation to enforce safe data boundaries. Deployed to Vercel and MongoDB Atlas with production-oriented architecture and maintainability in mind.',
+    technologies: ['React', 'Vite', 'MongoDB', 'Node.js', 'Express', 'JWT', 'RBAC', 'bcrypt', 'Vercel'],
     liveUrl: 'https://dream-weaver-rho.vercel.app/',
     githubUrl: 'https://github.com/macfarley/dream-weaver',
     featured: true,

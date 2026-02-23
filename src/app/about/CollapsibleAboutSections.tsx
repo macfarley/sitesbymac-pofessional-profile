@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import CollapsibleSection from '../../components/CollapsibleSection';
-import { skills, certifications, professionalAssociations, activities, communityOutreach, references } from '../../data/resume';
+import { skills, certifications, professionalAssociations, activities, communityOutreach, references } from 'src/data/resume.public';
 
 export default function CollapsibleAboutSections() {
   const [expandAll, setExpandAll] = useState(false);
@@ -292,7 +292,7 @@ export default function CollapsibleAboutSections() {
           </div>
 
           <div>
-            <h4 className="font-bold text-blue-600 dark:text-blue-400">Dream Weaver — Sleep Tracking Application</h4>
+            <h4 className="font-bold text-blue-600 dark:text-blue-400">DreamWeaver — Dream Journaling & Mindfulness App</h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">MERN Stack, JWT Auth, MongoDB • September 2025</p>
             <ul className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-4 list-disc space-y-1">
               <li>Full-stack app with role-based access control and user authentication</li>
