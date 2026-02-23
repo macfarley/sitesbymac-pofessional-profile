@@ -1,5 +1,5 @@
 import CollapsibleAboutSections from './CollapsibleAboutSections';
-import { personalInfo } from '../../data/resume';
+import { personalInfo } from 'src/data/resume.public';
 import ResumeDownloadButtons from '../../components/ResumeDownloadButtons';
 import type { Metadata } from 'next';
 
