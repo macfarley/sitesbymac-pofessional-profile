@@ -23,6 +23,7 @@ describe('Navigation Component', () => {
     expect(screen.getByRole('link', { name: /^home$/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /about me/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /projects/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /enterprise/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /mcaxl/i })).toBeInTheDocument()
   })
 
@@ -77,6 +78,9 @@ describe('Navigation Component', () => {
     
     const projectsLink = screen.getByRole('link', { name: /projects/i })
     expect(projectsLink).toHaveAttribute('href', '/projects')
+
+    const enterpriseLink = screen.getByRole('link', { name: /enterprise/i })
+    expect(enterpriseLink).toHaveAttribute('href', '/enterprise')
   })
 
   it('contact dropdown has external links with proper attributes', () => {
