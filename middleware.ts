@@ -12,6 +12,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
+const WEDDING_DEMO_DOMAINS = new Set([
+  'john-and-crystal-may.wedding',
+  'www.john-and-crystal-may.wedding',
+]);
+const WEDDING_DEMO_TARGET = 'https://sitesbymac.dev/weddings/demo';
+
 // Project URL mapping - self-contained for Edge runtime compatibility
 const PROJECT_REDIRECTS: Record<string, string> = {
   'stircraft': 'https://stircraft-app-0dd06cf5d30a.herokuapp.com/',
@@ -41,6 +47,15 @@ const SHORT_URL_PATTERNS = [
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host')?.toLowerCase() ?? '';
+
+  if (WEDDING_DEMO_DOMAINS.has(host)) {
+    const targetUrl = new URL(WEDDING_DEMO_TARGET);
+    request.nextUrl.searchParams.forEach((value, key) => {
+      targetUrl.searchParams.set(key, value);
+    });
+    return NextResponse.redirect(targetUrl, 308);
+  }
   
   // Debug logging
   console.log('🔄 Middleware triggered for:', pathname);
@@ -110,6 +125,7 @@ export function middleware(request: NextRequest) {
 // Configure which paths this middleware should run on
 export const config = {
   matcher: [
+    '/',
     // Use more specific patterns that work with Vercel's edge runtime
     '/go/:path*',
     '/app/:path*', 
