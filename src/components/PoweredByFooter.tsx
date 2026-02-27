@@ -59,7 +59,7 @@ export default function PoweredByFooter({
     ? `${homeUrl.replace(/\/$/, '')}/?utm_source=project-footer&utm_medium=attribution&utm_campaign=creator-network`
     : homeUrl;
 
-  const panelHeight = `${revealProgress * 30}vh`;
+  const panelHeight = `${revealProgress * 15}vh`;
   const panelOpacity = revealProgress;
   const canInteract = revealProgress > 0.05;
 

@@ -17,6 +17,7 @@ const WEDDING_DEMO_DOMAINS = new Set([
   'www.john-and-crystal-may.wedding',
 ]);
 const WEDDING_DEMO_TARGET = 'https://sitesbymac.dev/weddings/demo';
+const WEDDINGS_DEMO_SITE_TARGET = 'https://weddings-demo.vercel.app';
 
 // Project URL mapping - self-contained for Edge runtime compatibility
 const PROJECT_REDIRECTS: Record<string, string> = {
@@ -48,6 +49,14 @@ const SHORT_URL_PATTERNS = [
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const host = request.headers.get('host')?.toLowerCase() ?? '';
+
+  if (pathname === '/weddings/demo' || pathname.startsWith('/weddings/demo/')) {
+    const rewrittenUrl = new URL(pathname.replace('/weddings/demo', '') || '/', WEDDINGS_DEMO_SITE_TARGET);
+    request.nextUrl.searchParams.forEach((value, key) => {
+      rewrittenUrl.searchParams.set(key, value);
+    });
+    return NextResponse.rewrite(rewrittenUrl);
+  }
 
   if (WEDDING_DEMO_DOMAINS.has(host)) {
     const targetUrl = new URL(WEDDING_DEMO_TARGET);
@@ -132,6 +141,8 @@ export const config = {
     '/demo/:path*',
     '/live/:path*',
     '/projects/:path*/live',
+    '/weddings/demo',
+    '/weddings/demo/:path*',
     // Legacy patterns
     '/stircraft',
     '/beasts', 
