@@ -19,7 +19,7 @@ export default function PDFDownloadButton({
   className = '',
   variant = 'ats' 
 }: PDFDownloadButtonProps) {
-  const href = variant === 'ats' ? '/resume_ats.pdf' : '/resume_styled.pdf';
+  const href = variant === 'ats' ? '/Travis_McCoy_Resume_ATS2026.pdf' : '/resume_styled.pdf';
   const label = variant === 'ats' ? 'ATS Resume (2-page)' : 'Stylized Resume (1-page)';
 
   return (

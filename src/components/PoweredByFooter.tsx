@@ -59,17 +59,18 @@ export default function PoweredByFooter({
     ? `${homeUrl.replace(/\/$/, '')}/?utm_source=project-footer&utm_medium=attribution&utm_campaign=creator-network`
     : homeUrl;
 
-  const panelHeight = `${revealProgress * 15}vh`;
+  const panelHeight = `${revealProgress * 30}vh`;
   const panelOpacity = revealProgress;
   const canInteract = revealProgress > 0.05;
 
   return (
     <footer
-      className={`fixed inset-x-0 bottom-0 z-40 overflow-hidden border-t border-amber-600/20 bg-stone-50/95 text-amber-900 backdrop-blur dark:border-cyan-400/20 dark:bg-gray-900/95 dark:text-gray-100 ${className}`.trim()}
+      className={`relative inset-x-0 bottom-0 z-40 overflow-hidden border-t border-amber-600/20 bg-stone-50/95 text-amber-900 backdrop-blur dark:border-cyan-400/20 dark:bg-gray-900/95 dark:text-gray-100 ${className}`.trim()}
       style={{
         height: panelHeight,
         opacity: panelOpacity,
         pointerEvents: canInteract ? 'auto' : 'none',
+        transition: 'height 0.3s ease, opacity 0.3s ease',
       }}
       aria-hidden={!canInteract}
     >
