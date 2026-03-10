@@ -1,5 +1,8 @@
 import CollapsibleBlogSections from './CollapsibleBlogSections';
 import type { Metadata } from 'next';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
 export const metadata: Metadata = {
   title: 'Blog - SitesByMac.dev',
@@ -21,34 +24,35 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'SitesByMac.dev',
-    url: 'https://sitesbymac.dev',
-    description: 'Privacy-minded digital consulting, writing, and creator-first web publishing by Mac.',
-  };
+export async function getStaticProps() {
+  const blogDirectory = path.join(process.cwd(), 'blog');
+  const files = fs.readdirSync(blogDirectory);
 
-  const personSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Mac McCoy',
-    url: 'https://sitesbymac.dev',
-    sameAs: [
-      'https://bsky.app/profile/sitesbymac.bsky.social',
-      'https://medium.com/@sitesbymac',
-      'https://buymeacoffee.com/macfarley',
-      'https://ko-fi.com/sitesbymac',
-    ],
-    jobTitle: 'Digital Consultant and Writer',
-  };
+  const posts = files.map((fileName) => {
+    const filePath = path.join(blogDirectory, fileName);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const { data, content } = matter(fileContents);
 
+    return {
+      title: data.title,
+      date: data.date,
+      tags: data.tags,
+      summary: data.summary,
+      content,
+      source: data.source || null, // Include source link if available
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
+export default function BlogPage({ posts }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
-
       <div className="bg-gradient-to-r from-amber-100 to-stone-200 dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-700 text-amber-900 dark:text-gray-100 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">SitesByMac.dev Blog</h1>
@@ -59,15 +63,34 @@ export default function BlogPage() {
       </div>
 
       <div className="max-w-4xl mx-auto py-12 px-4 space-y-8">
-        <details className="border-l-4 border-blue-500 pl-4 py-2">
-          <summary className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer">Publishing Ecosystem</summary>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            I write for readers who care about the real cost of digital systems: who benefits, who gets extracted from, and what it means to build online spaces that
-            stay human. Medium helps me reach people now. SitesByMac.dev is where the archive and long-term stewardship live.
-          </p>
-        </details>
+        <section>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Blog Posts</h2>
+          {posts.map((post, index) => (
+            <article key={index} className="mb-6">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">{post.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{post.date}</p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{post.summary}</p>
+              {post.source && (
+                <p className="text-sm text-blue-600 dark:text-blue-400 mb-4">
+                  Originally published on <a href={post.source} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{new URL(post.source).hostname}</a>
+                </p>
+              )}
+              <details>
+                <summary className="cursor-pointer text-blue-600 dark:text-blue-400 hover:underline">Read Post</summary>
+                <div className="mt-2 text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {post.content}
+                </div>
+              </details>
+            </article>
+          ))}
+        </section>
 
-        <CollapsibleBlogSections />
+        <section className="border-t border-gray-300 dark:border-gray-700 pt-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">Publishing Ecosystem</h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            This blog serves as the canonical home for my longform work. For developer-specific content, I publish on platforms like Hashnode and Dev.to. For philosophical and long-form content, I use Medium. These platforms allow me to reach different audiences while maintaining a creator-first mission.
+          </p>
+        </section>
       </div>
 
       <footer className="text-center py-6">
