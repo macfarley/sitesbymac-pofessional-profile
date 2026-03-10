@@ -19,7 +19,7 @@ export default function PoweredByFooter({
   showTrackingParams = false,
   revealStart = 0.8,
   aboutHref = '/about',
-  sitemapHref = '/sitemap.xml',
+  sitemapHref = '/sitemap', // Updated to point to the correct sitemap page
 }: PoweredByFooterProps) {
   const [revealProgress, setRevealProgress] = useState(0);
 

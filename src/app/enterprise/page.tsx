@@ -202,17 +202,11 @@ export default function EnterprisePage() {
               <Image
                 src="/Enterprisebusinesscard.png"
                 alt="Enterprise business card with QR code"
-                width={480}
-                height={270}
+                width={320} // Reduced width
+                height={180} // Reduced height proportionally
                 className="rounded-lg border border-amber-600/20 dark:border-cyan-400/20 bg-white"
               />
               <div className="space-y-3">
-                <a
-                  href="mailto:mac@sitesbymac.dev?subject=Enterprise%20Workflow%20Review"
-                  className="inline-block px-4 py-2 rounded-lg bg-amber-700 dark:bg-cyan-500 text-white dark:text-gray-900 font-medium hover:bg-amber-800 dark:hover:bg-cyan-400 transition-colors"
-                >
-                  Start with a 15-minute call
-                </a>
                 <p>
                   <a
                     href="https://sitesbymac.dev/enterprise"
