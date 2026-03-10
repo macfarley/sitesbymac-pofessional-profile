@@ -1,5 +1,5 @@
 ---
-title: "Supabase Migrations: The Silent Failure That Wasted My Afternoon"
+title: "Supabase Migrations: The Silent Failure That Wasted My Morning"
 date: 2026-03-10
 tags: [supabase, debugging, postgres, migrations]
 summary: "A real-world failure mode in Supabase migrations that silently discards your work with no errors, and how to avoid it."
