@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next';
-import { projects } from '../data/projects';
 
 export const runtime = 'edge'; // Ensure this is server-side only
 
@@ -10,7 +9,9 @@ export const metadata = {
   },
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = 'force-dynamic'; // Ensure dynamic generation
+
+export default function sitemapXml(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sitesbymac.dev';
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -58,12 +59,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.id}`,
-    lastModified: project.completedDate ? new Date(project.completedDate) : new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  return [...staticRoutes, ...projectRoutes];
+  return [...staticRoutes];
 }
