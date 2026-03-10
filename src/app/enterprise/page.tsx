@@ -207,13 +207,14 @@ export default function EnterprisePage() {
                 className="rounded-lg border border-amber-600/20 dark:border-cyan-400/20 bg-white"
               />
               <div className="space-y-3">
-                <p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  For more details, visit our dedicated enterprise page at{' '}
                   <a
                     href="https://sitesbymac.dev/enterprise"
-                    className="underline decoration-2 decoration-amber-700/40 dark:decoration-cyan-400/40"
+                    className="underline decoration-2 decoration-amber-700/40 dark:decoration-cyan-400/40 hover:no-underline"
                   >
                     sitesbymac.dev/enterprise
-                  </a>
+                  </a>.
                 </p>
               </div>
             </div>

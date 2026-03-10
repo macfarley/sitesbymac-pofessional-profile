@@ -1,6 +1,15 @@
 import type { MetadataRoute } from 'next';
 import { projects } from '../data/projects';
 
+export const runtime = 'edge'; // Ensure this is server-side only
+
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sitesbymac.dev';
 
