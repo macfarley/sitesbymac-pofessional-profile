@@ -56,7 +56,7 @@ async function getMarkdownBlogPosts() {
 
 export default async function BlogPage() {
   const posts = await getMarkdownBlogPosts();
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  posts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-100 to-stone-300 dark:bg-gradient-to-br dark:from-gray-900 dark:to-slate-800">

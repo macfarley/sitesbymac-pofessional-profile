@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const SitemapPage = () => {
+const Sitemap = () => {
   const routes = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
@@ -31,4 +31,4 @@ const SitemapPage = () => {
   );
 };
 
-export default SitemapPage;
+export default Sitemap;
