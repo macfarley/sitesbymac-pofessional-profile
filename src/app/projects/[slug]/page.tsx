@@ -137,14 +137,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </p>
           
           <div className="flex gap-4 flex-wrap">
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-stone-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-stone-50 dark:hover:bg-gray-700 transition-colors font-medium"
-            >
-              View Live Site
-            </a>
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-stone-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-stone-50 dark:hover:bg-gray-700 transition-colors font-medium"
+              >
+                View Live Site
+              </a>
+            ) : (
+              <button
+                disabled
+                className="px-6 py-3 bg-gray-400 dark:bg-gray-600 text-stone-100 dark:text-gray-300 rounded-lg cursor-not-allowed opacity-60 font-medium"
+              >
+                Live Site Coming Soon
+              </button>
+            )}
             
             {project.githubUrl && (
               <a
