@@ -1,0 +1,100 @@
+/* SitesByMac navigation bar — appears at top of static demo only */
+.sbm-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background-color: #2c3e2c;
+    font-family: var(--body-font);
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+}
+.sbm-bar a {
+    color: #d4e8c2;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+    transition: color 0.15s;
+}
+.sbm-bar a:hover {
+    color: #ffffff;
+}
+.sbm-label {
+    color: #98b888;
+    font-style: italic;
+    flex: 1;
+    text-align: center;
+}
+
+:root {
+    --primary-color: #f8f5f2;
+    --secondary-color: #d4cfc9;
+    --accent-color: #a3b18a;
+    --text-color: #333333;
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Lato', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+}
+
+header.hero {
+    background-image: url('photos/pexels-eugenia-remark-5767088-15283479.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+header .couple-names {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    margin: 0;
+}
+
+header .wedding-date {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+section {
+    padding: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: not-allowed;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+}

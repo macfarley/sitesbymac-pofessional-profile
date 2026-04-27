@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function WeddingsPage() {
@@ -57,6 +58,34 @@ export default function WeddingsPage() {
             technical infrastructure with the same care a florist treats your
             bouquet so your story remains online, accessible, and beautiful.
           </p>
+        </div>
+
+        {/* Quick-access links to sub-pages */}
+        <div className="grid sm:grid-cols-2 gap-4 mb-12">
+          <Link
+            href="/weddings/demotemplate"
+            className="group flex flex-col gap-2 rounded-2xl border border-rose-200 dark:border-rose-700/40 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <span className="text-xs uppercase tracking-widest text-rose-600 dark:text-rose-400 font-semibold">Design Mockup</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-rose-700 dark:group-hover:text-rose-300 transition-colors">
+              Browse the Template →
+            </span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              See the palette selector, gallery, and layout in action — no backend, no sign-up.
+            </span>
+          </Link>
+          <Link
+            href="/weddings/forplanners"
+            className="group flex flex-col gap-2 rounded-2xl border border-amber-200 dark:border-amber-700/40 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <span className="text-xs uppercase tracking-widest text-amber-700 dark:text-amber-400 font-semibold">Wedding Planners</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
+              Partner With SitesByMac →
+            </span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              Value proposition, pricing tiers, referral options, and a live client demo.
+            </span>
+          </Link>
         </div>
 
         {/* Experimental Phase Callout */}
