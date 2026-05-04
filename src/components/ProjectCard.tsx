@@ -1,7 +1,7 @@
 import { Project } from '../types/project';
 import Image from 'next/image';
 import Link from 'next/link';
-import githubLogo from '../../public/gitHubLogo.webp';
+import githubLogo from '../../public/images/logos/gitHubLogo.webp';
 
 interface ProjectCardProps {
   project: Project;

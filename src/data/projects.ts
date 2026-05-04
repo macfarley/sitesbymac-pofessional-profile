@@ -11,7 +11,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/macfarley/stir-craft',
     featured: true,
     completedDate: '2025-08-27',
-    imageUrl: '/StirCraftLiveScreenshot.png'
+    imageUrl: '/images/screenshots/StirCraftLiveScreenshot.png'
   },
   {
     id: 'phantastic-beasts',
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/macfarley/Phantastic-Beasts',
     featured: true,
     completedDate: '2024-12-01',
-    imageUrl: '/beastsScreenshot.png'
+    imageUrl: '/images/screenshots/beastsScreenshot.png'
   },
   {
     id: 'slay-the-dagron',
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/macfarley/slay-the-dagron',
     featured: true,
     completedDate: '2024-11-15',
-    imageUrl: '/dagronScreenshot.png'
+    imageUrl: '/images/screenshots/dagronScreenshot.png'
   },
   {
     id: 'dream-weaver',
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/macfarley/dream-weaver',
     featured: true,
     completedDate: '2024-10-20',
-    imageUrl: '/dreamScreenshot.png'
+    imageUrl: '/images/screenshots/dreamScreenshot.png'
   },
   {
     id: 'volunqueer',
@@ -55,10 +55,11 @@ export const projects: Project[] = [
     description: 'LGBTQ+ volunteer platform connecting community members with social impact initiatives.',
     longDescription: 'VolunQueer is an inclusive platform designed to connect LGBTQ+ volunteers with community organizations and social impact initiatives. Built with Django and PostgreSQL, this pre-launch application focuses on test-driven development practices, WCAG accessibility standards, and strategic migration from AWS Amplify. Features include volunteer profile management, opportunity discovery, organizational matching, and comprehensive volunteer tracking. The project emphasizes team collaboration, accessibility compliance, and robust testing with PyTest coverage.',
     technologies: ['Django', 'PostgreSQL', 'React', 'TypeScript', 'Python', 'Test-Driven Development', 'WCAG Accessibility'],
+    liveUrl: 'https://volunqueerlife.org',
     githubUrl: 'https://github.com/macfarley/volunqueer_django',
     featured: true,
     completedDate: '2025-11-09',
-    imageUrl: '/VQcolorLogo.png'
+    imageUrl: '/images/screenshots/VQcolorLogo.png'
   },
   {
     id: 'fridge-buddy',
@@ -69,7 +70,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/macfarley/fridge-buddy',
     featured: true,
     completedDate: '2025-11-09',
-    imageUrl: '/fridgebuddy.png'
+    imageUrl: '/images/screenshots/fridgebuddy.png'
   }
 ];
 

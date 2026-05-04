@@ -110,7 +110,7 @@ export default function EnterprisePage() {
           </p>
           <div className="mt-8 rounded-xl overflow-hidden border border-amber-600/20 dark:border-cyan-400/20 bg-stone-50 dark:bg-gray-900/60 shadow-sm max-w-4xl">
             <Image
-              src="/Enterprisebusinesscard.png"
+              src="/images/branding/Enterprisebusinesscard.png"
               alt="Enterprise business card with QR code, contact info, and services"
               width={1536}
               height={864}
@@ -200,7 +200,7 @@ export default function EnterprisePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-5 sm:items-center">
               <Image
-                src="/Enterprisebusinesscard.png"
+                src="/images/branding/Enterprisebusinesscard.png"
                 alt="Enterprise business card with QR code"
                 width={320} // Reduced width
                 height={180} // Reduced height proportionally

@@ -145,10 +145,10 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 // Each tech object contains name, icon path, and documentation URL
-                { name: 'MERN Stack', icon: '/MERN.png', url: 'https://react.dev' },
-                { name: 'Python', icon: '/python-logo.png', url: 'https://docs.python.org/3/' },
-                { name: 'PostgreSQL', icon: '/postgresqlLogo.png', url: 'https://www.postgresql.org/docs/' },
-                { name: 'Django', icon: '/Django_logo.svg', url: 'https://docs.djangoproject.com/' }
+                { name: 'MERN Stack', icon: '/images/logos/MERN.png', url: 'https://react.dev' },
+                { name: 'Python', icon: '/images/logos/python-logo.png', url: 'https://docs.python.org/3/' },
+                { name: 'PostgreSQL', icon: '/images/logos/postgresqlLogo.png', url: 'https://www.postgresql.org/docs/' },
+                { name: 'Django', icon: '/images/logos/Django_logo.svg', url: 'https://docs.djangoproject.com/' }
               ].map((tech) => (
                 // Each technology is a clickable link to its documentation
                 <a
@@ -185,10 +185,10 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 // Each tool object contains name, icon path, and documentation URL
-                { name: 'Postman', icon: '/postman.png', url: 'https://learning.postman.com/docs/' },
-                { name: 'Trello', icon: '/trelloLogo.webp', url: 'https://help.atlassian.com/trello/' },
-                { name: 'Heroku', icon: '/heroku.png', url: 'https://devcenter.heroku.com/' },
-                { name: 'Vercel', icon: '/vercelLogo.png', url: 'https://vercel.com/docs' }
+                { name: 'Postman', icon: '/images/logos/postman.png', url: 'https://learning.postman.com/docs/' },
+                { name: 'Trello', icon: '/images/logos/trelloLogo.webp', url: 'https://help.atlassian.com/trello/' },
+                { name: 'Heroku', icon: '/images/logos/heroku.png', url: 'https://devcenter.heroku.com/' },
+                { name: 'Vercel', icon: '/images/logos/vercelLogo.png', url: 'https://vercel.com/docs' }
               ].map((tool) => (
                 // Each tool is a clickable link to its documentation
                 <a

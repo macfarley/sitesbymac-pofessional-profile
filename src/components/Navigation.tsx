@@ -197,7 +197,7 @@ export default function Navigation() {
             <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between mb-5">
               <div className="flex items-center gap-4">
                 <Image
-                  src="/macpro.jpg"
+                  src="/images/branding/macpro.jpg"
                   alt="Travis McCoy"
                   width={82}
                   height={82}

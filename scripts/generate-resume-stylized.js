@@ -521,7 +521,7 @@ const generateStylizedResume = () => {
 };
 
 // Write to public folder
-const outputPath = path.join(__dirname, '..', 'public', 'resume_styled.html');
+const outputPath = path.join(__dirname, '..', 'public', 'resumes', 'resume_styled.html');
 const html = generateStylizedResume();
 
 fs.writeFileSync(outputPath, html, 'utf8');

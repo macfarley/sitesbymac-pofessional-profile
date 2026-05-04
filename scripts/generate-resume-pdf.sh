@@ -15,7 +15,7 @@ wkhtmltopdf \
   --margin-bottom 0 \
   --margin-left 0 \
   --margin-right 0 \
-  public/resume_styled.html \
-  public/resume_styled.pdf
+  public/resumes/resume_styled.html \
+  public/resumes/resume_styled.pdf
 
-echo "✅ PDF generated: public/resume_styled.pdf"
+echo "✅ PDF generated: public/resumes/resume_styled.pdf"

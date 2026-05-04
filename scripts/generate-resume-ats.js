@@ -410,7 +410,7 @@ const generateATSResume = () => {
 };
 
 // Write to public folder
-const outputPath = path.join(__dirname, '..', 'public', 'resume_ats.html');
+const outputPath = path.join(__dirname, '..', 'public', 'resumes', 'resume_ats.html');
 const html = generateATSResume();
 
 fs.writeFileSync(outputPath, html, 'utf8');

@@ -37,7 +37,7 @@ export default function WeddingsPage() {
           </div>
           <div className="relative w-full max-w-3xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/businessCard.png"
+              src="/images/branding/businessCard.png"
               alt="Sites By Mac - Digital Artistry, Forever Memories"
               width={1200}
               height={600}
@@ -370,7 +370,7 @@ export default function WeddingsPage() {
             </h3>
             <div className="relative w-full max-w-2xl mx-auto">
               <Image
-                src="/businessCardWithQR.png"
+                src="/images/branding/businessCardWithQR.png"
                 alt="Sites By Mac business card with QR code"
                 width={1024}
                 height={512}

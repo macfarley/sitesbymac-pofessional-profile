@@ -11,7 +11,7 @@ export default function ResumeDownloadButtons() {
         className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
       />
       <a 
-        href="/resume_styled.pdf"
+        href="/resumes/resume_styled.pdf"
         download="Travis_McCoy_Resume_Stylized.pdf"
         className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
       >

@@ -25,6 +25,7 @@ const PROJECT_REDIRECTS: Record<string, string> = {
   'phantastic-beasts': 'https://phantastic-beasts-d585c0bc1aa9.herokuapp.com/',
   'slay-the-dagron': 'https://macfarley.github.io/slay-the-dagron/',
   'dream-weaver': 'https://dream-weaver-rho.vercel.app/',
+  'volunqueer': 'https://volunqueerlife.org',
 };
 
 // Utility function for adding tracking parameters

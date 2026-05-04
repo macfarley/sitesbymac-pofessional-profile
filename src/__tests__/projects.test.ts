@@ -12,14 +12,15 @@ describe('Projects Data', () => {
       expect(project).toHaveProperty('title')
       expect(project).toHaveProperty('description')
       expect(project).toHaveProperty('technologies')
-      expect(project).toHaveProperty('liveUrl')
       expect(project).toHaveProperty('completedDate')
       
       expect(typeof project.id).toBe('string')
       expect(typeof project.title).toBe('string')
       expect(typeof project.description).toBe('string')
       expect(Array.isArray(project.technologies)).toBe(true)
-      expect(typeof project.liveUrl).toBe('string')
+      if (project.liveUrl !== undefined) {
+        expect(typeof project.liveUrl).toBe('string')
+      }
       expect(typeof project.completedDate).toBe('string')
     })
   })
@@ -91,7 +92,9 @@ describe('Projects Data', () => {
 
   it('projects have valid URLs', () => {
     projects.forEach(project => {
-      expect(project.liveUrl).toMatch(/^https?:\/\//)
+      if (project.liveUrl) {
+        expect(project.liveUrl).toMatch(/^https?:\/\//)
+      }
       if (project.githubUrl) {
         expect(project.githubUrl).toMatch(/^https?:\/\//)
       }
