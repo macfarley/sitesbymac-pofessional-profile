@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume &mdash; Travis &ldquo;Mac&rdquo; McCoy</title>
+  <style>
+    /* ====================================================
+       RESET & BASE
+    ==================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.45;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    /* ====================================================
+       PRINT / PAGE SETUP
+    ==================================================== */
+    @page { size: letter; margin: 0; }
+
+    @media print {
+      body { font-size: 7.8pt; line-height: 1.28; }
+      .print-fab { display: none !important; }
+      .page { padding: 0.42in !important; min-height: 0 !important; }
+      .resume-header { padding: 9px 14px 7px; margin-bottom: 9px; border-radius: 4px; }
+      .resume-header h1 { font-size: 15pt; }
+      .resume-header .tagline { font-size: 7pt; margin-bottom: 4px; }
+      .contact-row { font-size: 6.5pt; gap: 3px 14px; }
+      .resume-body { gap: 12px; }
+      .sidebar { padding-right: 10px; }
+      .section-label { font-size: 5.5pt; margin-bottom: 3px; padding-bottom: 2px; margin-top: 7px; }
+      .skill-item { font-size: 6.5pt; padding: 1px 4px; }
+      .summary-text { font-size: 7.5pt; line-height: 1.4; }
+      .job { margin-bottom: 6px; }
+      .job-title { font-size: 7.8pt; }
+      .job-org { font-size: 7.5pt; }
+      .job-meta { font-size: 6.5pt; }
+      .job-bullet { font-size: 7pt; line-height: 1.35; }
+      .edu-item { margin-bottom: 3px; }
+      .edu-degree { font-size: 7.5pt; }
+      .edu-detail { font-size: 6.5pt; }
+      .page-footer { font-size: 6pt; padding-top: 5px; }
+      .award-badge { font-size: 5.5pt; padding: 1px 5px; }
+    }
+
+    /* ====================================================
+       PRINT FAB
+    ==================================================== */
+    .print-fab {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 9999;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 11pt;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      letter-spacing: 0.02em;
+      transition: background 0.15s;
+    }
+    .print-fab:hover { background: var(--accent-dark); }
+
+    /* ====================================================
+       COLOR TOKENS
+    ==================================================== */
+    :root {
+      --accent:       #1e3a5f;
+      --accent-dark:  #122540;
+      --accent-light: #f0f4f8;
+      --border:       #a8bcd4;
+      --muted:        #666;
+      --dark:         #1a1a1a;
+    }
+
+    /* ====================================================
+       PAGE WRAPPER
+    ==================================================== */
+    .page {
+      width: 100%;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.5in;
+      min-height: 11in;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ====================================================
+       RESUME HEADER
+    ==================================================== */
+    .resume-header {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      padding: 14px 18px 10px;
+      margin-bottom: 14px;
+    }
+    .resume-header h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 2px;
+    }
+    .resume-header .tagline {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 7px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 18px;
+      font-size: 8pt;
+      color: rgba(255,255,255,0.90);
+    }
+    .contact-row span { white-space: nowrap; }
+
+    /* ====================================================
+       TWO-COLUMN BODY
+    ==================================================== */
+    .resume-body {
+      display: flex;
+      gap: 18px;
+      flex: 1;
+    }
+
+    /* ====================================================
+       SIDEBAR
+    ==================================================== */
+    .sidebar {
+      width: 28%;
+      flex-shrink: 0;
+      padding-right: 14px;
+      border-right: 2px solid var(--border);
+    }
+
+    /* ====================================================
+       MAIN COLUMN
+    ==================================================== */
+    .main-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ====================================================
+       SECTION LABEL
+    ==================================================== */
+    .section-label {
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+      margin-top: 10px;
+    }
+    .section-label:first-child,
+    .section-label.first { margin-top: 0; }
+
+    /* ====================================================
+       SKILL TAGS (sidebar)
+    ==================================================== */
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 4px;
+      margin-bottom: 2px;
+    }
+    .skill-item {
+      font-size: 7.8pt;
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1px 6px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ====================================================
+       SUMMARY
+    ==================================================== */
+    .summary-text {
+      font-size: 8.5pt;
+      color: #333;
+      line-height: 1.55;
+    }
+
+    /* ====================================================
+       EXPERIENCE
+    ==================================================== */
+    .job { margin-bottom: 10px; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+    .job-title-line { min-width: 0; }
+    .job-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .job-org {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .job-meta {
+      font-size: 7.5pt;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .job-bullets {
+      list-style: none;
+      padding: 0;
+    }
+    .job-bullet {
+      font-size: 8pt;
+      color: #333;
+      padding-left: 13px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .job-bullet::before {
+      content: "\25B8";
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 7pt;
+      top: 1px;
+    }
+
+    /* ====================================================
+       AWARD BADGE
+    ==================================================== */
+    .award-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 6pt;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* ====================================================
+       EDUCATION
+    ==================================================== */
+    .edu-item { margin-bottom: 5px; }
+    .edu-degree {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .edu-detail {
+      font-size: 7.5pt;
+      color: var(--muted);
+    }
+
+    /* ====================================================
+       FOOTER
+    ==================================================== */
+    .page-footer {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid #dde4ec;
+      font-size: 7pt;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-fab" onclick="window.print()">&#x1F4BE; Save as PDF</button>
+
+<div class="page">
+
+  <!-- ── HEADER ──────────────────────────────────────────── -->
+  <header class="resume-header">
+    <h1>Travis &ldquo;Mac&rdquo; McCoy</h1>
+    <div class="tagline">Administrative &amp; Documentation Specialist &nbsp;&middot;&nbsp; US Citizen &mdash; Clearance Eligible</div>
+    <div class="contact-row">
+      <span>Dayton, OH</span>
+      <span>937-467-9312</span>
+      <span>mac@sitesbymac.dev</span>
+      <span>linkedin.com/in/mac-mccoy</span>
+    </div>
+  </header>
+
+  <!-- ── TWO-COLUMN BODY ─────────────────────────────────── -->
+  <div class="resume-body">
+
+    <!-- ─── SIDEBAR ──────────────────────────────────────── -->
+    <aside class="sidebar">
+
+      <p class="section-label first">Records &amp; Documentation</p>
+      <ul class="skill-list">
+        <li class="skill-item">Workflow Coordination</li>
+        <li class="skill-item">Records Management</li>
+        <li class="skill-item">Documentation Control</li>
+        <li class="skill-item">Confidential Recordkeeping</li>
+        <li class="skill-item">Audit-Ready Accuracy</li>
+        <li class="skill-item">Policy &amp; Statute Interpretation</li>
+        <li class="skill-item">Multi-Year File Maintenance</li>
+      </ul>
+
+      <p class="section-label">Administrative Operations</p>
+      <ul class="skill-list">
+        <li class="skill-item">Customer &amp; Stakeholder Support</li>
+        <li class="skill-item">Payment Handling &amp; Reconciliation</li>
+        <li class="skill-item">Cross-Functional Communication</li>
+        <li class="skill-item">Scheduling &amp; Request Tracking</li>
+      </ul>
+
+      <p class="section-label">Tools</p>
+      <ul class="skill-list">
+        <li class="skill-item">MS Office Suite</li>
+        <li class="skill-item">Google Workspace</li>
+        <li class="skill-item">Databases</li>
+        <li class="skill-item">CMS Platforms</li>
+        <li class="skill-item">Linux CLI</li>
+        <li class="skill-item">Git / GitHub</li>
+        <li class="skill-item">Jira</li>
+        <li class="skill-item">Slack</li>
+        <li class="skill-item">Zoom</li>
+      </ul>
+
+      <p class="section-label">Technical</p>
+      <ul class="skill-list">
+        <li class="skill-item">Postgres SQL</li>
+        <li class="skill-item">Batch Processing</li>
+        <li class="skill-item">File Verification</li>
+        <li class="skill-item">Log Review</li>
+        <li class="skill-item">Python</li>
+        <li class="skill-item">Bash</li>
+        <li class="skill-item">JavaScript / TypeScript</li>
+        <li class="skill-item">HTML / CSS</li>
+      </ul>
+
+      <p class="section-label">Recognition &amp; Credentials</p>
+      <ul class="skill-list">
+        <li class="skill-item">George Beto Award for Excellence</li>
+        <li class="skill-item">Dean&rsquo;s List &mdash; 6 Quarters</li>
+        <li class="skill-item">3.75 GPA</li>
+        <li class="skill-item">Top 10% HS Graduate</li>
+        <li class="skill-item">Clearance Eligible</li>
+      </ul>
+
+    </aside>
+
+    <!-- ─── MAIN COLUMN ───────────────────────────────────── -->
+    <main class="main-col">
+
+      <p class="section-label first">Summary</p>
+      <p class="summary-text">
+        Administrative and documentation specialist with seven years of experience coordinating workflows,
+        maintaining multi-system accuracy, and supporting operations in regulated and public-facing environments.
+        Skilled in records management, documentation control, data accuracy, and customer-facing communication
+        requiring clarity and professionalism. Known for confidentiality, consistency, and precise application of
+        procedures. Strong fit for administrative coordinator, records/documentation specialist, and university
+        administrative roles requiring reliable execution and high-quality service.
+      </p>
+
+      <p class="section-label">Relevant Experience</p>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title-line">
+            <span class="job-title">Technical Support &amp; Operations, Founder</span>
+            &nbsp;&middot;&nbsp;
+            <span class="job-org">SitesByMac</span>
+          </div>
+          <span class="job-meta">June 2025 &ndash; Present</span>
+        </div>
+        <ul class="job-bullets">
+          <li class="job-bullet">Reviewed and organized client documents and records to ensure accurate downstream processing.</li>
+          <li class="job-bullet">Managed account and configuration data across multiple systems with consistent permissions and accuracy.</li>
+          <li class="job-bullet">Maintained SOPs, workflow guides, and documentation supporting reliable, repeatable operations.</li>
+          <li class="job-bullet">Reconciled billing, contract, and account data with audit-ready precision.</li>
+          <li class="job-bullet">Provided customer support, guided users through procedures, and coordinated scheduling and request tracking.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title-line">
+            <span class="job-title">Correctional Officer V &mdash; Records &amp; Documentation</span>
+            &nbsp;&middot;&nbsp;
+            <span class="job-org">Texas Dept. of Criminal Justice</span>
+          </div>
+          <span class="job-meta">Sept 2017 &ndash; Oct 2024</span>
+        </div>
+        <ul class="job-bullets">
+          <li class="job-bullet">Managed multi-system data accuracy by verifying identity, eligibility, and legal documentation across secure databases.</li>
+          <li class="job-bullet">Processed, updated, and maintained multi-year records, travel cards, and documentation subject to audits and accreditation.</li>
+          <li class="job-bullet">Entered, indexed, and reconciled records in legacy UNIX systems with complete accuracy.</li>
+          <li class="job-bullet">Interpreted and applied statutes, regulations, and procedural requirements to documentation workflows.</li>
+          <li class="job-bullet">Provided cross-functional support to staff, attorneys, agencies, and external partners on record-related inquiries.</li>
+          <li class="job-bullet">Trained new staff on documentation standards, accuracy expectations, and compliance requirements.</li>
+          <li class="job-bullet">Supervised nightly operations across five work areas, ensuring procedural adherence and timely completion of tasks.</li>
+          <li class="job-bullet">Recognized with the George Beto Award for Excellence for leadership, policy knowledge, and procedural mastery. <span class="award-badge">Award</span></li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title-line">
+            <span class="job-title">Production QA &amp; Inventory Technician</span>
+            &nbsp;&middot;&nbsp;
+            <span class="job-org">KitchenAid-Whirlpool</span>
+          </div>
+          <span class="job-meta">2015 &ndash; 2017</span>
+        </div>
+        <ul class="job-bullets">
+          <li class="job-bullet">Logged defects, maintained quality records, and verified production data for audit readiness.</li>
+          <li class="job-bullet">Ensured data integrity through precise verification and documentation of production workflows.</li>
+        </ul>
+      </div>
+
+      <p class="section-label" style="page-break-before: always;">Volunteer Experience</p>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title-line">
+            <span class="job-title">Volunteer IT &amp; Platform Support</span>
+            &nbsp;&middot;&nbsp;
+            <span class="job-org">VolunQueer</span>
+          </div>
+          <span class="job-meta">Nov 2025 &ndash; Mar 2026</span>
+        </div>
+        <ul class="job-bullets">
+          <li class="job-bullet">Developed documentation, style standards, and data-safety guidelines that improved onboarding efficiency and reduced recurring support issues.</li>
+        </ul>
+      </div>
+
+      <p class="section-label">Education &amp; Training</p>
+
+      <div class="edu-item">
+        <div class="edu-degree">Software Engineering Certificate &mdash; General Assembly <span style="font-weight:400;">(2025)</span></div>
+        <div class="edu-detail">Project-based training in a distributed team environment.</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Dual Enrollment &mdash; Wright State University <span style="font-weight:400;">(72 credits, 2007&ndash;2009)</span></div>
+        <div class="edu-detail">Dean&rsquo;s List (6 quarters) &nbsp;&middot;&nbsp; 3.75 GPA</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Honors Diploma &mdash; Celina High School <span style="font-weight:400;">(2009)</span></div>
+        <div class="edu-detail">Top 10% &nbsp;&middot;&nbsp; Scholastic Team Captain &nbsp;&middot;&nbsp; State Marching Band Competitor</div>
+      </div>
+
+
+    </main>
+
+  </div><!-- END RESUME BODY -->
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="page-footer">
+    <span>Travis &ldquo;Mac&rdquo; McCoy &nbsp;&middot;&nbsp; Administrative &amp; Documentation Specialist</span>
+    <span>mac@sitesbymac.dev &nbsp;&middot;&nbsp; 937-467-9312</span>
+  </footer>
+
+</div><!-- END PAGE -->
+
+</body>
+</html>
