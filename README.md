@@ -62,6 +62,14 @@ npm run build
 
 Primary stack: Next.js (App Router), TypeScript, Tailwind CSS, Jest + React Testing Library.
 
+## Analytics
+
+This site uses Google Analytics 4 (GA4) for traffic measurement. The measurement ID (`G-5PGY3D8CTF`) is intentionally public — it is embedded in every page's client-side HTML and grants no write or admin access. It is safe to commit.
+
+GA4 is wired up in `src/app/layout.tsx` using Next.js `<Script strategy="afterInteractive">` so it loads after hydration and never blocks page render or Lighthouse scores.
+
+When forking: swap the measurement ID for your own GA4 property's ID, or remove the two `<Script>` blocks entirely if you don't need analytics.
+
 ## Forking Checklist
 
 When reusing this project, replace:

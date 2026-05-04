@@ -14,6 +14,7 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css"; // Global styles and Tailwind CSS imports
 import Navigation from "../components/Navigation"; // Site-wide navigation component
 import PoweredByFooter from "../components/PoweredByFooter";
@@ -111,6 +112,19 @@ export default function RootLayout({
         <Navigation />
         {children}
         <PoweredByFooter />
+        {/* Google Analytics GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-5PGY3D8CTF"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5PGY3D8CTF');
+          `}
+        </Script>
       </body>
     </html>
   );

@@ -20,7 +20,7 @@ describe('Home Page', () => {
     render(<Home />)
     
     const heading = screen.getByRole('heading', { 
-      name: /hi, i'm mac mccoy/i 
+      name: /full-service technomancer/i 
     })
     expect(heading).toBeInTheDocument()
   })
@@ -32,49 +32,49 @@ describe('Home Page', () => {
     expect(mascot).toBeInTheDocument()
   })
 
-  it('shows the technologies section', () => {
+  it('shows the services section', () => {
     render(<Home />)
     
-    const techHeading = screen.getByRole('heading', { 
-      name: /technologies/i 
+    const servicesHeading = screen.getByRole('heading', { 
+      name: /what i do/i 
     })
-    expect(techHeading).toBeInTheDocument()
+    expect(servicesHeading).toBeInTheDocument()
     
-    // Check for specific technologies
-    expect(screen.getByText('MERN Stack')).toBeInTheDocument()
-    expect(screen.getByText('Python')).toBeInTheDocument()
-    expect(screen.getByText('PostgreSQL')).toBeInTheDocument()
-    expect(screen.getByText('Django')).toBeInTheDocument()
+    expect(screen.getByText('Digital Design')).toBeInTheDocument()
+    expect(screen.getByText('Web Development')).toBeInTheDocument()
+    expect(screen.getByText('Technical Writing')).toBeInTheDocument()
+    expect(screen.getAllByText('Digital Marketing').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Fractional CTO').length).toBeGreaterThan(0)
+    expect(screen.getByText('White-Glove Support')).toBeInTheDocument()
   })
 
-  it('shows the tools & platforms section', () => {
+  it('shows the packages section', () => {
     render(<Home />)
     
-    const toolsHeading = screen.getByRole('heading', { 
-      name: /tools & platforms/i 
+    const packagesHeading = screen.getByRole('heading', { 
+      name: /packages/i 
     })
-    expect(toolsHeading).toBeInTheDocument()
+    expect(packagesHeading).toBeInTheDocument()
     
-    // Check for specific tools
-    expect(screen.getByText('Postman')).toBeInTheDocument()
-    expect(screen.getByText('Heroku')).toBeInTheDocument()
-    expect(screen.getByText('Vercel')).toBeInTheDocument()
+    expect(screen.getByText('Starter')).toBeInTheDocument()
+    expect(screen.getByText('Growth')).toBeInTheDocument()
+    expect(screen.getByText('Operations')).toBeInTheDocument()
   })
 
   it('has call-to-action buttons', () => {
     render(<Home />)
     
-    const viewWorkButton = screen.getByRole('link', { 
-      name: /navigate to portfolio projects section/i 
+    const servicesButton = screen.getByRole('link', { 
+      name: /navigate to the services section/i 
     })
     const contactButton = screen.getByRole('link', { 
-      name: /send email to travis@sitesbymac.dev/i 
+      name: /send email to mac@sitesbymac.dev$/i 
     })
     
-    expect(viewWorkButton).toBeInTheDocument()
+    expect(servicesButton).toBeInTheDocument()
     expect(contactButton).toBeInTheDocument()
-    expect(contactButton).toHaveAttribute('href', 'mailto:travis@sitesbymac.dev')
-    expect(viewWorkButton).toHaveAttribute('href', '#projects')
+    expect(contactButton).toHaveAttribute('href', 'mailto:mac@sitesbymac.dev')
+    expect(servicesButton).toHaveAttribute('href', '#services')
   })
 
   it('renders the projects section', () => {
@@ -84,29 +84,15 @@ describe('Home Page', () => {
     expect(projectsGrid).toBeInTheDocument()
   })
 
-  it('has technology links that open in new tabs', () => {
+  it('shows the how i work section', () => {
     render(<Home />)
     
-    // Check MERN Stack link
-    const mernLink = screen.getByRole('link', { 
-      name: /open mern stack documentation in new tab/i 
+    const howHeading = screen.getByRole('heading', {
+      name: /how i work/i
     })
-    expect(mernLink).toBeInTheDocument()
-    expect(mernLink).toHaveAttribute('href', 'https://react.dev')
-    expect(mernLink).toHaveAttribute('target', '_blank')
-    expect(mernLink).toHaveAttribute('rel', 'noopener noreferrer')
-  })
-
-  it('has tools links that open in new tabs', () => {
-    render(<Home />)
-    
-    // Check Postman link
-    const postmanLink = screen.getByRole('link', { 
-      name: /open postman documentation in new tab/i 
-    })
-    expect(postmanLink).toBeInTheDocument()
-    expect(postmanLink).toHaveAttribute('href', 'https://learning.postman.com/docs/')
-    expect(postmanLink).toHaveAttribute('target', '_blank')
+    expect(howHeading).toBeInTheDocument()
+    expect(screen.getByText('Discovery')).toBeInTheDocument()
+    expect(screen.getByText('Ongoing Support')).toBeInTheDocument()
   })
 
   it('does not render legacy page-level footer', () => {
