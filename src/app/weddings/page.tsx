@@ -88,6 +88,40 @@ export default function WeddingsPage() {
           </Link>
         </div>
 
+        {/* Live Client Showcase */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Live Client Sites</h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-5">Real couples. Real digital heirlooms.</p>
+          <Link
+            href="/weddings/JohnandCrystalMay"
+            className="group block rounded-2xl border border-stone-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div className="relative w-full overflow-hidden">
+              <Image
+                src="/images/screenshots/john-and-crystal-may-wedding.png"
+                alt="Screenshot of John & Crystal May's wedding website"
+                width={1366}
+                height={768}
+                className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300"
+              />
+            </div>
+            <div className="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <span className="text-xs uppercase tracking-widest text-rose-600 dark:text-rose-400 font-semibold">Live Site · May 9, 2026</span>
+                <p className="text-xl font-bold text-gray-900 dark:text-white mt-0.5 group-hover:text-rose-700 dark:group-hover:text-rose-300 transition-colors">
+                  John &amp; Crystal May →
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  Event program, photo gallery, guestbook, and guest photo uploads — live on their own custom domain.
+                </p>
+              </div>
+              <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500 italic sm:text-right">
+                john-and-crystal-may.wedding
+              </span>
+            </div>
+          </Link>
+        </div>
+
         {/* Experimental Phase Callout */}
         <div className="bg-rose-50 dark:bg-slate-900/60 border border-rose-200 dark:border-slate-700 rounded-2xl shadow-xl p-8 sm:p-10 mb-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">

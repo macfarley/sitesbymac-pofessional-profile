@@ -1,5 +1,12 @@
 # Development Log (Public)
 
+## 2026-05-10
+
+- Added live client showcase section to `/weddings` featuring John & Crystal May's wedding site.
+- Added `/weddings/JohnandCrystalMay` route that redirects to the live wedding site; will be replaced with a static archive when the domain expires on their anniversary.
+- Saved screenshot of the live wedding site to `public/images/screenshots/`.
+- Added Weddings page and JohnandCrystalMay redirect tests to the test suite (17 suites, 139 tests).
+
 ## 2026-02-22
 
 - Expanded navbar contact interaction into a fuller contact card.

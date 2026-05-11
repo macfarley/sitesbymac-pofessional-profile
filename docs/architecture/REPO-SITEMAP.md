@@ -20,7 +20,8 @@ This file explains where core pieces of the app live and what each area is respo
 - `/projects` — project catalog.
 - `/projects/[slug]` — project details.
 - `/blog` — mirrored writing and publishing hub.
-- `/weddings` — conversion-focused wedding pitch page.
+- `/weddings` — conversion-focused wedding pitch page with live client showcase.
+- `/weddings/JohnandCrystalMay` — redirects to live client site; will hold static archive when domain expires.
 - `/mcaxl` — mascot/brand personality page.
 - `/go/[slug]` — redirect route for project shortlinks.
 - `/api/redirects` — redirect metadata endpoint.
