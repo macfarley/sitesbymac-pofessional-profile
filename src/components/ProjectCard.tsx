@@ -10,7 +10,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, className = '' }: ProjectCardProps) {
   return (
-    <div className={`bg-stone-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 border border-amber-600/20 dark:border-gray-700 hover:border-amber-600/40 dark:hover:border-cyan-400/50 ${className}`}>
+    <div className={`bg-stone-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-xl border border-amber-600/20 dark:border-gray-700 hover:border-amber-600/40 dark:hover:border-cyan-400/50 ${className}`}>
       {project.imageUrl && (
         <div className="relative h-48 w-full">
           <Image
@@ -39,6 +39,17 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
         <p className="text-amber-800 dark:text-gray-300 mb-4">
           {project.description}
         </p>
+
+        {project.highlights && project.highlights.length > 0 && (
+          <ul className="space-y-1 mb-4">
+            {project.highlights.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm text-amber-700 dark:text-gray-400">
+                <span className="text-amber-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
         
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech) => (

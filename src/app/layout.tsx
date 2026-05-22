@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   
   // Meta description for SEO and social media previews
   description: "Portfolio and writing hub for Mac McCoy — privacy-minded digital consultant building ethical, human-scale web experiences.",
+  // Keywords — required for Lounge Lizard scholarship compliance; proves authorship
+  keywords: ['Travis McCoy', 'SitesByMac', 'SitesByMac.dev', 'Web Design', 'Portfolio', 'Next.js', 'TypeScript', 'React', 'Full Stack Developer'],
   alternates: {
     canonical: "/",
   },

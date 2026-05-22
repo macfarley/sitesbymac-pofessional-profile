@@ -167,6 +167,83 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FEATURED SCHOLARSHIP SUBMISSION */}
+      <section className="py-16 px-4 bg-gradient-to-r from-amber-50 to-stone-100 dark:from-gray-900 dark:to-slate-800 border-y-2 border-amber-700/30 dark:border-cyan-400/30">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1 bg-amber-700 dark:bg-cyan-500 text-white dark:text-gray-900 text-xs font-bold tracking-widest uppercase rounded-full mb-4">
+              Scholarship Submission
+            </span>
+            <h2 className="text-3xl font-bold text-amber-900 dark:text-gray-100 mb-2">
+              Featured Work
+            </h2>
+            <p className="text-amber-700 dark:text-gray-400 text-sm">
+              Designed &amp; developed by Travis McCoy
+            </p>
+          </div>
+
+          {/* Portfolio site card */}
+          <div className="flex flex-col md:flex-row gap-8 items-start bg-stone-50 dark:bg-gray-800 rounded-xl border-2 border-amber-700/40 dark:border-cyan-400/40 shadow-lg overflow-hidden mb-8">
+            <div className="relative w-full md:w-96 h-56 flex-shrink-0 bg-stone-200 dark:bg-gray-700">
+              <Image
+                src="/images/screenshots/sitesbymac-homepage.png"
+                alt="SitesByMac.dev homepage — portfolio and consulting site designed and developed by Travis McCoy"
+                fill
+                className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 384px"
+              />
+            </div>
+            <div className="p-6 md:py-8 flex flex-col justify-between flex-1">
+              <div>
+                <h3 className="text-2xl font-bold text-amber-900 dark:text-gray-100 mb-2">
+                  SitesByMac.dev — Personal Portfolio &amp; Consulting Site
+                </h3>
+                <p className="text-amber-800 dark:text-gray-300 mb-4 leading-relaxed">
+                  A full-service portfolio and consulting hub built with Next.js, TypeScript, and Tailwind CSS. Designed to serve two audiences simultaneously — prospective clients evaluating services, and technical reviewers assessing engineering quality. Features dark/light theming, responsive layout, GA4 analytics, and SEO-optimized metadata.
+                </p>
+                <ul className="space-y-1 mb-6">
+                  {[
+                    'Architected and built from scratch — sole designer and developer',
+                    'Next.js App Router with TypeScript and Tailwind CSS',
+                    'Accessible, responsive design across all screen sizes',
+                    'OpenGraph, Twitter cards, sitemap, and robots.txt for full SEO coverage',
+                    'GA4 analytics integration with realtime tracking',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-amber-700 dark:text-gray-400">
+                      <span className="text-amber-600 dark:text-cyan-400 flex-shrink-0 mt-0.5">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://sitesbymac.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 bg-amber-700 dark:bg-cyan-500 text-white dark:text-gray-900 rounded-lg hover:bg-amber-800 dark:hover:bg-cyan-400 transition-colors font-medium text-sm"
+                >
+                  Live Site
+                </a>
+                <a
+                  href="https://github.com/macfarley/therealmccoyweb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 border border-amber-700 dark:border-gray-500 text-amber-800 dark:text-gray-300 rounded-lg hover:bg-amber-50 dark:hover:bg-gray-700 transition-colors font-medium text-sm"
+                >
+                  GitHub Repo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-sm text-amber-700 dark:text-gray-400">
+            Additional projects below — see the full portfolio for screenshots, source code, and live demos.
+          </p>
+        </div>
+      </section>
+
       {/* SERVICES — What I Do */}
       <section id="services" className="py-16 px-4 bg-gradient-to-r from-stone-200 to-stone-300 dark:from-gray-800 dark:to-slate-700">
         <div className="max-w-5xl mx-auto">
@@ -180,7 +257,7 @@ export default function Home() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="p-6 bg-stone-50 dark:bg-gray-700 border border-amber-600/20 dark:border-cyan-400/20 rounded-lg hover:border-amber-600/50 dark:hover:border-cyan-400/50 transition-colors"
+                className="p-6 bg-stone-50 dark:bg-gray-700 border border-amber-600/20 dark:border-cyan-400/20 rounded-lg hover:border-amber-600/50 dark:hover:border-cyan-400/50 hover:-translate-y-1 hover:shadow-md transition-all duration-200"
               >
                 <div className="text-2xl mb-3 text-amber-700 dark:text-cyan-400" aria-hidden="true">{service.icon}</div>
                 <h3 className="font-bold text-lg mb-2 text-amber-900 dark:text-gray-100">{service.title}</h3>
@@ -297,6 +374,32 @@ export default function Home() {
         <LazyProjectsGrid />
       </div>
 
+      {/* TECH STACK */}
+      <section className="py-12 px-4 bg-gradient-to-r from-stone-200 to-stone-300 dark:from-gray-800 dark:to-slate-700">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-amber-900 dark:text-gray-100 mb-2">
+            Tech Stack
+          </h2>
+          <p className="text-sm text-amber-700 dark:text-gray-400 mb-8">
+            Tools I build with day-to-day.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js',
+              'Tailwind CSS', 'Django', 'Python', 'Node.js', 'Express',
+              'PostgreSQL', 'MongoDB', 'Git / GitHub', 'Vercel', 'Heroku',
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 bg-stone-50 dark:bg-gray-700 text-amber-800 dark:text-gray-200 text-sm font-medium rounded-full border border-amber-600/30 dark:border-cyan-400/30 hover:border-amber-600/70 dark:hover:border-cyan-400/70 transition-colors"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PACKAGES */}
       <section className="py-16 px-4 bg-gradient-to-r from-stone-200 to-stone-300 dark:from-gray-800 dark:to-slate-700">
         <div className="max-w-4xl mx-auto">
@@ -338,8 +441,11 @@ export default function Home() {
           <p className="text-amber-800 dark:text-gray-300 mb-4 leading-relaxed">
             Systems thinker. Documentation-driven. Seven years in regulated, high-volume operations — now bringing that same precision and rigor to digital work for small businesses.
           </p>
-          <p className="text-amber-700 dark:text-gray-400 mb-8 leading-relaxed">
+          <p className="text-amber-700 dark:text-gray-400 mb-4 leading-relaxed">
             I blend technical depth with creative execution, communicate clearly at every step, and stay involved in the tech community. The &ldquo;technomancer&rdquo; identity isn&apos;t a brand — it&apos;s how I actually work.
+          </p>
+          <p className="text-amber-700 dark:text-gray-400 mb-8 leading-relaxed">
+            I&apos;m a systems-minded developer who builds tools that solve real problems. My work blends design, data, and usability — whether I&apos;m creating a creative tool, a workflow helper, or a full portfolio experience. I approach every project with the same goal: make something that feels effortless to use.
           </p>
           <a
             href="/about"
@@ -348,6 +454,23 @@ export default function Home() {
           >
             Full Background
           </a>
+        </div>
+      </section>
+
+      {/* DESIGN PHILOSOPHY */}
+      <section className="py-16 px-4 bg-gradient-to-r from-stone-200 to-stone-300 dark:from-gray-800 dark:to-slate-700">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-amber-900 dark:text-gray-100 mb-8">
+            Design Philosophy
+          </h2>
+          <blockquote className="border-l-4 border-amber-700 dark:border-cyan-400 pl-6 py-1">
+            <p className="text-lg text-amber-800 dark:text-gray-300 leading-relaxed italic">
+              I build interfaces that make complex information feel simple. My work focuses on clarity, accessibility, and purposeful interaction — designing tools that help people understand, create, and navigate. Whether I&apos;m building a portfolio site, a creative tool, or a data-driven application, my goal is always the same: intuitive design that empowers the user.
+            </p>
+            <footer className="mt-4 text-sm font-semibold text-amber-700 dark:text-cyan-400 not-italic">
+              — Travis McCoy, SitesByMac.dev
+            </footer>
+          </blockquote>
         </div>
       </section>
 

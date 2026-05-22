@@ -50,6 +50,7 @@ export interface Project {
   imageUrl?: string;            // Project screenshot or preview image path
   featured?: boolean;           // Whether to show in featured projects section
   completedDate: string;        // ISO date string (YYYY-MM-DD) for sorting
+  highlights?: string[];        // Key contributions shown as bullet points on cards
 }
 
 /**
